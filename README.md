@@ -3,4 +3,5 @@
 	目前只有简单的功能。
 
 ### 链接
-	[www.500efuma.com](http://www.500efuma.com)
+1.[www.500efuma.com](http://www.500efuma.com)<br />
+2.[点击这里我你可以链接到我的博客](http://guoyunsky.iteye.com)<br /> 

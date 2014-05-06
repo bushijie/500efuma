@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>魔王的傻逼主页</title>
+		<link rel="shortcut icon" href="__ROOT__/favicon.ico">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,700|Open+Sans+Condensed:300,700" rel="stylesheet" />
+		<script src="__ROOT__/Template/js/jquery-1.9.1.min.js"></script>
+		<script src="__ROOT__/Template/js/config.js"></script>
+		<script src="__ROOT__/Template/js/skel.min.js"></script>
+		<script src="__ROOT__/Template/js/skel-ui.min.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="/Template/css/skel-noscript.css" />
+			<link rel="stylesheet" href="/Template/css/style.css" />
+			<link rel="stylesheet" href="/Template/css/style-desktop.css" />
+			<link rel="stylesheet" href="/Template/css/style-wide.css" />
+		</noscript>
+		<!--[if lte IE 9]><link rel="stylesheet" href="__ROOT__/Template/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><script src="__ROOT__/Template/js/html5shiv.js"></script><link rel="stylesheet" href="__ROOT__/Template/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 7]><link rel="stylesheet" href="__ROOT__/Template/css/ie7.css" /><![endif]-->
+	</head>
+	<body class="left-sidebar">
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<!-- Content -->
+					<div id="content">
+						<div id="content-inner">
+								<!-- Post -->
+								<!-- 文章列表 -->
+								<article class="is-post is-post-excerpt">
+									<div class="info">
+										<span class="date" id="date_postlist">
+											<span class="month">Jan<span>uary</span></span> 
+											<span class="year">, 2013</span>
+										</span>
+										<ul class="stats">
+											<li><a href="#" class="link-icon24 link-icon24-1">4</a></li>
+										</ul>
+									</div>
+									<header class="article-title">
+										<h2>ThinkSNS二次开发自学笔记</h2>
+									</header>
+									<div class="article-content">前言：最近公司要在ThinkSNS上开发一个新的应用，小弟我一直是搞JAVA的，对PHP也不是很熟悉，但是小公司人手不足，没办法，就只能硬着头皮上吧，花了一段时间去了解php的相关语法，结构之类的，现在为大家分享一下学习过程中的一些心得。
+
+									根据ThinkSNS_V3的二次开发文档进行一个小应用的开发：送礼物
+
+									1.首先设计需求和开发目标
+
+									1.用户可以给关注的人或粉丝发送礼物
+									2.用户可以看到自己送出去的全部礼物
+									3.用户可以看见别人送给自己的全部礼物
+									4.用户可以回赠礼物给好友
+									5.用户发送礼物时能够发送通知信息
+									6.用户发送礼物成功后可以发送微博分享消息
+									7.管理员可在后台增加，修改，删除礼物及礼物种类
+									8.管理员可在后台配置礼物的积分，经验
+									9.实现完善的积分消费功能，如果用户积分不足则不能赠送</div>
+								</article>
+
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+					
+						<!-- Logo -->
+							<div id="logo">
+								<h1>500efuma</h1>
+							</div>
+					
+						<!-- 菜单栏 -->
+							<nav id="nav">
+								<ul>
+									<li><a href="__ROOT__/Index/index">最近发表</a></li>
+									<li  class="current_page_item"><a href="#">文章列表</a></li>
+									<li><a href="__ROOT__/Index/aboutMe">关于我</a></li>
+									<li><a href="#">联系我</a></li>
+								</ul>
+							</nav>
+							<include file="sidebar" />
+					</div>
+
+			</div>
+
+	</body>
+</html>

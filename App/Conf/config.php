@@ -1,7 +1,7 @@
 <?php
 return array(
 	//'配置项'=>'配置值'
-	'SHOW_PAGE_TRACE'=>true,
+// 	'SHOW_PAGE_TRACE'=>true,
 	'URL_HTML_SUFFIX'=>'.html',
 	'APP_GROUP_LIST'=>'Home,Admin',//分组配置
 	'DEFAULT_GROUP'=>'Home',//默认分组

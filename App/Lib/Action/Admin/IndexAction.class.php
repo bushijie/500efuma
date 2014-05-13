@@ -24,6 +24,9 @@ class IndexAction extends Action {
 	* @version v1.0.0 
 	*/	
 	public function login(){
+		
+		
+		
 		$this->display();
 	}
 	

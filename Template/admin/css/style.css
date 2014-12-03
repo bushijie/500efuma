@@ -347,12 +347,12 @@ Header and header elements.
 }
 
 .header .navbar-brand {
-	display: inline-block;
-	margin-top: -4px;
-	margin-right: 0;
-	padding-left: 8px;
-	padding-right: 0;
-	width: 230px;
+  display: inline-block;
+  margin-top: -1px;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+  width: 225px;
 }
 
 .header .navbar-brand img {

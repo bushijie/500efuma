@@ -17,10 +17,10 @@ class AdminBaseController extends Controller{
 	 */
 	public function _initialize(){
 		//判断session中是否存有用户信息
-		$is_admin = session('?admin');
-		if(!$is_admin){
-			$this->redirect('Public/login');
-		}
+// 		$is_admin = session('?admin');
+// 		if(!$is_admin){
+// 			$this->redirect('Admin/login');
+// 		}
 		
 	}
 	

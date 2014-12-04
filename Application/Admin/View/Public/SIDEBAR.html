@@ -19,48 +19,37 @@
 			</form>
 			<!-- END RESPONSIVE QUICK SEARCH FORM -->
 		</li>
-		<li class="start active ">
-			<a href="index.html">
-			<i class="fa fa-home"></i> 
-			<span class="title">文章管理</span>
-			<span class="selected"></span>
-			</a>
-		</li>
-		<li class="">
-			<a href="#">
-			<i class="fa fa-bar-chart-o"></i> 
-			<span class="title">标签管理</span>
-			</a>
-		</li>
-		<li class="">
-			<a href="#">
-			<i class="fa fa-bar-chart-o"></i> 
-			<span class="title">回复管理</span>
-			</a>
-		</li>
-		<li class="">
-			<a href="#">
-			<i class="fa fa-bar-chart-o"></i> 
-			<span class="title">简历管理</span>
-			</a>
-		</li>
-		<li class="">
-			<a href="javascript:;">
-			<i class="fa fa-file-text"></i> 
-			<span class="title">其他</span>
-			<span class="arrow "></span>
-			</a>
-			<ul class="sub-menu">
-				<li >
-					<a href="#">
-					傻逼语录</a>
-				</li>
-				<li >
-					<a href="#">
-					联系方式</a>
-				</li>
-			</ul>
-		</li>
+		
+		<volist name="sidebar" id="bar">
+			<!-- active | active_bar -->
+			<if condition="$bar.key eq $active_bar">
+				<li class="menubar active" data-src="{$bar.url}">
+			<else />
+				<li class="menubar" data-src="{$bar.url}">
+			</if>
+				<if condition="$bar.child eq null">
+					<a href="#{$bar.key}">
+				<else />
+					<a href="javascript:;">	
+				</if>
+					<i class="fa {$bar.icon}"></i> 
+					<span class="title">{$bar.name}</span>
+					<span class="selected"></span>
+					<if condition="$bar.child neq null">
+						<span class="arrow "></span>
+					</if>
+				</a>
+				<if condition="$bar.child neq null">
+					<ul class="sub-menu">
+						<volist name="bar.child" id="child">
+							<li data-src="{$child.url}">
+								<a href="#{$child.key}">{$child.name}</a>
+							</li>
+						</volist>
+					</ul>
+				</if>
+			</li>
+		</volist>
 	</ul>
 	<!-- END SIDEBAR MENU -->
 </div>

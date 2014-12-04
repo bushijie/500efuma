@@ -51,35 +51,14 @@
 			<include file="Public:STYLE_CUSTOMIZER" />
 			<!-- END BEGIN STYLE CUSTOMIZER -->           
 			<!-- BEGIN PAGE HEADER-->
-			<div class="row">
-				<div class="col-md-12">
-					<!-- BEGIN PAGE TITLE & BREADCRUMB-->
-					<h3 class="page-title">
-						Blank Page <small>blank page</small>
-					</h3>
-					<ul class="page-breadcrumb breadcrumb">
-						<li>
-							<i class="fa fa-home"></i>
-							<a href="index.html">Home</a> 
-							<i class="fa fa-angle-right"></i>
-						</li>
-						<li>
-							<a href="#">Layouts</a>
-							<i class="fa fa-angle-right"></i>
-						</li>
-						<li><a href="#">Blank Page</a></li>
-					</ul>
-					<!-- END PAGE TITLE & BREADCRUMB-->
-				</div>
-			</div>
+			<include file="Public:PAGE_HEADER" />
 			<!-- END PAGE HEADER-->
 			<!-- BEGIN PAGE CONTENT-->
 			<div class="row">
 				<div class="col-md-12">
-					 {__CONTENT__}
+					<iframe id="frame" class="content" src="/Home/index" name="mainframe" scrolling="auto" frameborder="0"></iframe>
 				</div>
 			</div>
-			<!-- END PAGE CONTENT-->
 		</div>
 		<!-- END PAGE -->    
 	</div>

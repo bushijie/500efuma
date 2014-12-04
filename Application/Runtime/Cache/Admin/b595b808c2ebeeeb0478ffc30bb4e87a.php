@@ -5,7 +5,7 @@
 <!-- BEGIN HEAD -->
 <head>
 	<meta charset="utf-8" />
-	<title>Metronic | Layouts - Blank Page</title>
+	<title>我的傻逼主页-后台管理系统</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta content="" name="description" />
@@ -23,6 +23,7 @@
 	<link href="/Template/admin/css/plugins.css" rel="stylesheet" type="text/css"/>
 	<link href="/Template/admin/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
 	<link href="/Template/admin/css/custom.css" rel="stylesheet" type="text/css"/>
+	<link href="/Template/admin/css/content.css" rel="stylesheet" type="text/css"/>
 	<!-- END THEME STYLES -->
 	<link rel="shortcut icon" href="favicon.ico" />
 </head>
@@ -47,172 +48,172 @@
 			<ul class="nav navbar-nav pull-right">
 				<!-- BEGIN NOTIFICATION DROPDOWN -->
 				<li class="dropdown" id="header_notification_bar">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
-						data-close-others="true">
-					<i class="fa fa-warning"></i>
-					<span class="badge">6</span>
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
+		data-close-others="true">
+	<i class="fa fa-warning"></i>
+	<span class="badge">6</span>
+	</a>
+	<ul class="dropdown-menu extended notification">
+		<li>
+			<p>You have 14 new notifications</p>
+		</li>
+		<li>
+			<ul class="dropdown-menu-list scroller" style="height: 250px;">
+				<li>  
+					<a href="#">
+					<span class="label label-icon label-success"><i class="fa fa-plus"></i></span>
+					New user registered. 
+					<span class="time">Just now</span>
 					</a>
-					<ul class="dropdown-menu extended notification">
-						<li>
-							<p>You have 14 new notifications</p>
-						</li>
-						<li>
-							<ul class="dropdown-menu-list scroller" style="height: 250px;">
-								<li>  
-									<a href="#">
-									<span class="label label-icon label-success"><i class="fa fa-plus"></i></span>
-									New user registered. 
-									<span class="time">Just now</span>
-									</a>
-								</li>
-								<li>  
-									<a href="#">
-									<span class="label label-icon label-danger"><i class="fa fa-bolt"></i></span>
-									Server #12 overloaded. 
-									<span class="time">15 mins</span>
-									</a>
-								</li>
-								<li>  
-									<a href="#">
-									<span class="label label-icon label-warning"><i class="fa fa-bell-o"></i></span>
-									Server #2 not responding.
-									<span class="time">22 mins</span>
-									</a>
-								</li>
-								<li>  
-									<a href="#">
-									<span class="label label-icon label-info"><i class="fa fa-bullhorn"></i></span>
-									Application error.
-									<span class="time">40 mins</span>
-									</a>
-								</li>
-								<li>  
-									<a href="#">
-									<span class="label label-icon label-danger"><i class="fa fa-bolt"></i></span>
-									Database overloaded 68%. 
-									<span class="time">2 hrs</span>
-									</a>
-								</li>
-								<li>  
-									<a href="#">
-									<span class="label label-icon label-danger"><i class="fa fa-bolt"></i></span>
-									2 user IP blocked.
-									<span class="time">5 hrs</span>
-									</a>
-								</li>
-								<li>  
-									<a href="#">
-									<span class="label label-icon label-warning"><i class="fa fa-bell-o"></i></span>
-									Storage Server #4 not responding.
-									<span class="time">45 mins</span>
-									</a>
-								</li>
-								<li>  
-									<a href="#">
-									<span class="label label-icon label-info"><i class="fa fa-bullhorn"></i></span>
-									System Error.
-									<span class="time">55 mins</span>
-									</a>
-								</li>
-								<li>  
-									<a href="#">
-									<span class="label label-icon label-danger"><i class="fa fa-bolt"></i></span>
-									Database overloaded 68%. 
-									<span class="time">2 hrs</span>
-									</a>
-								</li>
-							</ul>
-						</li>
-						<li class="external">   
-							<a href="#">See all notifications <i class="m-icon-swapright"></i></a>
-						</li>
-					</ul>
 				</li>
+				<li>  
+					<a href="#">
+					<span class="label label-icon label-danger"><i class="fa fa-bolt"></i></span>
+					Server #12 overloaded. 
+					<span class="time">15 mins</span>
+					</a>
+				</li>
+				<li>  
+					<a href="#">
+					<span class="label label-icon label-warning"><i class="fa fa-bell-o"></i></span>
+					Server #2 not responding.
+					<span class="time">22 mins</span>
+					</a>
+				</li>
+				<li>  
+					<a href="#">
+					<span class="label label-icon label-info"><i class="fa fa-bullhorn"></i></span>
+					Application error.
+					<span class="time">40 mins</span>
+					</a>
+				</li>
+				<li>  
+					<a href="#">
+					<span class="label label-icon label-danger"><i class="fa fa-bolt"></i></span>
+					Database overloaded 68%. 
+					<span class="time">2 hrs</span>
+					</a>
+				</li>
+				<li>  
+					<a href="#">
+					<span class="label label-icon label-danger"><i class="fa fa-bolt"></i></span>
+					2 user IP blocked.
+					<span class="time">5 hrs</span>
+					</a>
+				</li>
+				<li>  
+					<a href="#">
+					<span class="label label-icon label-warning"><i class="fa fa-bell-o"></i></span>
+					Storage Server #4 not responding.
+					<span class="time">45 mins</span>
+					</a>
+				</li>
+				<li>  
+					<a href="#">
+					<span class="label label-icon label-info"><i class="fa fa-bullhorn"></i></span>
+					System Error.
+					<span class="time">55 mins</span>
+					</a>
+				</li>
+				<li>  
+					<a href="#">
+					<span class="label label-icon label-danger"><i class="fa fa-bolt"></i></span>
+					Database overloaded 68%. 
+					<span class="time">2 hrs</span>
+					</a>
+				</li>
+			</ul>
+		</li>
+		<li class="external">   
+			<a href="#">See all notifications <i class="m-icon-swapright"></i></a>
+		</li>
+	</ul>
+</li>
 				<!-- END NOTIFICATION DROPDOWN -->
 				<!-- BEGIN INBOX DROPDOWN -->
 				<li class="dropdown" id="header_inbox_bar">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
-						data-close-others="true">
-					<i class="fa fa-envelope"></i>
-					<span class="badge">5</span>
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
+		data-close-others="true">
+	<i class="fa fa-envelope"></i>
+	<span class="badge">5</span>
+	</a>
+	<ul class="dropdown-menu extended inbox">
+		<li>
+			<p>You have 12 new messages</p>
+		</li>
+		<li>
+			<ul class="dropdown-menu-list scroller" style="height: 250px;">
+				<li>  
+					<a href="inbox.html?a=view">
+					<span class="photo"><img src="/Template/admin/img/avatar2.jpg" alt=""/></span>
+					<span class="subject">
+					<span class="from">Lisa Wong</span>
+					<span class="time">Just Now</span>
+					</span>
+					<span class="message">
+					Vivamus sed auctor nibh congue nibh. auctor nibh
+					auctor nibh...
+					</span>  
 					</a>
-					<ul class="dropdown-menu extended inbox">
-						<li>
-							<p>You have 12 new messages</p>
-						</li>
-						<li>
-							<ul class="dropdown-menu-list scroller" style="height: 250px;">
-								<li>  
-									<a href="inbox.html?a=view">
-									<span class="photo"><img src="/Template/admin/img/avatar2.jpg" alt=""/></span>
-									<span class="subject">
-									<span class="from">Lisa Wong</span>
-									<span class="time">Just Now</span>
-									</span>
-									<span class="message">
-									Vivamus sed auctor nibh congue nibh. auctor nibh
-									auctor nibh...
-									</span>  
-									</a>
-								</li>
-								<li>  
-									<a href="inbox.html?a=view">
-									<span class="photo"><img src="/Template/admin/img/avatar3.jpg" alt=""/></span>
-									<span class="subject">
-									<span class="from">Richard Doe</span>
-									<span class="time">16 mins</span>
-									</span>
-									<span class="message">
-									Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh
-									auctor nibh...
-									</span>  
-									</a>
-								</li>
-								<li>  
-									<a href="inbox.html?a=view">
-									<span class="photo"><img src="/Template/admin/img/avatar1.jpg" alt=""/></span>
-									<span class="subject">
-									<span class="from">Bob Nilson</span>
-									<span class="time">2 hrs</span>
-									</span>
-									<span class="message">
-									Vivamus sed nibh auctor nibh congue nibh. auctor nibh
-									auctor nibh...
-									</span>  
-									</a>
-								</li>
-								<li>  
-									<a href="inbox.html?a=view">
-									<span class="photo"><img src="/Template/admin/img/avatar2.jpg" alt=""/></span>
-									<span class="subject">
-									<span class="from">Lisa Wong</span>
-									<span class="time">40 mins</span>
-									</span>
-									<span class="message">
-									Vivamus sed auctor 40% nibh congue nibh...
-									</span>  
-									</a>
-								</li>
-								<li>  
-									<a href="inbox.html?a=view">
-									<span class="photo"><img src="/Template/admin/img/avatar3.jpg" alt=""/></span>
-									<span class="subject">
-									<span class="from">Richard Doe</span>
-									<span class="time">46 mins</span>
-									</span>
-									<span class="message">
-									Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh
-									auctor nibh...
-									</span>  
-									</a>
-								</li>
-							</ul>
-						</li>
-						<li class="external">   
-							<a href="inbox.html">See all messages <i class="m-icon-swapright"></i></a>
-						</li>
-					</ul>
 				</li>
+				<li>  
+					<a href="inbox.html?a=view">
+					<span class="photo"><img src="/Template/admin/img/avatar3.jpg" alt=""/></span>
+					<span class="subject">
+					<span class="from">Richard Doe</span>
+					<span class="time">16 mins</span>
+					</span>
+					<span class="message">
+					Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh
+					auctor nibh...
+					</span>  
+					</a>
+				</li>
+				<li>  
+					<a href="inbox.html?a=view">
+					<span class="photo"><img src="/Template/admin/img/avatar1.jpg" alt=""/></span>
+					<span class="subject">
+					<span class="from">Bob Nilson</span>
+					<span class="time">2 hrs</span>
+					</span>
+					<span class="message">
+					Vivamus sed nibh auctor nibh congue nibh. auctor nibh
+					auctor nibh...
+					</span>  
+					</a>
+				</li>
+				<li>  
+					<a href="inbox.html?a=view">
+					<span class="photo"><img src="/Template/admin/img/avatar2.jpg" alt=""/></span>
+					<span class="subject">
+					<span class="from">Lisa Wong</span>
+					<span class="time">40 mins</span>
+					</span>
+					<span class="message">
+					Vivamus sed auctor 40% nibh congue nibh...
+					</span>  
+					</a>
+				</li>
+				<li>  
+					<a href="inbox.html?a=view">
+					<span class="photo"><img src="/Template/admin/img/avatar3.jpg" alt=""/></span>
+					<span class="subject">
+					<span class="from">Richard Doe</span>
+					<span class="time">46 mins</span>
+					</span>
+					<span class="message">
+					Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh
+					auctor nibh...
+					</span>  
+					</a>
+				</li>
+			</ul>
+		</li>
+		<li class="external">   
+			<a href="inbox.html">See all messages <i class="m-icon-swapright"></i></a>
+		</li>
+	</ul>
+</li>
 				<!-- END INBOX DROPDOWN -->
 				<!-- BEGIN TODO DROPDOWN -->
 				<li class="dropdown" id="header_task_bar">
@@ -355,612 +356,128 @@
 	<div class="page-container">
 		<!-- BEGIN SIDEBAR -->
 		<div class="page-sidebar navbar-collapse collapse">
-			<!-- BEGIN SIDEBAR MENU -->        
-			<ul class="page-sidebar-menu">
-				<li>
-					<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
-					<div class="sidebar-toggler hidden-phone"></div>
-					<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
-				</li>
-				<li>
-					<!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
-					<form class="sidebar-search" action="extra_search.html" method="POST">
-						<div class="form-container">
-							<div class="input-box">
-								<a href="javascript:;" class="remove"></a>
-								<input type="text" placeholder="Search..."/>
-								<input type="button" class="submit" value=" "/>
-							</div>
-						</div>
-					</form>
-					<!-- END RESPONSIVE QUICK SEARCH FORM -->
-				</li>
-				<li class="start ">
-					<a href="index.html">
-					<i class="fa fa-home"></i> 
-					<span class="title">Dashboard</span>
-					</a>
-				</li>
-				<li class="">
-					<a href="index_horizontal_menu.html">
-					<i class="fa fa-briefcase"></i> 
-					<span class="title">Dashboard 2</span>
-					</a>
-				</li>
-				<li class="active ">
-					<a href="javascript:;">
-					<i class="fa fa-cogs"></i> 
-					<span class="title">Layouts</span>
+	<!-- BEGIN SIDEBAR MENU -->        
+	<ul class="page-sidebar-menu">
+		<li>
+			<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+			<div class="sidebar-toggler hidden-phone"></div>
+			<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+		</li>
+		<li>
+			<!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
+			<form class="sidebar-search" action="extra_search.html" method="POST">
+				<div class="form-container">
+					<div class="input-box">
+						<a href="javascript:;" class="remove"></a>
+						<input type="text" placeholder="请输入搜索内容"/>
+						<input type="button" class="submit" value=" "/>
+					</div>
+				</div>
+			</form>
+			<!-- END RESPONSIVE QUICK SEARCH FORM -->
+		</li>
+		
+		<?php if(is_array($sidebar)): $i = 0; $__LIST__ = $sidebar;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$bar): $mod = ($i % 2 );++$i;?><!-- active | active_bar -->
+			<?php if($bar["key"] == $active_bar): ?><li class="menubar active" data-src="<?php echo ($bar["url"]); ?>">
+			<?php else: ?>
+				<li class="menubar" data-src="<?php echo ($bar["url"]); ?>"><?php endif; ?>
+				<?php if($bar["child"] == null): ?><a href="#<?php echo ($bar["key"]); ?>">
+				<?php else: ?>
+					<a href="javascript:;"><?php endif; ?>
+					<i class="fa <?php echo ($bar["icon"]); ?>"></i> 
+					<span class="title"><?php echo ($bar["name"]); ?></span>
 					<span class="selected"></span>
-					<span class="arrow open"></span>
-					</a>
-					<ul class="sub-menu">
-						<li >
-							<a href="layout_session_timeout.html">
-							<span class="badge badge-roundless badge-warning">new</span>Session Timeout</a>
-						</li>
-						<li >
-							<a href="layout_idle_timeout.html">
-							<span class="badge badge-roundless badge-important">new</span>User Idle Timeout</a>
-						</li>
-						<li >
-							<a href="layout_language_bar.html">
-							Language Switch Bar</a>
-						</li>
-						<li >
-							<a href="layout_horizontal_sidebar_menu.html">
-							Horizontal & Sidebar Menu</a>
-						</li>
-						<li >
-							<a href="layout_horizontal_menu1.html">
-							Horizontal Menu 1</a>
-						</li>
-						<li >
-							<a href="layout_horizontal_menu2.html">
-							Horizontal Menu 2</a>
-						</li>
-						<li >
-							<a href="layout_sidebar_toggler_on_header.html">
-							<span class="badge badge-roundless badge-warning">new</span>Sidebar Toggler On Header</a>
-						</li>
-						<li >
-							<a href="layout_sidebar_fixed.html">
-							Sidebar Fixed Page</a>
-						</li>
-						<li >
-							<a href="layout_sidebar_closed.html">
-							Sidebar Closed Page</a>
-						</li>
-						<li >
-							<a href="layout_disabled_menu.html">
-							Disabled Menu Links</a>
-						</li>
-						<li class="active">
-							<a href="layout_blank_page.html">
-							Blank Page</a>
-						</li>
-						<li >
-							<a href="layout_boxed_page.html">
-							Boxed Page</a>
-						</li>
-						<li >
-							<a href="layout_boxed_not_responsive.html">
-							Non-Responsive Boxed Layout</a>
-						</li>
-						<li >
-							<a href="layout_promo.html">
-							Promo Page</a>
-						</li>
-						<li >
-							<a href="layout_email.html">
-							Email Templates</a>
-						</li>
-						<li >
-							<a href="layout_ajax.html">
-							Content Loading via Ajax</a>
-						</li>
-					</ul>
-				</li>
-				<li class="tooltips" data-placement="right" data-original-title="Frontend&nbsp;Theme For&nbsp;Metronic&nbsp;Admin">
-					<a href="http://keenthemes.com/preview/index.php?theme=metronic_frontend" target="_blank">
-					<i class="fa fa-gift"></i> 
-					<span class="title">Frontend Theme</span>
-					</a>
-				</li>
-				<li class="">
-					<a href="javascript:;">
-					<i class="fa fa-bookmark-o"></i> 
-					<span class="title">UI Features</span>
-					<span class="arrow "></span>
-					</a>
-					<ul class="sub-menu">
-						<li >
-							<a href="ui_general.html">
-							General</a>
-						</li>
-						<li >
-							<a href="ui_buttons.html">
-							Buttons & Icons</a>
-						</li>
-						<li >
-							<a href="ui_typography.html">
-							Typography</a>
-						</li>
-						<li >
-							<a href="ui_modals.html">
-							Modals</a>
-						</li>
-						<li >
-							<a href="ui_extended_modals.html">
-							Extended Modals</a>
-						</li>
-						<li >
-							<a href="ui_tabs_accordions_navs.html">
-							Tabs, Accordions & Navs</a>
-						</li>
-						<li >
-							<a href="ui_datepaginator.html">
-							<span class="badge badge-roundless badge-success">new</span>Date Paginator</a>
-						</li>
-						<li >
-							<a href="ui_bootbox.html">
-							<span class="badge badge-roundless badge-important">new</span>Bootbox Dialogs</a>
-						</li>
-						<li >
-							<a href="ui_tiles.html">
-							Tiles</a>
-						</li>
-						<li >
-							<a href="ui_toastr.html">
-							<span class="badge badge-roundless badge-warning">new</span>Toastr Notifications</a>
-						</li>
-						<li >
-							<a href="ui_tree.html">
-							Tree View</a>
-						</li>
-						<li >
-							<a href="ui_nestable.html">
-							Nestable List</a>
-						</li>
-						<li >
-							<a href="ui_ion_sliders.html">
-							Ion Range Sliders</a>
-						</li>
-						<li >
-							<a href="ui_noui_sliders.html">
-							<span class="badge badge-roundless badge-success">new</span>NoUI Range Sliders</a>
-						</li>
-						<li >
-							<a href="ui_jqueryui_sliders.html">
-							jQuery UI Sliders</a>
-						</li>
-						<li >
-							<a href="ui_knob.html">
-							Knob Circle Dials</a>
-						</li>
-					</ul>
-				</li>
-				<li class="">
-					<a href="javascript:;">
-					<i class="fa fa-table"></i> 
-					<span class="title">Form Stuff</span>
-					<span class="arrow "></span>
-					</a>
-					<ul class="sub-menu">
-						<li >
-							<a href="form_controls.html">
-							Form Controls</a>
-						</li>
-						<li >
-							<a href="form_layouts.html">
-							Form Layouts</a>
-						</li>
-						<li >
-							<a href="form_component.html">
-							Form Components</a>
-						</li>
-						<li >
-							<a href="form_editable.html">
-							<span class="badge badge-roundless badge-warning">new</span>Form X-editable</a>
-						</li>
-						<li >
-							<a href="form_wizard.html">
-							Form Wizard</a>
-						</li>
-						<li >
-							<a href="form_validation.html">
-							Form Validation</a>
-						</li>
-						<li >
-							<a href="form_image_crop.html">
-							<span class="badge badge-roundless badge-important">new</span>Image Cropping</a>
-						</li>
-						<li >
-							<a href="form_fileupload.html">
-							Multiple File Upload</a>
-						</li>
-						<li >
-							<a href="form_dropzone.html">
-							Dropzone File Upload</a>
-						</li>
-					</ul>
-				</li>
-				<li class="">
-					<a href="javascript:;">
-					<i class="fa fa-sitemap"></i> 
-					<span class="title">Pages</span>
-					<span class="arrow "></span>
-					</a>
-					<ul class="sub-menu">
-						<li >
-							<a href="page_portfolio.html">
-							<i class="fa fa-briefcase"></i>
-							<span class="badge badge-warning badge-roundless">new</span>Portfolio</a>
-						</li>
-						<li >
-							<a href="page_timeline.html">
-							<i class="fa fa-clock-o"></i>
-							<span class="badge badge-info">4</span>Timeline</a>
-						</li>
-						<li >
-							<a href="page_coming_soon.html">
-							<i class="fa fa-cogs"></i>
-							Coming Soon</a>
-						</li>
-						<li >
-							<a href="page_blog.html">
-							<i class="fa fa-comments"></i>
-							Blog</a>
-						</li>
-						<li >
-							<a href="page_blog_item.html">
-							<i class="fa fa-font"></i>
-							Blog Post</a>
-						</li>
-						<li >
-							<a href="page_news.html">
-							<i class="fa fa-coffee"></i>
-							<span class="badge badge-success">9</span>News</a>
-						</li>
-						<li >
-							<a href="page_news_item.html">
-							<i class="fa fa-bell"></i>
-							News View</a>
-						</li>
-						<li >
-							<a href="page_about.html">
-							<i class="fa fa-group"></i>
-							About Us</a>
-						</li>
-						<li >
-							<a href="page_contact.html">
-							<i class="fa fa-envelope-o"></i>
-							Contact Us</a>
-						</li>
-						<li >
-							<a href="page_calendar.html">
-							<i class="fa fa-calendar"></i>
-							<span class="badge badge-important">14</span>Calendar</a>
-						</li>
-					</ul>
-				</li>
-				<li class="">
-					<a href="javascript:;">
-					<i class="fa fa-gift"></i> 
-					<span class="title">Extra</span>
-					<span class="arrow "></span>
-					</a>
-					<ul class="sub-menu">
-						<li >
-							<a href="extra_profile.html">
-							User Profile</a>
-						</li>
-						<li >
-							<a href="extra_lock.html">
-							Lock Screen</a>
-						</li>
-						<li >
-							<a href="extra_faq.html">
-							FAQ</a>
-						</li>
-						<li >
-							<a href="inbox.html">
-							<span class="badge badge-important">4</span>Inbox</a>
-						</li>
-						<li >
-							<a href="extra_search.html">
-							Search Results</a>
-						</li>
-						<li >
-							<a href="extra_invoice.html">
-							Invoice</a>
-						</li>
-						<li >
-							<a href="extra_pricing_table.html">
-							Pricing Tables</a>
-						</li>
-						<li >
-							<a href="extra_404_option1.html">
-							404 Page Option 1</a>
-						</li>
-						<li >
-							<a href="extra_404_option2.html">
-							404 Page Option 2</a>
-						</li>
-						<li >
-							<a href="extra_404_option3.html">
-							404 Page Option 3</a>
-						</li>
-						<li >
-							<a href="extra_500_option1.html">
-							500 Page Option 1</a>
-						</li>
-						<li >
-							<a href="extra_500_option2.html">
-							500 Page Option 2</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a class="active" href="javascript:;">
-					<i class="fa fa-leaf"></i> 
-					<span class="title">3 Level Menu</span>
-					<span class="arrow "></span>
-					</a>
-					<ul class="sub-menu">
-						<li>
-							<a href="javascript:;">
-							Item 1
-							<span class="arrow"></span>
-							</a>
-							<ul class="sub-menu">
-								<li><a href="#">Sample Link 1</a></li>
-								<li><a href="#">Sample Link 2</a></li>
-								<li><a href="#">Sample Link 3</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="javascript:;">
-							Item 1
-							<span class="arrow"></span>
-							</a>
-							<ul class="sub-menu">
-								<li><a href="#">Sample Link 1</a></li>
-								<li><a href="#">Sample Link 1</a></li>
-								<li><a href="#">Sample Link 1</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="#">
-							Item 3
-							</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="javascript:;">
-					<i class="fa fa-folder-open"></i> 
-					<span class="title">4 Level Menu</span>
-					<span class="arrow "></span>
-					</a>
-					<ul class="sub-menu">
-						<li>
-							<a href="javascript:;">
-							<i class="fa fa-cogs"></i> 
-							Item 1
-							<span class="arrow"></span>
-							</a>
-							<ul class="sub-menu">
-								<li>
-									<a href="javascript:;">
-									<i class="fa fa-user"></i>
-									Sample Link 1
-									<span class="arrow"></span>
-									</a>
-									<ul class="sub-menu">
-										<li><a href="#"><i class="fa fa-remove"></i> Sample Link 1</a></li>
-										<li><a href="#"><i class="fa fa-pencil"></i> Sample Link 1</a></li>
-										<li><a href="#"><i class="fa fa-edit"></i> Sample Link 1</a></li>
-									</ul>
-								</li>
-								<li><a href="#"><i class="fa fa-user"></i>  Sample Link 1</a></li>
-								<li><a href="#"><i class="fa fa-external-link"></i>  Sample Link 2</a></li>
-								<li><a href="#"><i class="fa fa-bell"></i>  Sample Link 3</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="javascript:;">
-							<i class="fa fa-globe"></i> 
-							Item 2
-							<span class="arrow"></span>
-							</a>
-							<ul class="sub-menu">
-								<li><a href="#"><i class="fa fa-user"></i>  Sample Link 1</a></li>
-								<li><a href="#"><i class="fa fa-external-link"></i>  Sample Link 1</a></li>
-								<li><a href="#"><i class="fa fa-bell"></i>  Sample Link 1</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="#">
-							<i class="fa fa-folder-open"></i>
-							Item 3
-							</a>
-						</li>
-					</ul>
-				</li>
-				<li class="">
-					<a href="javascript:;">
-					<i class="fa fa-user"></i> 
-					<span class="title">Login Options</span>
-					<span class="arrow "></span>
-					</a>
-					<ul class="sub-menu">
-						<li >
-							<a href="login.html">
-							Login Form 1</a>
-						</li>
-						<li >
-							<a href="login_soft.html">
-							Login Form 2</a>
-						</li>
-					</ul>
-				</li>
-				<li class="">
-					<a href="javascript:;">
-					<i class="fa fa-th"></i> 
-					<span class="title">Data Tables</span>
-					<span class="arrow "></span>
-					</a>
-					<ul class="sub-menu">
-						<li >
-							<a href="table_basic.html">
-							Basic Datatables</a>
-						</li>
-						<li >
-							<a href="table_responsive.html">
-							Responsive Datatables</a>
-						</li>
-						<li >
-							<a href="table_managed.html">
-							Managed Datatables</a>
-						</li>
-						<li >
-							<a href="table_editable.html">
-							Editable Datatables</a>
-						</li>
-						<li >
-							<a href="table_advanced.html">
-							Advanced Datatables</a>
-						</li>
-						<li >
-							<a href="table_ajax.html">
-							Ajax Datatables</a>
-						</li>
-					</ul>
-				</li>
-				<li class="">
-					<a href="javascript:;">
-					<i class="fa fa-file-text"></i> 
-					<span class="title">Portlets</span>
-					<span class="arrow "></span>
-					</a>
-					<ul class="sub-menu">
-						<li >
-							<a href="portlet_general.html">
-							General Portlets</a>
-						</li>
-						<li >
-							<a href="portlet_draggable.html">
-							Draggable Portlets</a>
-						</li>
-					</ul>
-				</li>
-				<li class="">
-					<a href="javascript:;">
-					<i class="fa fa-map-marker"></i> 
-					<span class="title">Maps</span>
-					<span class="arrow "></span>
-					</a>
-					<ul class="sub-menu">
-						<li >
-							<a href="maps_google.html">
-							Google Maps</a>
-						</li>
-						<li >
-							<a href="maps_vector.html">
-							Vector Maps</a>
-						</li>
-					</ul>
-				</li>
-				<li class="last ">
-					<a href="charts.html">
-					<i class="fa fa-bar-chart-o"></i> 
-					<span class="title">Visual Charts</span>
-					</a>
-				</li>
-			</ul>
-			<!-- END SIDEBAR MENU -->
-		</div>
+					<?php if($bar["child"] != null): ?><span class="arrow "></span><?php endif; ?>
+				</a>
+				<?php if($bar["child"] != null): ?><ul class="sub-menu">
+						<?php if(is_array($bar["child"])): $i = 0; $__LIST__ = $bar["child"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$child): $mod = ($i % 2 );++$i;?><li data-src="<?php echo ($child["url"]); ?>">
+								<a href="#<?php echo ($child["key"]); ?>"><?php echo ($child["name"]); ?></a>
+							</li><?php endforeach; endif; else: echo "" ;endif; ?>
+					</ul><?php endif; ?>
+			</li><?php endforeach; endif; else: echo "" ;endif; ?>
+	</ul>
+	<!-- END SIDEBAR MENU -->
+</div>
+
 		<!-- END SIDEBAR -->
 		<!-- BEGIN PAGE -->
 		<div class="page-content">
 			<!-- BEGIN STYLE CUSTOMIZER -->
 			<div class="theme-panel hidden-xs hidden-sm">
-				<div class="toggler"></div>
-				<div class="toggler-close"></div>
-				<div class="theme-options">
-					<div class="theme-option theme-colors clearfix">
-						<span>THEME COLOR</span>
-						<ul>
-							<li class="color-black current color-default" data-style="default"></li>
-							<li class="color-blue" data-style="blue"></li>
-							<li class="color-brown" data-style="brown"></li>
-							<li class="color-purple" data-style="purple"></li>
-							<li class="color-grey" data-style="grey"></li>
-							<li class="color-white color-light" data-style="light"></li>
-						</ul>
-					</div>
-					<div class="theme-option">
-						<span>Layout</span>
-						<select class="layout-option form-control input-small">
-							<option value="fluid" selected="selected">Fluid</option>
-							<option value="boxed">Boxed</option>
-						</select>
-					</div>
-					<div class="theme-option">
-						<span>Header</span>
-						<select class="header-option form-control input-small">
-							<option value="fixed" selected="selected">Fixed</option>
-							<option value="default">Default</option>
-						</select>
-					</div>
-					<div class="theme-option">
-						<span>Sidebar</span>
-						<select class="sidebar-option form-control input-small">
-							<option value="fixed">Fixed</option>
-							<option value="default" selected="selected">Default</option>
-						</select>
-					</div>
-					<div class="theme-option">
-						<span>Footer</span>
-						<select class="footer-option form-control input-small">
-							<option value="fixed">Fixed</option>
-							<option value="default" selected="selected">Default</option>
-						</select>
-					</div>
-				</div>
-			</div>
+	<div class="toggler"></div>
+	<div class="toggler-close"></div>
+	<div class="theme-options">
+		<div class="theme-option theme-colors clearfix">
+			<span>THEME COLOR</span>
+			<ul>
+				<li class="color-black current color-default" data-style="default"></li>
+				<li class="color-blue" data-style="blue"></li>
+				<li class="color-brown" data-style="brown"></li>
+				<li class="color-purple" data-style="purple"></li>
+				<li class="color-grey" data-style="grey"></li>
+				<li class="color-white color-light" data-style="light"></li>
+			</ul>
+		</div>
+		<div class="theme-option">
+			<span>Layout</span>
+			<select class="layout-option form-control input-small">
+				<option value="fluid" selected="selected">Fluid</option>
+				<option value="boxed">Boxed</option>
+			</select>
+		</div>
+		<div class="theme-option">
+			<span>Header</span>
+			<select class="header-option form-control input-small">
+				<option value="fixed" selected="selected">Fixed</option>
+				<option value="default">Default</option>
+			</select>
+		</div>
+		<div class="theme-option">
+			<span>Sidebar</span>
+			<select class="sidebar-option form-control input-small">
+				<option value="fixed">Fixed</option>
+				<option value="default" selected="selected">Default</option>
+			</select>
+		</div>
+		<div class="theme-option">
+			<span>Footer</span>
+			<select class="footer-option form-control input-small">
+				<option value="fixed">Fixed</option>
+				<option value="default" selected="selected">Default</option>
+			</select>
+		</div>
+	</div>
+</div>
 			<!-- END BEGIN STYLE CUSTOMIZER -->           
 			<!-- BEGIN PAGE HEADER-->
 			<div class="row">
-				<div class="col-md-12">
-					<!-- BEGIN PAGE TITLE & BREADCRUMB-->
-					<h3 class="page-title">
-						Blank Page <small>blank page</small>
-					</h3>
-					<ul class="page-breadcrumb breadcrumb">
-						<li>
-							<i class="fa fa-home"></i>
-							<a href="index.html">Home</a> 
-							<i class="fa fa-angle-right"></i>
-						</li>
-						<li>
-							<a href="#">Layouts</a>
-							<i class="fa fa-angle-right"></i>
-						</li>
-						<li><a href="#">Blank Page</a></li>
-					</ul>
-					<!-- END PAGE TITLE & BREADCRUMB-->
-				</div>
-			</div>
+	<div class="col-md-12">
+		<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+		<h3 class="page-title">
+			Blank Page <small>blank page</small>
+		</h3>
+		<ul class="page-breadcrumb breadcrumb">
+			<li>
+				<i class="fa fa-home"></i>
+				<a href="index.html">Home</a> 
+				<i class="fa fa-angle-right"></i>
+			</li>
+			<li>
+				<a href="#">Layouts</a>
+				<i class="fa fa-angle-right"></i>
+			</li>
+			<li><a href="#">Blank Page</a></li>
+		</ul>
+		<!-- END PAGE TITLE & BREADCRUMB-->
+	</div>
+</div>
 			<!-- END PAGE HEADER-->
 			<!-- BEGIN PAGE CONTENT-->
 			<div class="row">
 				<div class="col-md-12">
-					 123
+					<iframe id="frame" class="content" src="/Home/index" name="mainframe" scrolling="auto" frameborder="0"></iframe>
 				</div>
 			</div>
-			<!-- END PAGE CONTENT-->
 		</div>
 		<!-- END PAGE -->    
 	</div>
@@ -997,7 +514,38 @@
 <script src="/Template/admin/scripts/app.js"></script>      
 <script>
 	jQuery(document).ready(function() {    
-	   App.init();
+		App.init();
+		//iframe框自动适应高度
+		$("#frame").load(function(){
+			changeFrame();
+		});
+
+		function changeFrame(){
+			var mainheight = $("#frame").contents().find("body").height()+30;
+			$("#frame").height(mainheight);
+		}
+
+		//1级菜单的点击事件处理
+		$(".menubar").click(function(){
+			if($(this).find('.sub-menu').length == 0){
+				$(".menubar").removeClass('active');
+				$(this).addClass('active');
+				//
+				var url = $(this).attr('data-src');
+				alert(url);
+				$("#frame").attr('src',url);
+			}
+		});
+
+		//2级菜单的点击事件处理
+		$(".menubar .sub-menu li").click(function(){
+			$(".menubar").removeClass('active');
+			$(".menubar .sub-menu li").removeClass('active');
+			$(this).parents('.menubar').addClass('active');
+			$(this).addClass('active');
+			//
+		});
+
 	});
 </script>
 	<!-- END JAVASCRIPTS -->

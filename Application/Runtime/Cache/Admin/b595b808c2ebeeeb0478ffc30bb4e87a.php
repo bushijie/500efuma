@@ -378,10 +378,10 @@
 		</li>
 		
 		<?php if(is_array($sidebar)): $i = 0; $__LIST__ = $sidebar;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$bar): $mod = ($i % 2 );++$i;?><!-- active | active_bar -->
-			<?php if($bar["key"] == $active_bar): ?><li class="menubar active" data-src="<?php echo ($bar["url"]); ?>">
+			<?php if($bar["key"] == $active_bar): ?><li class="menubar active">
 			<?php else: ?>
-				<li class="menubar" data-src="<?php echo ($bar["url"]); ?>"><?php endif; ?>
-				<?php if($bar["child"] == null): ?><a href="#<?php echo ($bar["key"]); ?>">
+				<li class="menubar"><?php endif; ?>
+				<?php if($bar["child"] == null): ?><a target="frame" href="<?php echo ($bar["url"]); ?>">
 				<?php else: ?>
 					<a href="javascript:;"><?php endif; ?>
 					<i class="fa <?php echo ($bar["icon"]); ?>"></i> 
@@ -390,8 +390,8 @@
 					<?php if($bar["child"] != null): ?><span class="arrow "></span><?php endif; ?>
 				</a>
 				<?php if($bar["child"] != null): ?><ul class="sub-menu">
-						<?php if(is_array($bar["child"])): $i = 0; $__LIST__ = $bar["child"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$child): $mod = ($i % 2 );++$i;?><li data-src="<?php echo ($child["url"]); ?>">
-								<a href="#<?php echo ($child["key"]); ?>"><?php echo ($child["name"]); ?></a>
+						<?php if(is_array($bar["child"])): $i = 0; $__LIST__ = $bar["child"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$child): $mod = ($i % 2 );++$i;?><li>
+								<a target="frame" href="<?php echo ($child["url"]); ?>"><?php echo ($child["name"]); ?></a>
 							</li><?php endforeach; endif; else: echo "" ;endif; ?>
 					</ul><?php endif; ?>
 			</li><?php endforeach; endif; else: echo "" ;endif; ?>
@@ -475,7 +475,7 @@
 			<!-- BEGIN PAGE CONTENT-->
 			<div class="row">
 				<div class="col-md-12">
-					<iframe id="frame" class="content" src="/Home/index" name="mainframe" scrolling="auto" frameborder="0"></iframe>
+					<iframe id="frame" name="frame" class="content" src="/Home/index" scrolling="auto" frameborder="0"></iframe>
 				</div>
 			</div>
 		</div>
@@ -525,15 +525,12 @@
 			$("#frame").height(mainheight);
 		}
 
+		
 		//1级菜单的点击事件处理
 		$(".menubar").click(function(){
 			if($(this).find('.sub-menu').length == 0){
 				$(".menubar").removeClass('active');
 				$(this).addClass('active');
-				//
-				var url = $(this).attr('data-src');
-				alert(url);
-				$("#frame").attr('src',url);
 			}
 		});
 
@@ -543,9 +540,8 @@
 			$(".menubar .sub-menu li").removeClass('active');
 			$(this).parents('.menubar').addClass('active');
 			$(this).addClass('active');
-			//
 		});
-
+		
 	});
 </script>
 	<!-- END JAVASCRIPTS -->

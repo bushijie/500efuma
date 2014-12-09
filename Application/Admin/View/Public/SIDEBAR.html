@@ -23,12 +23,12 @@
 		<volist name="sidebar" id="bar">
 			<!-- active | active_bar -->
 			<if condition="$bar.key eq $active_bar">
-				<li class="menubar active" data-src="{$bar.url}">
+				<li class="menubar active">
 			<else />
-				<li class="menubar" data-src="{$bar.url}">
+				<li class="menubar">
 			</if>
 				<if condition="$bar.child eq null">
-					<a href="#{$bar.key}">
+					<a target="frame" href="{$bar.url}">
 				<else />
 					<a href="javascript:;">	
 				</if>
@@ -42,8 +42,8 @@
 				<if condition="$bar.child neq null">
 					<ul class="sub-menu">
 						<volist name="bar.child" id="child">
-							<li data-src="{$child.url}">
-								<a href="#{$child.key}">{$child.name}</a>
+							<li>
+								<a target="frame" href="{$child.url}">{$child.name}</a>
 							</li>
 						</volist>
 					</ul>

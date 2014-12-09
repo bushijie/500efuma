@@ -28,15 +28,12 @@
 			$("#frame").height(mainheight);
 		}
 
+		
 		//1级菜单的点击事件处理
 		$(".menubar").click(function(){
 			if($(this).find('.sub-menu').length == 0){
 				$(".menubar").removeClass('active');
 				$(this).addClass('active');
-				//
-				var url = $(this).attr('data-src');
-				alert(url);
-				$("#frame").attr('src',url);
 			}
 		});
 
@@ -46,8 +43,7 @@
 			$(".menubar .sub-menu li").removeClass('active');
 			$(this).parents('.menubar').addClass('active');
 			$(this).addClass('active');
-			//
 		});
-
+		
 	});
 </script>

@@ -95,12 +95,12 @@ function sidebar(){
 				'sysMsg'=>array(
 					'name'=>'傻逼语录',
 					'key'=>'sysMsg',
-					'url'=>'Sys/index',
+					'url'=>'System/index',
 				),
 				'sysPhone'=>array(
 					'name'=>'联系方式',
 					'key'=>'sysPhone',
-					'url'=>'Sys/index',
+					'url'=>'System/index',
 				),
 			),
 		),

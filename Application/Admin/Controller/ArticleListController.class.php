@@ -2,7 +2,7 @@
 namespace Admin\Controller;
 use Think\Controller;
 
-class ArticleTypeController extends Controller{
+class ArticleListController extends Controller{
 	
 	public function index(){
 		$this->display();

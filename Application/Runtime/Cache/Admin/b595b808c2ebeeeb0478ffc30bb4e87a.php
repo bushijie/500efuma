@@ -475,7 +475,11 @@
 </div>
 			<!-- END PAGE HEADER-->
 			<!-- BEGIN PAGE CONTENT-->
-			<iframe id="frame" name="frame" class="content" src="/Home/index" scrolling="auto" frameborder="0" style="width: 100%;"></iframe>
+			<div class="row">
+				<div class="col-md-12">
+					<iframe id="frame" name="frame" class="content" src="/Home/index" scrolling="auto" frameborder="0" ></iframe>
+				</div>
+			</div>
 		</div>
 		<!-- END PAGE -->    
 	</div>

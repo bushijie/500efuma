@@ -25,15 +25,17 @@
 	<link href="/Template/admin/css/style.css" rel="stylesheet" type="text/css"/>
 	<link href="/Template/admin/css/style-responsive.css" rel="stylesheet" type="text/css"/>
 	<link href="/Template/admin/css/plugins.css" rel="stylesheet" type="text/css"/>
+	<link href="/Template/admin/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
 	<link href="/Template/admin/css/custom.css" rel="stylesheet" type="text/css"/>
 	<!-- END THEME STYLES -->
 	<link rel="shortcut icon" href="favicon.ico" />
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
-<body class="page-header-fixed">
+<body class="" style="background-color: #FFFFFF !important;">
 		<!-- BEGIN PAGE -->
-		<div class="page-content" style="margin-left: 0px;">
+		
+		<div class="page-content" style="margin-left: 0px;overflow-x: hidden;padding: 0px;">
 			<!-- BEGIN PAGE CONTENT-->
 			<div class="row">
 				<div class="col-md-12">
@@ -500,6 +502,7 @@
 		</div>
 	
 	
+	
 	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 	<!-- BEGIN CORE PLUGINS -->   
 	<!--[if lt IE 9]>
@@ -525,7 +528,7 @@
 	<script src="/Template/admin/scripts/table-managed.js"></script>     
 	<script>
 		jQuery(document).ready(function() {       
-		   //App.init();
+		   App.init();
 		   TableManaged.init();
 		});
 	</script>

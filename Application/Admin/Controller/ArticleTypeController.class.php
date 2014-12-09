@@ -8,4 +8,12 @@ class ArticleTypeController extends Controller{
 		$this->display();
 	}
 	
+	
+	public function create(){
+		$this->display();
+	}
+	
+	
+	
+	
 }

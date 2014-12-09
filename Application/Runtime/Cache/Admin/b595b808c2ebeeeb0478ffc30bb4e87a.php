@@ -36,7 +36,7 @@
 		<!-- BEGIN TOP NAVIGATION BAR -->
 		<div class="header-inner">
 			<!-- BEGIN LOGO -->  
-			<a class="navbar-brand" style="width: 230px;" href="index.html">
+			<a class="navbar-brand" style="width: 230px;" href="javascript:;">
 	<span id="logowhite">500e</span>
 	<span id="logored">FUMA</span>
 </a>
@@ -475,11 +475,7 @@
 </div>
 			<!-- END PAGE HEADER-->
 			<!-- BEGIN PAGE CONTENT-->
-			<div class="row">
-				<div class="col-md-12">
-					<iframe id="frame" name="frame" class="content" src="/Home/index" scrolling="auto" frameborder="0"></iframe>
-				</div>
-			</div>
+			<iframe id="frame" name="frame" class="content" src="/Home/index" scrolling="auto" frameborder="0" style="width: 100%;"></iframe>
 		</div>
 		<!-- END PAGE -->    
 	</div>

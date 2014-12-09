@@ -24,6 +24,7 @@
 	<link href="/Template/admin/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
 	<link href="/Template/admin/css/custom.css" rel="stylesheet" type="text/css"/>
 	<link href="/Template/admin/css/content.css" rel="stylesheet" type="text/css"/>
+	<link href="/Template/admin/css/logo.css" rel="stylesheet" type="text/css"/>
 	<!-- END THEME STYLES -->
 	<link rel="shortcut icon" href="favicon.ico" />
 </head>
@@ -35,8 +36,9 @@
 		<!-- BEGIN TOP NAVIGATION BAR -->
 		<div class="header-inner">
 			<!-- BEGIN LOGO -->  
-			<a class="navbar-brand" href="index.html">
-	<img src="/Template/admin/img/logo.png" alt="logo" class="img-responsive" />
+			<a class="navbar-brand" style="width: 230px;" href="index.html">
+	<span id="logowhite">500e</span>
+	<span id="logored">FUMA</span>
 </a>
 			<!-- END LOGO -->
 			<!-- BEGIN RESPONSIVE MENU TOGGLER --> 

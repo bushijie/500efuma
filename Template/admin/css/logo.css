@@ -8,13 +8,14 @@
 
 #logowhite{
 	font-family: 'Expansiva','Open Sans', sans-serif;
-	font-size: 28px;
 	color: #FFF;
+	font-size: 22px;
+	margin-left: 25px;
 }
 
 #logored{
 	font-family: 'Expansiva','Open Sans', sans-serif;
-	font-size: 28px;
+	font-size: 22px;
 	color: #FF4141;
 	font-weight: bold;
 }

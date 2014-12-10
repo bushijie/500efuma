@@ -18,14 +18,30 @@
 <script>
 	jQuery(document).ready(function() {    
 		App.init();
+		
+		//循环执行任务
+		var task;
+		
 		//iframe框自动适应高度
 		$("#frame").load(function(){
 			changeFrame();
+			task = setInterval(checkFrameStatus,100);
 		});
 
 		function changeFrame(){
-			var mainheight = $("#frame").contents().find("body").height()+30;
+			var mainbody = $("#frame").contents().find(".main_body");
+			var bodyheight = mainbody.height();
+			var mainheight = bodyheight+30;
 			$("#frame").height(mainheight);
+		}
+		
+		function checkFrameStatus(){
+			var tableStatusObj = $("#frame").contents().find("#table-status");
+			var status = tableStatusObj.attr('data-status');	
+			if(status == 'ok'){
+				changeFrame();
+				clearInterval(task);
+			}
 		}
 
 		

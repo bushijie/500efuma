@@ -21,7 +21,7 @@ class ArticleTypeController extends Controller{
 	}
 	
 	/**
-	 * @todo: 作品类型表格ajax数据加载方法
+	 * @todo: 文章类型表格ajax数据加载方法
 	 * 数据操作返回json格式，使用前段表格框架进行图形加载显示
 	 * @author Saki <ilulu4ever816@gmail.com>
 	 * @date 2014-12-10 上午11:06:52 
@@ -46,18 +46,25 @@ class ArticleTypeController extends Controller{
 	
 	
 	/**
-	 * @todo: todo(这里用一句话描述这个方法的作用) 
-	 * @param     
-	 * @return return_type    
+	 * @todo: 创建规则
 	 * @author Saki <ilulu4ever816@gmail.com>
 	 * @date 2014-12-10 上午10:45:48 
 	 * @version V1.0
 	 */
 	public function create(){
-		$this->display();
+		$this->assign('action','create');
+		$this->display('form');
 	}
 	
-	
-	
+	/**
+	 * @todo: 编辑规则
+	 * @author Saki <ilulu4ever816@gmail.com>
+	 * @date 2014-12-10 下午6:07:29 
+	 * @version V1.0
+	 */
+	public function update(){
+		$this->assign('action','update');
+		$this->display('form');
+	}
 	
 }

@@ -11,22 +11,18 @@ class ArticleTypeModel extends RelationModel {
 	protected $tableName = 'article_type';
 	
 	/*逻辑外键的关联关系处理*/
-// 	protected $_link = array (
-// 		'user_group' => array (
-// 			'mapping_type' => BELONGS_TO,//每个用户都属于一个分组
-// 			'foreign_key'=>'group_id',
-// 		),
-// 		'user_point' => array(
-// 			'mapping_type' => HAS_ONE,//用户都有一个积分值
-// 			'foreign_key'=>'user_id',
-// 		),	
+	protected $_link = array (
+		'admin' => array (
+			'mapping_type' => BELONGS_TO,//每个用户都属于一个分组
+			'foreign_key'=>'admin_id',
+		),
 // 		'works' => array(
 // 			'mapping_type'=> HAS_MANY,//每个用户都有多个文章
 // 			'class_name' => 'Works',
 // 			'foreign_key' => 'user_id',
 // 			'mapping_name'=> 'work',
 // 		),
-// 	);
+	);
 	
 	
 	/**

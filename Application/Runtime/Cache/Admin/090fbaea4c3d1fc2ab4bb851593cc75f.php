@@ -24,7 +24,7 @@
 	<link href="/Template/admin/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
 	<link href="/Template/admin/css/custom.css" rel="stylesheet" type="text/css"/>
 	<!-- END THEME STYLES -->
-	<link rel="shortcut icon" href="favicon.ico" />
+	<link rel="shortcut icon" href="/favicon.ico" />
 </head>
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN CORE PLUGINS -->   

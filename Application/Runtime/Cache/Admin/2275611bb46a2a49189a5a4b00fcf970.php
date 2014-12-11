@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <!-- 
 Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.0.2
 Version: 1.5.4
@@ -36,7 +36,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 	<link href="/Template/admin/css/pages/login-soft.css" rel="stylesheet" type="text/css"/>
 	<link href="/Template/admin/css/custom.css" rel="stylesheet" type="text/css"/>
 	<!-- END THEME STYLES -->
-	<link rel="shortcut icon" href="__ROOT__/favicon.ico" />
+	<link rel="shortcut icon" href="/favicon.ico" />
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -65,14 +65,14 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 				<label class="control-label visible-ie8 visible-ie9">Username</label>
 				<div class="input-icon">
 					<i class="fa fa-user"></i>
-					<input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username" value="{$username}"/>
+					<input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username" value="<?php echo ($username); ?>"/>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label visible-ie8 visible-ie9">Password</label>
 				<div class="input-icon">
 					<i class="fa fa-lock"></i>
-					<input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password" value="{$password}"/>
+					<input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password" value="<?php echo ($password); ?>"/>
 				</div>
 			</div>
 			<div class="form-actions">

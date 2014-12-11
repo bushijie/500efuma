@@ -16,7 +16,7 @@ class AdminBaseController extends Controller{
 	 * @version V1.0
 	 */
 	public function _initialize(){
-		// $this->checkAdmin();
+		$this->checkAdmin();
 		$this->init_sidebar();
 	}
 	
@@ -41,10 +41,11 @@ class AdminBaseController extends Controller{
 	 */
 	public function checkAdmin(){
 // 		判断session中是否存有用户信息
-		$is_admin = session('?admin');
-		if(!$is_admin){
+		$admin_info = cookie('admin_info');
+		if(!$admin_info){
 			$this->redirect('Admin/login');
 		}
+		$this->assign('admin_info',$admin_info);
 	}
 	
 	

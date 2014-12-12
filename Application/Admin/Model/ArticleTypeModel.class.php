@@ -13,15 +13,10 @@ class ArticleTypeModel extends RelationModel {
 	/*逻辑外键的关联关系处理*/
 	protected $_link = array (
 		'admin' => array (
-			'mapping_type' => BELONGS_TO,//每个用户都属于一个分组
+			'mapping_type' => self::BELONGS_TO,
 			'foreign_key'=>'admin_id',
+			'class_name' => 'Admin',
 		),
-// 		'works' => array(
-// 			'mapping_type'=> HAS_MANY,//每个用户都有多个文章
-// 			'class_name' => 'Works',
-// 			'foreign_key' => 'user_id',
-// 			'mapping_name'=> 'work',
-// 		),
 	);
 	
 	
@@ -35,8 +30,7 @@ class ArticleTypeModel extends RelationModel {
 	 */
 	public function getTypeList_Page($start, $length) {
 		$model = D('Admin/ArticleType');
-		$list = $model->order('ctm desc')->limit ( $start, $length )->select ();
-// 		$list = $model->relation(true)->order('ctm desc')->limit ( $start, $length )->select ();
+		$list = $model->relation(true)->order('ctm desc')->limit ( $start, $length )->select ();
 		$data = array ();
 		foreach ( $list as $key => $type ) {
 			$temp = array ();
@@ -44,7 +38,7 @@ class ArticleTypeModel extends RelationModel {
 			array_push ( $temp, $choose );//勾选框
 			array_push ( $temp, $type ['title'] );//类型名称
 			array_push ( $temp, $type ['key']);//关键字
-			array_push ( $temp, $type ['admin_id']);//创建者
+			array_push ( $temp, $type ['admin']['name']);//创建者
 			array_push ( $temp, $type ['ctm'] );//创建时间
 			$action = "<button class='btn blue btn-sm modify-one' type='button' data-id=" .$type['id'] . ">编辑</button> " . 
 						"<button class='btn red btn-sm delete-one' type='button'  data-id=" .$type['id'] . ">删除</button>";

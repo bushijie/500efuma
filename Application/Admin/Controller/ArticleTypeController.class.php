@@ -8,7 +8,7 @@ use Think\Controller;
  * @author Saki <ilulu4ever816@gmail.com>
  * @date 2014-12-10 上午10:45:38 
  */
-class ArticleTypeController extends Controller{
+class ArticleTypeController extends AdminBaseController{
 	
 	/**
 	 * @todo: 文章类型列表显示页面
@@ -35,7 +35,7 @@ class ArticleTypeController extends Controller{
 		$model = new \Admin\Model\ArticleTypeModel();
 		$list = $model->getTypeList_Page($start,$length);
 		/*查询总条数*/
-		$count = D('Admin/ArticleType')->count();
+		$count = D('Admin/ArticleType')->where('status=1')->count();
 		/*生成JSON数据,安装前段表格框架的形式进行数据返回，jquery.datatable.js*/
 		$result['draw'] = $draw;
 		$result['recordsTotal'] = $count;
@@ -52,8 +52,15 @@ class ArticleTypeController extends Controller{
 	 * @version V1.0
 	 */
 	public function create(){
-		$this->assign('action','create');
-		$this->display('form');
+		if(isset($_POST['ArticleType'])){
+			$model = new \Admin\Model\ArticleTypeModel();
+			$admin_info = $this->admin_info;
+			$data = $model->createType($_POST['ArticleType'],$admin_info);
+			echo json_encode($data);
+		}else{
+			$this->assign('action','create');
+			$this->display('form');
+		}
 	}
 	
 	/**
@@ -63,8 +70,35 @@ class ArticleTypeController extends Controller{
 	 * @version V1.0
 	 */
 	public function update(){
-		$this->assign('action','update');
-		$this->display('form');
+		$condition['id'] = $id = $_GET['id'];
+		$model = new \Admin\Model\ArticleTypeModel();
+		if(isset($_POST['ArticleType'])){
+			$data = $model->updateType($_POST['ArticleType'], $id);
+			echo json_encode($data);
+		}else{
+			$type_info = $model->where($condition)->find();
+			$this->assign('type_info',$type_info);
+			$this->assign('action','update');
+			$this->display('form');
+		}
 	}
+	
+	/**
+	 * @todo: 删除分类-只进行逻辑删除  status=0
+	 * @author Saki <ilulu4ever816@gmail.com>
+	 * @date 2014-12-12 下午5:54:04 
+	 * @version V1.0
+	 */
+	public function delete(){
+		$id = $_GET['id'];
+		$model = new \Admin\Model\ArticleTypeModel();
+		$data = $model->deleteType($id);
+		if($data['errcode'] == 0){
+			$this->redirect('ArticleType/index');
+		}
+	}
+	
+	
+	
 	
 }

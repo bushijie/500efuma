@@ -8,7 +8,7 @@ use Think\Controller;
  * @author Saki <ilulu4ever816@gmail.com>
  * @date 2014-12-11 下午6:54:46 
  */
-class HomeController extends Controller{
+class HomeController extends AdminBaseController{
 	
 	/**
 	 * @todo: 后台首页 

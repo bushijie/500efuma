@@ -8,7 +8,7 @@ use Think\Controller;
  * @author Saki <ilulu4ever816@gmail.com>
  * @date 2014-12-12 上午9:35:32 
  */
-class ArticleListController extends Controller{
+class ArticleListController extends AdminBaseController{
 	
 	
 	/**

@@ -9,6 +9,8 @@ use Think\Controller;
  */
 class AdminBaseController extends Controller{
 	
+	public $admin_info;
+	
 	/**
 	 * @todo: 初始化
 	 * @author Saki <ilulu4ever816@gmail.com>
@@ -34,18 +36,32 @@ class AdminBaseController extends Controller{
 	}
 	
 	/**
-	 * @todo: 检测session，检测后台管理员是否登录
+	 * @todo: cookie检查后台用户的基本信息
+	 * 30330e97a2bde4a811348340a16485de
 	 * @author Saki <ilulu4ever816@gmail.com>
 	 * @date 2014-12-4 下午2:27:40 
 	 * @version V1.0
 	 */
 	public function checkAdmin(){
-// 		判断session中是否存有用户信息
+		//cookie中保存的用户信息
 		$admin_info = cookie('admin_info');
 		if(!$admin_info){
+			//如果cookie过期了，直接退出，重新登录
 			$this->redirect('Admin/login');
+		}else{
+			//如果cookie没有过期，取出缓存中的数据，进行数据辨认
+			$Admin = new \Admin\Model\AdminModel();
+			$map['account'] = $admin_info['account'];
+			$map['password'] = $admin_info['password'];
+			$istrue = $Admin->where($map)->find();
+			//如果能查找到这个数据，则继续操作
+			if($istrue){
+				$this->admin_info = $admin_info;
+				$this->assign('admin_info',$this->admin_info);
+			}else{
+				$this->redirect('Admin/login');
+			}
 		}
-		$this->assign('admin_info',$admin_info);
 	}
 	
 	

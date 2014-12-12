@@ -7,7 +7,9 @@
 		<!-- BEGIN VALIDATION STATES-->
 		<div class="portlet box blue">
 			<div class="portlet-title">
-				<div class="caption"><i class="fa fa-reorder"></i>创建文章类型</div>
+				<div class="caption"><i class="fa fa-reorder"></i>
+				<if condition="$action eq 'create' ">创建文章类型<else />编辑文章类型【{$type_info['title']}】</if>
+				</div>
 				<div class="tools">
 					<a href="javascript:;" class="collapse"></a>
 					<a href="javascript:;" class="reload"></a>
@@ -16,7 +18,7 @@
 			</div>
 			<div class="portlet-body form">
 				<!-- BEGIN FORM-->
-				<form action="#" id="form_sample_3" class="form-horizontal">
+				<form action="#" id="form_create_type" class="form-horizontal">
 					<div class="form-body">
 						<h3 class="form-section"><small>请不要创建重复的文章类型(相同的名称，相同的关键字)</small></h3>
 						<div class="alert alert-danger display-hide">
@@ -30,20 +32,20 @@
 						<div class="form-group">
 							<label class="control-label col-md-3">类型名称<span class="required">*</span></label>
 							<div class="col-md-4">
-								<input type="text" name="title" data-required="1" class="form-control"/>
+								<input type="text" name="ArticleType[title]" data-required="1" class="form-control" value="{$type_info['title']}"/>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-md-3">关键字<span class="required">*</span></label>
 							<div class="col-md-4">
-								<input type="text" name="keyword" data-required="1" class="form-control"/>
+								<input type="text" name="ArticleType[key]" data-required="1" class="form-control" value="{$type_info['key']}"/>
 							</div>
 						</div>
 					</div>
 					<div class="form-actions fluid">
 						<div class="col-md-offset-3 col-md-9">
 							<button type="submit" class="btn green">提交</button>
-							<button type="button" class="btn default">取消</button>                              
+							<a href="<?php echo U('ArticleType/index'); ?>" class="btn default">取消</a>                       
 						</div>
 					</div>
 				</form>
@@ -61,10 +63,101 @@
 <script type="text/javascript" src="/Template/admin/plugins/ckeditor/ckeditor.js"></script>
 <script type="text/javascript" src="/Template/admin/plugins/bootstrap-markdown/js/bootstrap-markdown.js"></script>
 <script type="text/javascript" src="/Template/admin/plugins/bootstrap-markdown/lib/markdown.js"></script>
-<!-- END PAGE LEVEL PLUGINS -->
-<script src="/Template/admin/scripts/form-validation.js"></script> 
+
 <script>
-	jQuery(document).ready(function() {   
-	   FormValidation.init();
-	});
+jQuery(document).ready(function() {   
+	
+    var form3 = $('#form_create_type');
+    var error3 = $('.alert-danger', form3);
+    var success3 = $('.alert-success', form3);
+
+    form3.validate({
+        errorElement: 'span', //default input error message container
+        errorClass: 'help-block', // default input error message class
+        focusInvalid: false, // do not focus the last invalid input
+        ignore: "",
+        rules: {
+            'ArticleType[title]': {
+                required: true,
+            	rangelength:[1,20],
+            },
+            'ArticleType[key]': {
+                required: true,
+                rangelength:[1,20],
+            },
+        },
+        messages: { // custom messages for radio buttons and checkboxes
+        	'ArticleType[title]': {
+                required: '请填写名称',
+            	rangelength:'长度只能在1-20之间',
+            },
+            'ArticleType[key]': {
+                required: '请填写关键字',
+                rangelength:'长度只能在1-20之间',
+            },
+        },
+        errorPlacement: function (error, element) { // render error placement for each input type
+            if (element.parent(".input-group").size() > 0) {
+                error.insertAfter(element.parent(".input-group"));
+            } else if (element.attr("data-error-container")) { 
+                error.appendTo(element.attr("data-error-container"));
+            } else if (element.parents('.radio-list').size() > 0) { 
+                error.appendTo(element.parents('.radio-list').attr("data-error-container"));
+            } else if (element.parents('.radio-inline').size() > 0) { 
+                error.appendTo(element.parents('.radio-inline').attr("data-error-container"));
+            } else if (element.parents('.checkbox-list').size() > 0) {
+                error.appendTo(element.parents('.checkbox-list').attr("data-error-container"));
+            } else if (element.parents('.checkbox-inline').size() > 0) { 
+                error.appendTo(element.parents('.checkbox-inline').attr("data-error-container"));
+            } else {
+                error.insertAfter(element); // for other inputs, just perform default behavior
+            }
+        },
+
+        invalidHandler: function (event, validator) { //display error alert on form submit   
+            success3.hide();
+            error3.show();
+            //App.scrollTo(error3, -200);
+        },
+        highlight: function (element) { // hightlight error inputs
+           $(element).closest('.form-group').addClass('has-error'); // set error class to the control group
+        },
+        unhighlight: function (element) { // revert the change done by hightlight
+            $(element).closest('.form-group').removeClass('has-error'); // set error class to the control group
+        },
+        success: function (label) {
+            label.closest('.form-group').removeClass('has-error'); // set success class to the control group
+        },
+        submitHandler: function (form) {
+            success3.show();
+            error3.hide();
+            $.ajax({
+                type:'post',
+                url: window.location.href ,
+                dataType:"json", 
+                data:{
+                	'ArticleType[title]' : $("input[name='ArticleType[title]']").val(),
+                    'ArticleType[key]' : $("input[name='ArticleType[key]']").val(),
+                },
+                success:function(data){
+                    var errcode = data['errcode'];
+					if(errcode == 0){
+						window.location.href="/ArticleType/index"; 
+					}else{
+						bootbox.alert(data['msg'], function() {
+	                        location.reload();
+	                    });
+					}
+                }   
+            });
+        }
+    });
+
+	//apply validation on select2 dropdown value change, this only needed for chosen dropdown integration.
+    //$('.select2me', form3).change(function () {
+        //revalidate the chosen dropdown value and show error or success message for the input
+    //   form3.validate().element($(this)); 
+    //});
+
+});
 </script>

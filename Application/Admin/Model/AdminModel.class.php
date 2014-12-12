@@ -11,9 +11,7 @@ class AdminModel extends RelationModel {
 		$password = md5($password . '500efuma');
 		$condition['password'] = $password;
 		// 把查询条件传入查询方法
-// 		$id = $model->where($condition)->getField('id');
 		$info = $model->where($condition)->find();
-// 		$sql = $model->getLastSql();
 		return $info;
 	}
 	

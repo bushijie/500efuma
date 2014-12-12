@@ -8,7 +8,7 @@ use Think\Controller;
  * @author Saki <ilulu4ever816@gmail.com>
  * @date 2014-12-3 下午4:52:06 
  */
-class PublicController extends Controller{
+class PublicController extends AdminBaseController{
 
 	
 	

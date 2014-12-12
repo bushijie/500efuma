@@ -44,6 +44,7 @@ class AdminController extends Controller{
 			if($remember == 1){
 				cookie('admin_account',$username,60*60*24*7);
 				cookie('admin_pwd',$password,60*60*24*7);
+				cookie('admin_remember',$username,60*60*24*7);
 			}
 		}
 		$data['errcode'] = $info ? 0 : 404;
@@ -59,6 +60,8 @@ class AdminController extends Controller{
 	 */
 	public function logout(){
 		cookie('admin_info',null);
+		cookie('admin_account',null);
+		cookie('admin_pwd',null);
 		$this->redirect('Admin/login');
 	}
 	

@@ -51,7 +51,7 @@ function sendMail($to, $name, $subject, $body, $attachment = null){
 function sidebar(){
 	return array(
 		'home' => array(
-			'name'=>'后台首页',
+			'name'=>'首页',
 			'key'=>'home',	
 			'url'=>'/Home/index',
 			'icon'=>'fa-home',
@@ -95,12 +95,12 @@ function sidebar(){
 				'sysMsg'=>array(
 					'name'=>'傻逼语录',
 					'key'=>'sysMsg',
-					'url'=>'System/index',
+					'url'=>'/System/index',
 				),
 				'sysPhone'=>array(
 					'name'=>'联系方式',
 					'key'=>'sysPhone',
-					'url'=>'System/index',
+					'url'=>'/System/index',
 				),
 			),
 		),

@@ -48,17 +48,37 @@
 		//1级菜单的点击事件处理
 		$(".menubar").click(function(){
 			if($(this).find('.sub-menu').length == 0){
+				//菜单为选中样式
 				$(".menubar").removeClass('active');
 				$(this).addClass('active');
+				//修改面包屑
+				var name =$(this).attr('data-key');
+				$('.breadcrumb li:eq(1) a').text(name);
+				$('.breadcrumb li:eq(2)').hide();
+				$('.last-icon').hide();
+				//修改大标题
+				$('.page-title').text(name);
 			}
 		});
 
 		//2级菜单的点击事件处理
 		$(".menubar .sub-menu li").click(function(){
+			//菜单为选中样式
 			$(".menubar").removeClass('active');
 			$(".menubar .sub-menu li").removeClass('active');
 			$(this).parents('.menubar').addClass('active');
 			$(this).addClass('active');
+			//选中的名称
+			var name = $(this).attr('data-key');
+			//修改1级面包屑
+			var partenName = $(this).parents('.menubar').attr('data-key');
+			$('.breadcrumb li:eq(1) a').text(partenName);
+			//修改2级面包屑
+			$('.last-icon').show();
+			$('.breadcrumb li:eq(2)').show();
+			$('.breadcrumb li:eq(2) a').text(name);
+			//修改大标题
+			$('.page-title').text(name);
 		});
 		
 	});

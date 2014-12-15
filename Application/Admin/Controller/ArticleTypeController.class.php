@@ -46,7 +46,7 @@ class ArticleTypeController extends AdminBaseController{
 	
 	
 	/**
-	 * @todo: 创建规则
+	 * @todo: 创建类型
 	 * @author Saki <ilulu4ever816@gmail.com>
 	 * @date 2014-12-10 上午10:45:48 
 	 * @version V1.0
@@ -64,7 +64,7 @@ class ArticleTypeController extends AdminBaseController{
 	}
 	
 	/**
-	 * @todo: 编辑规则
+	 * @todo: 编辑类型
 	 * @author Saki <ilulu4ever816@gmail.com>
 	 * @date 2014-12-10 下午6:07:29 
 	 * @version V1.0
@@ -97,8 +97,5 @@ class ArticleTypeController extends AdminBaseController{
 			$this->redirect('ArticleType/index');
 		}
 	}
-	
-	
-	
 	
 }

@@ -7,7 +7,9 @@
 		<!-- BEGIN VALIDATION STATES-->
 		<div class="portlet box green">
 			<div class="portlet-title">
-				<div class="caption"><i class="fa fa-reorder"></i>创建文章类型</div>
+				<div class="caption"><i class="fa fa-reorder"></i>
+				<if condition="$action eq 'create' ">创建文章<else />编辑文章【{$article_info['title']}】</if>
+				</div>
 				<div class="tools">
 					<a href="javascript:;" class="collapse"></a>
 					<a href="javascript:;" class="reload"></a>
@@ -16,108 +18,48 @@
 			</div>
 			<div class="portlet-body form">
 				<!-- BEGIN FORM-->
-				<form action="#" id="form_sample_3" class="form-horizontal">
+				<form action="#" id="form_create_article" class="form-horizontal">
 					<div class="form-body">
-						<h3 class="form-section"><small>请不要创建重复的文章类型(相同的名称，相同的关键字)</small></h3>
 						<div class="alert alert-danger display-hide">
 							<button class="close" data-close="alert"></button>
-							You have some form errors. Please check below.
+							您填写的内容有些不符合规范，请按照提示改正！
 						</div>
 						<div class="alert alert-success display-hide">
 							<button class="close" data-close="alert"></button>
-							Your form validation is successful!
+							您填写的内容检测通过！
 						</div>
 						<div class="form-group">
-							<label class="control-label col-md-3">Name<span class="required">*</span></label>
+							<label class="control-label col-md-2">标题</label>
 							<div class="col-md-4">
-								<input type="text" name="name" data-required="1" class="form-control"/>
+								<input type="text" name="Article[title]" data-required="1" class="form-control" value="{$article_info['title']}"/>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-3 control-label">Email Address<span class="required">*</span></label>
+							<label class="control-label col-md-2">类型</label>
 							<div class="col-md-4">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-									<input type="email" name="email" class="form-control" placeholder="Email Address">
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-md-3">Occupation&nbsp;&nbsp;</label>
-							<div class="col-md-4">
-								<input name="occupation" type="text" class="form-control"/>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-md-3">Category<span class="required">*</span></label>
-							<div class="col-md-4">
-								<select class="form-control" name="category">
-									<option value="">Select...</option>
-									<option value="Category 1">Category 1</option>
-									<option value="Category 2">Category 2</option>
-									<option value="Category 3">Category 5</option>
-									<option value="Category 4">Category 4</option>
+								<select class="form-control" name="Article[type_id]">
+									<volist name="type_list" id="type">
+										<if condition="$type.id eq $article_info['type_id']">
+											<option value="{$type.id}" selected>{$type.title}</option>
+										<else /> 
+											<option value="{$type.id}">{$type.title}</option>
+										</if>
+									</volist>
 								</select>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label col-md-3">Select2 Dropdown<span class="required">*</span></label>
-							<div class="col-md-4">
-								<select id="form_2_select2" class="form-control select2me" name="options2">
-									<option value="">Select...</option>
-									<option value="Option 1">Option 1</option>
-									<option value="Option 2">Option 2</option>
-									<option value="Option 3">Option 3</option>
-									<option value="Option 4">Option 4</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-md-3">Membership<span class="required">*</span></label>
-							<div class="col-md-4">
-								<div class="radio-list" data-error-container="#form_2_membership_error">
-									<label>
-									<input type="radio" name="membership" value="1" />
-									Fee
-									</label>
-									<label>
-									<input type="radio" name="membership" value="2" />
-									Professional
-									</label> 
-								</div>
-								<div id="form_2_membership_error"></div>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-md-3">Services<span class="required">*</span></label>
-							<div class="col-md-4">
-								<div class="checkbox-list" data-error-container="#form_2_services_error">
-									<label>
-									<input type="checkbox" value="1" name="service"/> Service 1
-									</label>
-									<label>
-									<input type="checkbox" value="2" name="service"/> Service 2
-									</label>
-									<label>
-									<input type="checkbox" value="3" name="service"/> Service 3
-									</label>
-								</div>
-								<span class="help-block">(select at least two)</span>
-								<div id="form_2_services_error"></div>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-md-3">Markdown</label>
+							<label class="control-label col-md-2">内容</label>
 							<div class="col-md-9">
-								<textarea name="markdown" data-provide="markdown" rows="10" data-error-container="#editor_error"></textarea>
+								<textarea name="Article[content]" data-provide="markdown" rows="20" data-error-container="#editor_error">{$article_info['content']}</textarea>
 								<div id="editor_error"></div>
 							</div>
 						</div>
 					</div>
 					<div class="form-actions fluid">
 						<div class="col-md-offset-3 col-md-9">
-							<button type="submit" class="btn green">Submit</button>
-							<button type="button" class="btn default">Cancel</button>                              
+							<button type="submit" class="btn green">提交</button>
+							<a href="<?php echo U('ArticleList/index'); ?>" class="btn default">取消</a>                           
 						</div>
 					</div>
 				</form>
@@ -136,9 +78,101 @@
 <script type="text/javascript" src="/Template/admin/plugins/bootstrap-markdown/js/bootstrap-markdown.js"></script>
 <script type="text/javascript" src="/Template/admin/plugins/bootstrap-markdown/lib/markdown.js"></script>
 <!-- END PAGE LEVEL PLUGINS -->
-<script src="/Template/admin/scripts/form-validation.js"></script> 
 <script>
-	jQuery(document).ready(function() {   
-	   FormValidation.init();
-	});
+
+jQuery(document).ready(function() {   
+	
+	var form3 = $('#form_create_article');
+	var error3 = $('.alert-danger', form3);
+	var success3 = $('.alert-success', form3);
+	
+    form3.validate({
+        errorElement: 'span', //default input error message container
+        errorClass: 'help-block', // default input error message class
+        focusInvalid: false, // do not focus the last invalid input
+        ignore: "",
+        rules: {
+            'Article[title]': {
+            	required: true,
+            	rangelength:[1,30],
+            },
+            'Article[type_id]': {
+            	required: true,
+            },
+            'Article[content]': {
+            	required: true,
+            },
+        },
+        messages: { // custom messages for radio buttons and checkboxes
+        	'Article[title]': {
+            	required: '请填写标题',
+            	rangelength:'长度只能在1-30之间',
+            },
+            'Article[type_id]': {
+            	required: '请选择类型',
+            },
+            'Article[content]': {
+            	required: '内容不能为空',
+            },
+        },
+        errorPlacement: function (error, element) { // render error placement for each input type
+            if (element.parent(".input-group").size() > 0) {
+                error.insertAfter(element.parent(".input-group"));
+            } else if (element.attr("data-error-container")) { 
+                error.appendTo(element.attr("data-error-container"));
+            } else if (element.parents('.radio-list').size() > 0) { 
+                error.appendTo(element.parents('.radio-list').attr("data-error-container"));
+            } else if (element.parents('.radio-inline').size() > 0) { 
+                error.appendTo(element.parents('.radio-inline').attr("data-error-container"));
+            } else if (element.parents('.checkbox-list').size() > 0) {
+                error.appendTo(element.parents('.checkbox-list').attr("data-error-container"));
+            } else if (element.parents('.checkbox-inline').size() > 0) { 
+                error.appendTo(element.parents('.checkbox-inline').attr("data-error-container"));
+            } else {
+                error.insertAfter(element); // for other inputs, just perform default behavior
+            }
+        },
+        invalidHandler: function (event, validator) { //display error alert on form submit   
+            success3.hide();
+            error3.show();
+            //App.scrollTo(error3, -200);
+        },
+        highlight: function (element) { // hightlight error inputs
+           $(element).closest('.form-group').addClass('has-error'); // set error class to the control group
+        },
+        unhighlight: function (element) { // revert the change done by hightlight
+            $(element).closest('.form-group').removeClass('has-error'); // set error class to the control group
+        },
+        success: function (label) {
+            label.closest('.form-group').removeClass('has-error'); // set success class to the control group
+        },
+        submitHandler: function (form) {
+            success3.show();
+            error3.hide();
+            $.ajax({
+                type:'post',
+                url: window.location.href ,
+                dataType:"json", 
+                data:{
+                	'Article[title]' : $("input[name='Article[title]']").val(),
+                    'Article[type_id]' : $("select[name='Article[type_id]']").val(),
+                    'Article[content]' : $("textarea[name='Article[content]']").val(),
+                },
+                success:function(data){
+                    var errcode = data['errcode'];
+					if(errcode == 0){
+						window.location.href="/ArticleList/index"; 
+					}else{
+						bootbox.alert(data['msg'], function() {
+	                        location.reload();
+	                    });
+					}
+                }   
+            });
+        }
+
+    });
+	
+	
+});
 </script>

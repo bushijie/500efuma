@@ -44,4 +44,64 @@ class ArticleListController extends AdminBaseController{
 		echo json_encode($result);
 	}
 	
+	/**
+	 * @todo: 创建文章
+	 * @author Saki <ilulu4ever816@gmail.com>
+	 * @date 2014-12-15 下午3:56:05 
+	 * @version V1.0
+	 */
+	public function create(){
+		//类型列表
+		$type_list = D('Admin/ArticleType')->where('status=1')->order('ctm desc')->select ();
+		if(isset($_POST['Article'])){
+			$model = new \Admin\Model\ArticleListModel();
+			$admin_info = $this->admin_info;
+			$data = $model->createArticle($_POST['Article'],$admin_info);
+			echo json_encode($data);
+		}else{
+			$this->assign('type_list',$type_list);
+			$this->assign('action','create');
+			$this->display('form');
+		}
+	}
+	
+	/**
+	 * @todo: 编辑文章
+	 * @author Saki <ilulu4ever816@gmail.com>
+	 * @date 2014-12-15 下午3:56:16 
+	 * @version V1.0
+	 */
+	public function update(){
+		//类型列表
+		$type_list = D('Admin/ArticleType')->where('status=1')->order('ctm desc')->select ();
+		$condition['id'] = $id = $_GET['id'];
+		$model = new \Admin\Model\ArticleListModel();
+		if(isset($_POST['Article'])){
+			$data = $model->updateArticle($_POST['Article'], $id);
+			echo json_encode($data);
+		}else{
+			$article_info = $model->where($condition)->find();
+			$this->assign('article_info',$article_info);
+			$this->assign('type_list',$type_list);
+			$this->assign('action','update');
+			$this->display('form');
+		}
+	}
+	
+	/**
+	 * @todo: 删除文章
+	 * @author Saki <ilulu4ever816@gmail.com>
+	 * @date 2014-12-15 下午6:08:30 
+	 * @version V1.0
+	 */
+	public function delete(){
+		$id = $_GET['id'];
+		$model = new \Admin\Model\ArticleListModel();
+		$data = $model->deleteArticle($id);
+		if($data['errcode'] == 0){
+			$this->redirect('ArticleList/index');
+		}
+	}
+	
+	
 }

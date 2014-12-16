@@ -103,5 +103,28 @@ class ArticleListController extends AdminBaseController{
 		}
 	}
 	
+	/**
+	 * @todo: 预览文章
+	 * @author Saki <ilulu4ever816@gmail.com>
+	 * @date 2014-12-16 上午9:21:57 
+	 * @version V1.0
+	 */
+	public function view(){
+		$id = $_GET['id'];
+		$model = new \Admin\Model\ArticleListModel();
+		$condition['id'] = $id;
+		$info = $model->relation(true)->where($condition)->find();
+		//markdown解析
+		$Parsedown = new \Org\Markdown\Parsedown;
+		$info['content'] = $Parsedown->text($info['content']);
+		//tags解析
+		$tags = explode(",",$info['tags']);
+// 		$info['tags'] = $tags;
+		//输出
+		$this->assign('info',$info);
+		$this->assign('tags',$tags);
+		$this->display();
+	}
+	
 	
 }

@@ -45,7 +45,8 @@ class ArticleListModel extends RelationModel {
 			array_push ( $temp, $article ['article_type']['title']);//类型
 			array_push ( $temp, $article ['admin']['name']);//创建者
 			array_push ( $temp, $article ['ctm'] );//创建时间
-			$action = "<a href='" . U('ArticleList/update',array('id'=>$article['id'])) . "' class='btn blue btn-sm'>编辑</a> " . 
+			$action = "<a href='" . U('ArticleList/view',array('id'=>$article['id'])) . "' class='btn purple btn-sm'>预览</a> " . 
+					  "<a href='" . U('ArticleList/update',array('id'=>$article['id'])) . "' class='btn blue btn-sm'>编辑</a> " . 
 					  "<a href='" . U('ArticleList/delete',array('id'=>$article['id'])) . "' class='btn red btn-sm'>删除</a> ";
 			array_push ( $temp, $action);
 			array_push ( $data, $temp );

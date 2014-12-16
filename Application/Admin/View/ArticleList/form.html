@@ -1,11 +1,12 @@
 <!-- BEGIN PAGE LEVEL STYLES --> 
 <link rel="stylesheet" type="text/css" href="/Template/admin/plugins/select2/select2_metro.css" />
 <link rel="stylesheet" type="text/css" href="/Template/admin/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css">
+<link rel="stylesheet" type="text/css" href="/Template/admin/plugins/jquery-tags-input/jquery.tagsinput.css" />
 <!-- END PAGE LEVEL SCRIPTS -->
 <div class="row">
 	<div class="col-md-12">
 		<!-- BEGIN VALIDATION STATES-->
-		<div class="portlet box green">
+		<div class="portlet box blue">
 			<div class="portlet-title">
 				<div class="caption"><i class="fa fa-reorder"></i>
 				<if condition="$action eq 'create' ">创建文章<else />编辑文章【{$article_info['title']}】</if>
@@ -32,6 +33,12 @@
 							<label class="control-label col-md-2">标题</label>
 							<div class="col-md-4">
 								<input type="text" name="Article[title]" data-required="1" class="form-control" value="{$article_info['title']}"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-2">标签</label>
+							<div class="col-md-9">
+								<input id="tags" type="text" name="Article[tags]" class="form-control tags" value="{$article_info['tags']}" />
 							</div>
 						</div>
 						<div class="form-group">
@@ -77,6 +84,7 @@
 <script type="text/javascript" src="/Template/admin/plugins/ckeditor/ckeditor.js"></script>
 <script type="text/javascript" src="/Template/admin/plugins/bootstrap-markdown/js/bootstrap-markdown.js"></script>
 <script type="text/javascript" src="/Template/admin/plugins/bootstrap-markdown/lib/markdown.js"></script>
+<script type="text/javascript" src="/Template/admin/plugins/jquery-tags-input/jquery.tagsinput.min.js" ></script>
 <!-- END PAGE LEVEL PLUGINS -->
 <script>
 
@@ -94,7 +102,7 @@ jQuery(document).ready(function() {
         rules: {
             'Article[title]': {
             	required: true,
-            	rangelength:[1,30],
+            	rangelength:[1,80],
             },
             'Article[type_id]': {
             	required: true,
@@ -106,7 +114,7 @@ jQuery(document).ready(function() {
         messages: { // custom messages for radio buttons and checkboxes
         	'Article[title]': {
             	required: '请填写标题',
-            	rangelength:'长度只能在1-30之间',
+            	rangelength:'长度只能在1-80之间',
             },
             'Article[type_id]': {
             	required: '请选择类型',
@@ -156,6 +164,7 @@ jQuery(document).ready(function() {
                 data:{
                 	'Article[title]' : $("input[name='Article[title]']").val(),
                     'Article[type_id]' : $("select[name='Article[type_id]']").val(),
+                    'Article[tags]' : $("input[name='Article[tags]']").val(),
                     'Article[content]' : $("textarea[name='Article[content]']").val(),
                 },
                 success:function(data){
@@ -173,6 +182,12 @@ jQuery(document).ready(function() {
 
     });
 	
+    $('#tags').tagsInput({
+        width: 'auto',
+        'onAddTag': function () {
+            //alert(1);
+        },
+    });
 	
 });
 </script>

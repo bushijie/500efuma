@@ -77,8 +77,7 @@ class AdminController extends Controller{
 		//注销状态登录
 		if(isset($_POST['status']) && $_POST['status'] == 'lock' ){
 			$pwd = $_POST['password'];
-			$admin_pwd = cookie('admin_pwd');
-			if($pwd === $admin_pwd){
+			if(md5($pwd . '500efuma') === $admin_info['password']){
 				$this->redirect('Index/index');
 			}
 		}

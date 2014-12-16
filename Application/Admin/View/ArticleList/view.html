@@ -1,0 +1,122 @@
+<link href="/Template/admin/css/pages/blog.css" rel="stylesheet" type="text/css"/>
+<link href="/Template/admin/plugins/SyntaxHighlighter/Styles/SyntaxHighlighter.css" rel="stylesheet" type="text/css">
+
+
+<div class="row">
+	<div class="col-md-12 blog-page">
+		<div class="row">
+			<div class="col-md-12 article-block">
+				<h3>{$info['title']}</h3>
+				<div class="blog-tag-data">
+					<!-- 
+					<img src="/Template/admin/img/gallery/item_img.jpg" class="img-responsive" alt="">
+					 -->
+					<div class="row">
+						<div class="col-md-6">
+							<ul class="list-inline blog-tags">
+								<li>
+									<i class="fa fa-tags"></i> 
+									<volist name="tags" id="tag">
+										<a href="#">{$tag}</a> 
+									</volist>
+								</li>
+							</ul>
+						</div>
+						<div class="col-md-6 blog-tag-data-inner">
+							<ul class="list-inline">
+								<li><i class="fa fa-calendar"></i> <a href="#">{$info['ctm']}</a></li>
+								<li><i class="fa fa-comments"></i> <a href="#">38 Comments</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!--end news-tag-data-->
+				<div>
+				{$info['content']}
+				</div>
+				<hr>
+				<div class="media">
+					<h3>Comments</h3>
+					<a href="#" class="pull-left">
+					<img alt="" src="/Template/admin/img/blog/9.jpg" class="media-object">
+					</a>
+					<div class="media-body">
+						<h4 class="media-heading">Media heading <span>5 hours ago / <a href="#">Reply</a></span></h4>
+						<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+						<hr>
+						<!-- Nested media object -->
+						<div class="media">
+							<a href="#" class="pull-left">
+							<img alt="" src="/Template/admin/img/blog/5.jpg" class="media-object">
+							</a>
+							<div class="media-body">
+								<h4 class="media-heading">Media heading <span>17 hours ago / <a href="#">Reply</a></span></h4>
+								<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+							</div>
+						</div>
+						<!--end media-->
+						<hr>
+						<div class="media">
+							<a href="#" class="pull-left">
+							<img alt="" src="/Template/admin/img/blog/7.jpg" class="media-object">
+							</a>
+							<div class="media-body">
+								<h4 class="media-heading">Media heading <span>2 days ago / <a href="#">Reply</a></span></h4>
+								<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+							</div>
+						</div>
+						<!--end media-->
+					</div>
+				</div>
+				<!--end media-->
+				<div class="media">
+					<a href="#" class="pull-left">
+					<img alt="" src="/Template/admin/img/blog/6.jpg" class="media-object">
+					</a>
+					<div class="media-body">
+						<h4 class="media-heading">Media heading <span>July 5,2013 / <a href="#">Reply</a></span></h4>
+						<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+					</div>
+				</div>
+				<!--end media-->
+				<hr>
+				<div class="post-comment">
+					<h3>Leave a Comment</h3>
+					<form role="form" action="#">
+						<div class="form-group">
+							<label class="control-label">Name<span class="required">*</span></label>
+							<input type="text" class="form-control">
+						</div>
+						<div class="form-group">
+							<label class="control-label">Email<span class="required">*</span></label>
+							<input type="text" class="form-control">
+						</div>
+						<div class="form-group">
+							<label class="control-label">Message<span class="required">*</span></label>
+							<textarea class="col-md-10 form-control" rows="8"></textarea>
+						</div>
+						<button class="margin-top-20 btn blue" type="submit">Post a Comment</button>
+					</form>
+				</div>
+			</div>
+			<!--end col-md-9-->
+		</div>
+	</div>
+</div>
+
+<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shCore.js"></script>
+<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shBrushCSharp.js"></script>
+<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shBrushPhp.js"></script>
+<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shBrushJScript.js"></script>
+<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shBrushJava.js"></script>
+<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shBrushVb.js"></script>
+<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shBrushSql.js"></script>
+<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shBrushXml.js"></script>
+<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shBrushDelphi.js"></script>
+<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shBrushPython.js"></script>
+<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shBrushRuby.js"></script>
+<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shBrushCss.js"></script>
+<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shBrushCpp.js"></script>
+<script class="javascript">
+dp.SyntaxHighlighter.HighlightAll('code');
+</script>

@@ -8,7 +8,7 @@ use Think\Controller;
  * @date 2014-5-13 上午10:29:39
  * @version 1.0.0
  */
-class IndexController extends Controller {
+class IndexController extends HomeBaseController {
 	
 	
 	/** 

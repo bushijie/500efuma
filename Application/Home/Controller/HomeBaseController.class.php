@@ -1,0 +1,84 @@
+<?php
+namespace Home\Controller;
+use Think\Controller;
+
+/**
+ * @ClassName: Home\Controller$HomeBaseController 
+ * @Description:  前台总父类
+ * @author Saki <ilulu4ever816@gmail.com>
+ * @date 2014-12-17 下午3:32:38 
+ */
+class HomeBaseController extends Controller{
+	
+	/**
+	 * @todo: 初始化
+	 * @author Saki <ilulu4ever816@gmail.com>
+	 * @date 2014-12-3 下午4:59:13
+	 * @version V1.0
+	 */
+	public function _initialize(){
+		$this->text();
+		$this->calendar();
+	}
+	
+	/**
+	 * @todo: 傻逼语录插件
+	 * @author Saki <ilulu4ever816@gmail.com>
+	 * @date 2014-12-17 上午10:35:11
+	 * @version V1.0
+	 */
+	public function text(){
+		$text = 'shen me gui!';
+		$this->assign('text',$text);
+	}
+	
+	/**
+	 * @todo: 日历插件
+	 * @author Saki <ilulu4ever816@gmail.com>
+	 * @date 2014-12-17 上午11:21:33
+	 * @version V1.0
+	 */
+	public function calendar(){
+		$str = '';
+		$Y = date('Y',time());//当前年份
+		$m = date('m',time());	//当前月份
+		$w = date('w',time());//当前星期几,0-6,0代表星期天
+		$d = date('d',time());
+		$beginDate = date('Y-m-01', strtotime(date("Y-m-d")));//当前月的第一天
+		$beginTime = strtotime($beginDate);//当前月的第一天的时间戳
+		$w_first = date('w',$beginTime);//当前月第一天是星期几
+		$day_count = cal_days_in_month(CAL_GREGORIAN,$m,$Y);//当前月总共天数
+		//计算总行数等数值
+		$row_num = (($day_count+$w_first) % 7) == 0 ? floor(($day_count+$w_first)/7) : floor(($day_count+$w_first)/7+1) ;
+		$data = array();
+		//每行的具体信息
+		for($i=1;$i<=$row_num;$i++){
+			if($i==1){//第一行
+				$temp['type'] = 'top';
+				$temp['colspan'] = $w_first;//开头空格数
+				$temp['start'] = 1;
+				$temp['end'] = 7-$w_first+1;
+				$temp['day_num'] = 7-$w_first;
+			}elseif ($i==$row_num){
+				$temp['type'] = 'end';
+				$temp['colspan'] = 7-(($day_count+$w_first) % 7);
+				$temp['start'] = 7*($i-1)+1-$w_first;
+				$temp['end'] = $day_count+1;
+				$temp['day_num'] = ($day_count+$w_first) % 7;
+			}else{
+				$temp['type'] = 'center';
+				$temp['colspan'] = 0;
+				$temp['start'] = 7*($i-1)+1-$w_first;
+				$temp['end'] = 7*($i-1)+1-$w_first+6+1;
+				$temp['day_num'] = 7;
+			}
+			//加入到总数组中
+			array_push($data, $temp);
+		}
+		$this->assign('calendar',$data);
+		$this->assign('d',$d);
+	}
+	
+	
+	
+}

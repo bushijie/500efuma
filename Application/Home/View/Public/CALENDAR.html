@@ -1,0 +1,37 @@
+<section class="is-calendar">
+	<div class="inner">
+		<table>
+			<caption><?php echo date('F Y',time())?></caption>
+			<thead>
+				<tr>
+					<th scope="col" style="color: #6FD0E7;" title="Sunday">S</th>
+					<th scope="col" title="Monday">M</th>
+					<th scope="col" title="Tuesday">T</th>
+					<th scope="col" title="Wednesday">W</th>
+					<th scope="col" title="Thursday">T</th>
+					<th scope="col" title="Friday">F</th>
+					<th scope="col" style="color: #6FD0E7;" title="Saturday">S</th>
+				</tr>
+			</thead>
+			<tbody>
+				<volist name="calendar" id="data">
+					<tr>
+						<if condition="($data['type'] eq 'top')">
+							<td colspan="{$data['colspan']}" class="pad"><span>&nbsp;</span></td>
+						</if>
+						<for start="$data['start']" end="$data['end']">
+							<if condition="($i eq $d)">
+								<td class="today"><a href="#">{$i}</a></td>
+							<else />
+								<td><a href="#">{$i}</a></td>
+							</if>
+						</for>
+						<if condition="($data['type'] eq 'end')">
+							<td class="pad" colspan="{$data['colspan']}"><span>&nbsp;</span></td>
+						</if>
+					</tr>
+				</volist>
+			</tbody>
+		</table>
+	</div>
+</section>

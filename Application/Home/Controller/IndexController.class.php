@@ -18,6 +18,23 @@ class IndexController extends HomeBaseController {
 	* @version v1.0.0 
 	*/
 	public function index(){
+//  		$ArticleList = M('Article');
+		$model = new \Admin\Model\ArticleListModel();
+		$count = $model->count();
+		$Page = new \Think\Page($count,4);
+		$Page->setConfig('prev','上一页');
+		$Page->setConfig('next','下一页');
+		$show = $Page->show();
+		//
+		$Parsedown = new \Org\Markdown\Parsedown;
+		$list = $model->relation(true)->order('ctm desc')->limit ($Page->firstRow.','.$Page->listRows)->select ();
+		foreach ($list as $k=>$article){
+			$content = $article['content'];
+			$new_content = strip_tags($Parsedown->text($content));
+			$list[$k]['content'] = $new_content;
+		}
+		$this->assign('list',$list);
+		$this->assign('page',$show);
 		$this->display();
 	}
 	

@@ -19,6 +19,8 @@ class HomeBaseController extends Controller{
 	public function _initialize(){
 		$this->text();
 		$this->calendar();
+		$action = ACTION_NAME;//当前操作名  
+		$this->assign('action',$action);
 	}
 	
 	/**

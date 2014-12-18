@@ -27,7 +27,7 @@ class IndexController extends HomeBaseController {
 	* @date 2014-5-13上午10:30:51 
 	* @version v1.0.0 
 	*/
-	public function postList(){
+	public function listinfo(){
 		$this->display();
 	}
 	
@@ -37,7 +37,7 @@ class IndexController extends HomeBaseController {
 	* @date 2014-5-13上午10:31:10 
 	* @version v1.0.0 
 	*/
-	public function aboutMe(){
+	public function me(){
 		$this->display();
 	}
 }

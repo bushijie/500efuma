@@ -1,8 +1,25 @@
 <nav id="nav">
 	<ul>
-		<li class="current_page_item"><a href="/Home/Index/index">最近发表</a></li>
-		<li><a href="/Home/Index/postList">文章列表</a></li>
-		<li><a href="/Home/Index/aboutMe">关于我</a></li>
-		<li><a href="#">联系我</a></li>
+		<if condition="($action eq 'index')">
+			<li class="current_page_item"><a href="/Home/Index/index">最近发表</a></li>
+		<else /> 
+			<li ><a href="/Home/Index/index">最近发表</a></li>
+		</if>
+		
+		
+		<if condition="($action eq 'listinfo')">
+			<li class="current_page_item"><a href="/Home/Index/listinfo">文章列表</a></li>
+		<else /> 
+			<li ><a href="/Home/Index/listinfo">文章列表</a></li>
+		</if>
+		
+		
+		<if condition="($action eq 'me')">
+			<li class="current_page_item"><a href="/Home/Index/me">关于我</a></li>
+		<else /> 
+			<li ><a href="/Home/Index/me">关于我</a></li>
+		</if>
+		
+		
 	</ul>
 </nav>

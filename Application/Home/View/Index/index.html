@@ -8,15 +8,21 @@
 					<span class="byline">这篇有趣的文章。</span>
 				</header>
 				<div class="info">
-					<span class="date"><span class="month">Jan<span>uary</span></span> <span class="day">1</span><span class="year">, 2013</span></span>
+					<span class="date">
+						<span class="month">{$article.ctm_M}<span>{$article.ctm_F}</span></span> 
+						<span class="day">{$article.ctm_D}</span>
+						<span class="year">, {$article.ctm_Y}</span>
+					</span>
 					<ul class="stats">
 						<li><a href="#" class="link-icon24 link-icon24-1">42</a></li>
+						<!-- 
 						<li><a href="#" class="link-icon24 link-icon24-2">24</a></li>
+						 -->
 					</ul>
 				</div>
-				<p>
+				<div style="text-overflow: ellipsis;overflow: hidden;">
 					{$article.content}
-				</p>
+				</div>
 			</article>
 		</volist>
 			

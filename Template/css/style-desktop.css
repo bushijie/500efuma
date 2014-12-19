@@ -166,6 +166,13 @@
 		*/
 		max-width: 1038px;
 	}
+	
+	
+	#content-inner .content{
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
+	
 
 /*********************************************************************************/
 /* Sidebar                                                                       */
@@ -185,7 +192,7 @@
 		body.left-sidebar #sidebar
 		{
 			left: 0;
-			min-height: 1850px;
+			min-height: 1500px;
 		}
 	
 		body.right-sidebar #sidebar

@@ -240,6 +240,12 @@
 		margin-top: 44px;
 		padding: 1.5em 20px 2em 20px;
 	}
+	
+	#content-inner .content{
+		text-overflow: ellipsis;
+		overflow: hidden;
+		height: 75px;
+	}
 
 /*********************************************************************************/
 /* Sidebar                                                                       */

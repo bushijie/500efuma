@@ -155,7 +155,8 @@
 			bottom: 0;
 			left: 0;
 			border-bottom: solid 1px #ddd;
-			padding-top: 0.5em;
+			/*padding-top: 0.5em;*/
+			padding-top: 0px;
 		}
 
 			.is-post .info .date
@@ -245,6 +246,7 @@
 		text-overflow: ellipsis;
 		overflow: hidden;
 		height: 75px;
+		margin-top: 3px;
 	}
 
 /*********************************************************************************/

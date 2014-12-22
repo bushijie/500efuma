@@ -1,6 +1,11 @@
 <link href="/Template/admin/css/pages/blog.css" rel="stylesheet" type="text/css"/>
-<link href="/Template/admin/plugins/SyntaxHighlighter/Styles/SyntaxHighlighter.css" rel="stylesheet" type="text/css">
-
+<style>
+.view-content code {
+	border: 0px solid #e1e1e1 !important;
+	-webkit-box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1) !important;
+	-moz-box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1) !important;
+}
+</style>
 
 <div class="row">
 	<div class="col-md-12 blog-page">
@@ -31,7 +36,7 @@
 					</div>
 				</div>
 				<!--end news-tag-data-->
-				<div>
+				<div class="view-content">
 				{$info['content']}
 				</div>
 				<hr>
@@ -104,19 +109,36 @@
 	</div>
 </div>
 
-<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shCore.js"></script>
-<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shBrushCSharp.js"></script>
-<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shBrushPhp.js"></script>
-<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shBrushJScript.js"></script>
-<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shBrushJava.js"></script>
-<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shBrushVb.js"></script>
-<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shBrushSql.js"></script>
-<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shBrushXml.js"></script>
-<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shBrushDelphi.js"></script>
-<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shBrushPython.js"></script>
-<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shBrushRuby.js"></script>
-<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shBrushCss.js"></script>
-<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shBrushCpp.js"></script>
-<script class="javascript">
-dp.SyntaxHighlighter.HighlightAll('code');
-</script>
+<script type="text/javascript" src="/Template/admin/plugins/SyntaxHighlighter3/scripts/shCore.js"></script>
+
+<script type="text/javascript" src="/Template/admin/plugins/SyntaxHighlighter3/scripts/shAutoloader.js"></script>
+<script type="text/javascript" src="/Template/admin/plugins/SyntaxHighlighter3/scripts/shBrushAppleScript.js"></script>
+<script type="text/javascript" src="/Template/admin/plugins/SyntaxHighlighter3/scripts/shBrushAS3.js"></script>
+<script type="text/javascript" src="/Template/admin/plugins/SyntaxHighlighter3/scripts/shBrushBash.js"></script>
+<script type="text/javascript" src="/Template/admin/plugins/SyntaxHighlighter3/scripts/shBrushColdFusion.js"></script>
+<script type="text/javascript" src="/Template/admin/plugins/SyntaxHighlighter3/scripts/shBrushCpp.js"></script>
+<script type="text/javascript" src="/Template/admin/plugins/SyntaxHighlighter3/scripts/shBrushCSharp.js"></script>
+<script type="text/javascript" src="/Template/admin/plugins/SyntaxHighlighter3/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="/Template/admin/plugins/SyntaxHighlighter3/scripts/shBrushDelphi.js"></script>
+<script type="text/javascript" src="/Template/admin/plugins/SyntaxHighlighter3/scripts/shBrushDiff.js"></script>
+<script type="text/javascript" src="/Template/admin/plugins/SyntaxHighlighter3/scripts/shBrushErlang.js"></script>
+<script type="text/javascript" src="/Template/admin/plugins/SyntaxHighlighter3/scripts/shBrushGroovy.js"></script>
+<script type="text/javascript" src="/Template/admin/plugins/SyntaxHighlighter3/scripts/shBrushJava.js"></script>
+<script type="text/javascript" src="/Template/admin/plugins/SyntaxHighlighter3/scripts/shBrushJavaFX.js"></script>
+<script type="text/javascript" src="/Template/admin/plugins/SyntaxHighlighter3/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="/Template/admin/plugins/SyntaxHighlighter3/scripts/shBrushPerl.js"></script>
+<script type="text/javascript" src="/Template/admin/plugins/SyntaxHighlighter3/scripts/shBrushPhp.js"></script>
+<script type="text/javascript" src="/Template/admin/plugins/SyntaxHighlighter3/scripts/shBrushPlain.js"></script>
+<script type="text/javascript" src="/Template/admin/plugins/SyntaxHighlighter3/scripts/shBrushPowerShell.js"></script>
+<script type="text/javascript" src="/Template/admin/plugins/SyntaxHighlighter3/scripts/shBrushPython.js"></script>
+<script type="text/javascript" src="/Template/admin/plugins/SyntaxHighlighter3/scripts/shBrushRuby.js"></script>
+<script type="text/javascript" src="/Template/admin/plugins/SyntaxHighlighter3/scripts/shBrushSass.js"></script>
+<script type="text/javascript" src="/Template/admin/plugins/SyntaxHighlighter3/scripts/shBrushScala.js"></script>
+<script type="text/javascript" src="/Template/admin/plugins/SyntaxHighlighter3/scripts/shBrushSql.js"></script>
+<script type="text/javascript" src="/Template/admin/plugins/SyntaxHighlighter3/scripts/shBrushVb.js"></script>
+<script type="text/javascript" src="/Template/admin/plugins/SyntaxHighlighter3/scripts/shBrushXml.js"></script>
+<script type="text/javascript" src="/Template/admin/plugins/SyntaxHighlighter3/scripts/shLegacy.js"></script>
+
+<link href="/Template/admin/plugins/SyntaxHighlighter3/styles/shCoreDefault.css" type="text/css" rel="stylesheet" />
+
+<script type="text/javascript">SyntaxHighlighter.all();</script>

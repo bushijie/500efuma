@@ -414,8 +414,8 @@ class Parsedown
             if (isset($matches[2]))
             {
                 //$class = 'language-'.$matches[2];
-//                 $class = 'brush: '.$matches[2];
-                $class = $matches[2];
+                $class = 'brush: '.$matches[2];
+//                 $class = $matches[2];
                 $Element['attributes'] = array(
                     'class' => $class,
                     'name' => 'code',

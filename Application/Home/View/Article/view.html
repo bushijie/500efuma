@@ -1,0 +1,42 @@
+<link href="/Template/admin/plugins/SyntaxHighlighter/Styles/SyntaxHighlighter.css" rel="stylesheet" type="text/css">
+<link href="/Template/css/markdown.css" rel="stylesheet" type="text/css">
+
+<div id="content">
+	<div id="content-inner">
+		<article class="is-post is-post-excerpt">
+			<header>
+				<h2>{$info.title}</h2>
+			</header>
+			<div class="info">
+				<span class="date">
+					<span class="month">{$info.ctm_M}<span>{$info.ctm_F}</span></span> 
+					<span class="day">{$info.ctm_D}</span>
+					<span class="year">, {$info.ctm_Y}</span>
+				</span>
+				<ul class="stats">
+					<li><a href="#" class="link-icon24 link-icon24-1">42</a></li>
+				</ul>
+			</div>
+			<div class="content" style="height: auto;">
+				{$info.content}
+			</div>
+		</article>
+	</div>
+</div>
+
+<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shCore.js"></script>
+<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shBrushCSharp.js"></script>
+<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shBrushPhp.js"></script>
+<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shBrushJScript.js"></script>
+<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shBrushJava.js"></script>
+<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shBrushVb.js"></script>
+<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shBrushSql.js"></script>
+<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shBrushXml.js"></script>
+<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shBrushDelphi.js"></script>
+<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shBrushPython.js"></script>
+<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shBrushRuby.js"></script>
+<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shBrushCss.js"></script>
+<script class="javascript" src="/Template/admin/plugins/SyntaxHighlighter/Scripts/shBrushCpp.js"></script>
+<script class="javascript">
+dp.SyntaxHighlighter.HighlightAll('code');
+</script>

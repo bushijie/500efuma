@@ -126,5 +126,4 @@ class ArticleListModel extends RelationModel {
 		return $res;
 	}
 	
-	
 }

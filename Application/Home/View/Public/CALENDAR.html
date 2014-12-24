@@ -23,7 +23,11 @@
 							<if condition="($i eq $d)">
 								<td class="today"><a href="#">{$i}</a></td>
 							<else />
-								<td><a href="#">{$i}</a></td>
+								<in name="i" value="$has_ctm">
+									<td><a href="#">{$i}</a></td>
+								<else/>
+									<td><span>{$i}</span></td>
+								</in>
 							</if>
 						</for>
 						<if condition="($data['type'] eq 'end')">

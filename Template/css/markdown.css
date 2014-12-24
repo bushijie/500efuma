@@ -4,7 +4,12 @@
 	font-family: arial, 'courier new', courier, 宋体, monospace;
 }
 
-#content-inner .content h1, h2, h3, h4, h5, h6 {
+#content-inner .content h1, 
+#content-inner .content h2, 
+#content-inner .content h3, 
+#content-inner .content h4, 
+#content-inner .content h5, 
+#content-inner .content h6 {
 	font-weight: 700;
 	font-size: 24px;
 	color: #000;

@@ -19,7 +19,12 @@ class HomeBaseController extends Controller{
 	public function _initialize(){
 		$this->text();
 		$this->calendar();
+		$this->tags();
 		$action = ACTION_NAME;//当前操作名  
+		if($action != 'index' && $action != 'listinfo' && $action != 'me'){
+			//默认为index
+			$action = 'index';
+		}
 		$this->assign('action',$action);
 	}
 	
@@ -32,6 +37,19 @@ class HomeBaseController extends Controller{
 	public function text(){
 		$text = 'shen me gui!';
 		$this->assign('text',$text);
+	}
+	
+	/**
+	 * @todo: 文章标签
+	 * @author Saki <ilulu4ever816@gmail.com>
+	 * @date 2014-12-24 下午2:20:50 
+	 * @version V1.0
+	 */
+	public function tags(){
+		$model = new \Admin\Model\ArticleTypeModel();
+		$condition['status'] = 1;
+		$type_list = $model->where($condition)->select();
+		$this->assign('type_list',$type_list);
 	}
 	
 	/**
@@ -77,7 +95,12 @@ class HomeBaseController extends Controller{
 			//加入到总数组中
 			array_push($data, $temp);
 		}
+		//当前月发表过文章的列表信息
+		$model = new \Admin\Model\ArticleListModel();
+		$sql = "select group_concat(date_format(ctm,'%d')) as ctm FROM __PREFIX__article_list where date_format(ctm,'%Y-%m')=date_format(now(),'%Y-%m')";
+		$has_ctm = $model->query($sql);
 		$this->assign('calendar',$data);
+		$this->assign('has_ctm',$has_ctm[0]['ctm']);
 		$this->assign('d',$d);
 	}
 	

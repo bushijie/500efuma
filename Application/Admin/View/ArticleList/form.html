@@ -93,7 +93,7 @@
 			<div class="modal-body">
 			    <span class="btn btn-success fileinput-button">
 			        <i class="glyphicon glyphicon-plus"></i>
-			        <span>Select files...</span>
+			        <span>添加图片</span>
 			        <!-- The file input field used as target for the file upload widget -->
 			        <input id="fileupload" type="file" name="files[]" multiple>
 			    </span>
@@ -107,8 +107,10 @@
 			    <div id="files" class="files"></div>
 			</div>
 			<div class="modal-footer">
-				<button type="submit" class="btn blue">上传</button>
-				<button type="button" class="btn default" data-dismiss="modal">取消</button>
+				<!-- 
+					<button type="button" class="btn blue">上传</button>
+				 -->
+				<button type="button" class="btn default" data-dismiss="modal">关闭</button>
 			</div>
 		</div>
 		<!-- /.modal-content -->
@@ -245,7 +247,6 @@ jQuery(document).ready(function() {
     });
 	
     
-    'use strict';
     $('#fileupload').fileupload({
         url: '/Util/upload',
         dataType: 'json',
@@ -261,8 +262,7 @@ jQuery(document).ready(function() {
                 progress + '%'
             );
         }
-    }).prop('disabled', !$.support.fileInput)
-        .parent().addClass($.support.fileInput ? undefined : 'disabled');
+    }).prop('disabled', !$.support.fileInput).parent().addClass($.support.fileInput ? undefined : 'disabled');
     
     
 });

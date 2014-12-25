@@ -90,3 +90,7 @@
 	font-weight: 300;
 	line-height: 1.25;
 }
+
+#content-inner .content img {
+	max-width: 100%;
+}

@@ -37,8 +37,8 @@ class UploadHandler
     function __construct($options = null, $initialize = true, $error_messages = null) {
         $this->options = array(
             'script_url' => $this->get_full_url().'/',
-            'upload_dir' => dirname($this->get_server_var('SCRIPT_FILENAME')).'/Upload/',
-            'upload_url' => $this->get_full_url().'/Upload/',
+            'upload_dir' => dirname($this->get_server_var('SCRIPT_FILENAME')).'/Upload/' . date('Ymd',time()) . '/',
+            'upload_url' => $this->get_full_url().'/Upload/'. date('Ymd',time()) . '/',
             'user_dirs' => false,
             'mkdir_mode' => 0755,
             'param_name' => 'files',
@@ -934,7 +934,7 @@ class UploadHandler
             foreach ($upload['tmp_name'] as $index => $value) {
                 $files[] = $this->handle_file_upload(
                     $upload['tmp_name'][$index],
-                    $file_name ? $file_name : $upload['name'][$index],
+                    $file_name ? md5($file_name.time()) : md5($upload['name'][$index].time()),
                     $size ? $size : $upload['size'][$index],
                     $upload['type'][$index],
                     $upload['error'][$index],

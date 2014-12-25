@@ -239,6 +239,8 @@ jQuery(document).ready(function() {
                      title: 'Image',
                      icon: 'glyphicon glyphicon-picture',
                      callback: function(e){
+                    	 $("#files p").remove();
+                    	 $("#progress .progress-bar").css("width","0%");
                     	 $('#basic').modal('show');
                      }
                }]
@@ -248,11 +250,13 @@ jQuery(document).ready(function() {
 	
     
     $('#fileupload').fileupload({
-        url: '/Util/upload',
+        url: '/Util/uploadImg',
         dataType: 'json',
         done: function (e, data) {
             $.each(data.result.files, function (index, file) {
-                $('<p/>').text(file.name).appendTo('#files');
+            	//![Alt text](/Upload/fef5416q185fefwef.png)
+            	//url-对应所在的地址,thumbnailUrl-缩略图地址
+                $('<p/>').text('![Alt text]('+ file.url +')').appendTo('#files');
             });
         },
         progressall: function (e, data) {

@@ -10,24 +10,20 @@ use Think\Controller;
  */
 class UtilController extends Controller {
 	
+	/**
+	 * @todo: 文章编辑时的图片上传接口
+	 * @author Saki <ilulu4ever816@gmail.com>
+	 * @date 2014-12-26 上午10:45:54
+	 * @version V1.0
+	 */
 	public function uploadImg(){
-		$upload = new \Think\Upload();
-		$upload->maxSize = 5242880;//5M
-		$upload->exts      =     array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
-		$upload->savePath  =      './Uploads/'; // 设置附件上传目录
-		// 上传文件
-		$info   =   $upload->upload();
-		if(!$info) {
-			// 上传错误提示错误信息
-			$this->error($upload->getError());
-		}else{
-			// 上传成功
-			$this->success('上传成功！');
-		}
-	}
-	
-	public function upload(){
-		$upload = new \Org\Upload\UploadHandler();
+		//上传文件的配置
+		$options = array(
+			'image_versions' => array(
+                'thumbnail' => array('max_width' => 700,'max_height' => 700)//缩略图大小配置
+        	)
+		);
+		$upload = new \Org\Upload\UploadHandler($options);
 	}
 	
 }

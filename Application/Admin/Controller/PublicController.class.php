@@ -10,7 +10,7 @@ use Think\Controller;
  */
 class PublicController extends AdminBaseController{
 
-	
+
 	
 	
 }

@@ -2,6 +2,10 @@
 <link rel="stylesheet" type="text/css" href="/Template/admin/plugins/select2/select2_metro.css" />
 <link rel="stylesheet" type="text/css" href="/Template/admin/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css">
 <link rel="stylesheet" type="text/css" href="/Template/admin/plugins/jquery-tags-input/jquery.tagsinput.css" />
+
+<link rel="stylesheet" href="/Template/admin/plugins/jquery-file-upload/css/jquery.fileupload-ui.css" />
+
+
 <!-- END PAGE LEVEL SCRIPTS -->
 <div class="row">
 	<div class="col-md-12">
@@ -58,7 +62,7 @@
 						<div class="form-group">
 							<label class="control-label col-md-2">内容</label>
 							<div class="col-md-9">
-								<textarea name="Article[content]" data-provide="markdown" rows="20" data-error-container="#editor_error">{$article_info['content']}</textarea>
+								<textarea name="Article[content]"  id="content-markdown" rows="20" data-error-container="#editor_error">{$article_info['content']}</textarea>
 								<div id="editor_error"></div>
 							</div>
 						</div>
@@ -77,6 +81,44 @@
 	</div>
 </div>
 
+
+
+<div class="modal fade" id="basic" tabindex="-1" role="basic" aria-hidden="true" data-backdrop='false'>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+				<h4 class="modal-title">图片选择</h4>
+			</div>
+			<div class="modal-body">
+			    <span class="btn btn-success fileinput-button">
+			        <i class="glyphicon glyphicon-plus"></i>
+			        <span>Select files...</span>
+			        <!-- The file input field used as target for the file upload widget -->
+			        <input id="fileupload" type="file" name="files[]" multiple>
+			    </span>
+			    <br>
+			    <br>
+			    <!-- The global progress bar -->
+			    <div id="progress" class="progress">
+			        <div class="progress-bar progress-bar-success"></div>
+			    </div>
+			    <!-- The container for the uploaded files -->
+			    <div id="files" class="files"></div>
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="btn blue">上传</button>
+				<button type="button" class="btn default" data-dismiss="modal">取消</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<script src="/Template/admin/plugins/jquery-file-upload/js/vendor/jquery.ui.widget.js"></script>
+<script src="/Template/admin/plugins/jquery-file-upload/js/jquery.iframe-transport.js"></script>
+<script src="/Template/admin/plugins/jquery-file-upload/js/jquery.fileupload.js"></script>
 <!-- BEGIN PAGE LEVEL PLUGINS -->
 <script type="text/javascript" src="/Template/admin/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
 <script type="text/javascript" src="/Template/admin/plugins/jquery-validation/dist/additional-methods.min.js"></script>
@@ -85,9 +127,11 @@
 <script type="text/javascript" src="/Template/admin/plugins/bootstrap-markdown/js/bootstrap-markdown.js"></script>
 <script type="text/javascript" src="/Template/admin/plugins/bootstrap-markdown/lib/markdown.js"></script>
 <script type="text/javascript" src="/Template/admin/plugins/jquery-tags-input/jquery.tagsinput.min.js" ></script>
+<script type="text/javascript" src="/Template/admin/plugins/bootbox/bootbox.min.js" ></script>
+
+
 <!-- END PAGE LEVEL PLUGINS -->
 <script>
-
 jQuery(document).ready(function() {   
 	
 	var form3 = $('#form_create_article');
@@ -182,12 +226,44 @@ jQuery(document).ready(function() {
 
     });
 	
-    $('#tags').tagsInput({
-        width: 'auto',
-        'onAddTag': function () {
-            //alert(1);
-        },
+    $('#tags').tagsInput({width: 'auto'});
+    
+    $("#content-markdown").markdown({
+    	  additionalButtons: [
+           [{
+        	   name: "groupCustom",
+               data: [{
+                     name: 'cmdImage2',
+                     title: 'Image',
+                     icon: 'glyphicon glyphicon-picture',
+                     callback: function(e){
+                    	 $('#basic').modal('show');
+                     }
+               }]
+           }]
+         ]
     });
 	
+    
+    'use strict';
+    $('#fileupload').fileupload({
+        url: '/Util/upload',
+        dataType: 'json',
+        done: function (e, data) {
+            $.each(data.result.files, function (index, file) {
+                $('<p/>').text(file.name).appendTo('#files');
+            });
+        },
+        progressall: function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('#progress .progress-bar').css(
+                'width',
+                progress + '%'
+            );
+        }
+    }).prop('disabled', !$.support.fileInput)
+        .parent().addClass($.support.fileInput ? undefined : 'disabled');
+    
+    
 });
 </script>

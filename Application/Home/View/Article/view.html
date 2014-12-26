@@ -72,7 +72,7 @@ a.button:active{
 						<if condition="$comment.name neq null">{$comment.name}<else /> 匿名游客</if>
 						<span>
 							{$comment.ctm} / 
-							<if condition="$comment.name neq null">{$comment.name}
+							<if condition="$comment.name neq null">
 								<a href="javascript:void(0);" class="reply" data-name='#{$k}-{$comment.name}' data-id='{$comment.id}'>回复</a>
 							<else />
 								<a href="javascript:void(0);" class="reply" data-name='#{$k}-匿名游客' data-id='{$comment.id}'>回复</a>

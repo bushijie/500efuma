@@ -48,3 +48,13 @@ function Article_Cookie_IP($article_id){
 }
 
 
+function listID_2_arrID ($list){
+	$result = array();
+	foreach ($list as $key=>$value){
+			
+			
+			
+	}
+	return $result;
+}
+

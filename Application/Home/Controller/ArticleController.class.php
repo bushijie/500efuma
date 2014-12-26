@@ -29,6 +29,13 @@ class ArticleController extends HomeBaseController{
 		$info['ctm_D'] = date('d',strtotime($info['ctm']));//日期
 		//tags解析
 		$tags = explode(",",$info['tags']);
+		//查询评论列表
+		$comments_model = new \Admin\Model\ArticleCommentModel();
+		$comments_list_first = $comments_model->getComments_First($id);
+		
+		
+		
+		
 		//增加一个浏览量
 		if(Article_Cookie_IP($id)){
 			$model->addPv($id);
@@ -36,7 +43,7 @@ class ArticleController extends HomeBaseController{
 		//输出
 		$this->assign('info',$info);
 		$this->assign('tags',$tags);
-		$this->assign('ip',$ip);
+		$this->assign('comments_list',$comments_list);
 		$this->display();
 	}
 	

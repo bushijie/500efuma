@@ -1,5 +1,43 @@
+<style>
+.media-heading span {
+	color: #777777;
+	font-size: 14px;
+	position: relative;
+	right: -1px;
+	top: 0px;
+	float: right;
+}
+
+.media-heading span a {
+	color: #5987CF;
+}
+
+.media-heading span a:hover {
+	text-decoration: underline;
+}
+
+.comment-h2 {
+	font-size: 2em;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.comment-in {
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	background-color: #eee;
+	padding: 10px 10px 0px 10px;
+	margin-left: 50px;
+}
+
+.control-label{
+	color: #2C2C2C;
+}
+</style>
+
 <div id="content">
 	<div id="content-inner">
+		<!-- 内容显示区 -->
 		<article class="is-post is-post-excerpt">
 			<header>
 				<h2>{$info.title}</h2>
@@ -18,6 +56,79 @@
 				{$info.content}
 			</div>
 		</article>
+		
+		<!-- 评论显示区 -->
+		<hr>
+		<h2 class="comment-h2" >游客评论区</h2>
+		
+		
+		
+		
+		<div class="media">
+			<div class="media-body">
+				<h4 class="media-heading">
+					Media heading 
+					<span>2014-12-26 17:45:18 / <a href="#">回复</a></span>
+				</h4>
+				<p>123</p>
+				<hr>
+			</div>
+		</div>
+		<div class="media">
+			<div class="media-body">
+				<h4 class="media-heading">
+					Media heading 
+					<span>2014-12-26 17:45:18 / <a href="#">回复</a></span>
+				</h4>
+				<p>123</p>
+				<hr>
+			</div>
+		</div>
+		
+		<div class="media">
+			<div class="media-body">
+				<h4 class="media-heading">
+					Media heading 
+					<span>2014-12-26 17:45:18 / <a href="#">回复</a></span>
+				</h4>
+				<p>123</p>
+			</div>
+			<div class="media-body comment-in">
+				<h4 class="media-heading">Media heading <span>July 5,2013 / <a href="#">Reply</a></span></h4>
+				<p>33223</p>
+				
+				<h4 class="media-heading">Media heading <span>July 5,2013 / <a href="#">Reply</a></span></h4>
+				<p>33223</p>
+			</div>
+		</div>
+		
+		<!--end media-->
+		
+		<!-- 填写评论区 -->
+		<hr>
+		<h2 class="comment-h2" >发表评论</h2>
+		<div class="post-comment">
+			<form  action="#">
+				<div class="form-group">
+					<label class="control-label">昵称</label>
+					<span style="float:right">(未填写则默认为【匿名游客】)</span>
+					<input type="text" class="form-control">
+				</div>
+				<br>
+				<div class="form-group">
+					<label class="control-label">邮件</label>
+					<span style="float:right">(如填写，当有回复的时会发送邮件提醒)</span>
+					<input type="text" class="form-control">
+				</div>
+				<br>
+				<div class="form-group">
+					<label class="control-label">评论信息</label>
+					<textarea class="col-md-10 form-control" rows="8"></textarea>
+				</div>
+				<button style="border: none;" class="button" type="button">提交评论</button>
+			</form>
+		</div>
+		
 	</div>
 </div>
 

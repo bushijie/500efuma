@@ -13,7 +13,7 @@ class ArticleController extends HomeBaseController{
 	 */
 	public function View(){
 		$id = $_GET['id'];
-		$p = isset($_GET['p']) ? 1 : 0;//评论分页标志
+		$p = isset($_GET['p']) ? $_GET['p'] : 0;//评论分页标志
 		//文章详细信息
 		$model = new \Admin\Model\ArticleListModel();
 		$info = $model->getArticleInfo($id);
@@ -41,6 +41,20 @@ class ArticleController extends HomeBaseController{
 		$this->assign('page',$show);
 		$this->assign('p',$p);
 		$this->display();
+	}
+	
+	/**
+	 * @todo: 发送评论
+	 * @author Saki <ilulu4ever816@gmail.com>
+	 * @date 2014-12-22 上午9:34:18
+	 * @version V1.0
+	 */
+	public function PostComment(){
+		$model = new \Admin\Model\ArticleCommentModel();
+		$post = $_POST['ArticleComment'];
+		$id = $post['aid'];
+		$model->createComment($post);
+		$this->redirect('Article/view', array('id' => $id,'p'=>1));
 	}
 	
 	

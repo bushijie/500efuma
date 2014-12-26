@@ -68,9 +68,16 @@ a.button:active{
 			<div class="media">
 				<div class="media-body">
 					<h4 class="media-heading">
-						#{$k}
+						#{$k+($p-1)*3}
 						<if condition="$comment.name neq null">{$comment.name}<else /> 匿名游客</if>
-						<span>{$comment.ctm} / <a href="#">回复</a></span>
+						<span>
+							{$comment.ctm} / 
+							<if condition="$comment.name neq null">{$comment.name}
+								<a href="javascript:void(0);" class="reply" data-name='#{$k}-{$comment.name}' data-id='{$comment.id}'>回复</a>
+							<else />
+								<a href="javascript:void(0);" class="reply" data-name='#{$k}-匿名游客' data-id='{$comment.id}'>回复</a>
+							</if>
+						</span>
 					</h4>
 					<p style="margin-top: 1em;">{$comment.content}</p>
 					
@@ -79,7 +86,7 @@ a.button:active{
 					<div class="media-body comment-in">
 						<volist name="comment.comment_sec" id="comment_sec" >
 							<h4 class="media-heading">
-								<if condition="$comment.name neq null">{$comment_sec.name}<else /> 匿名游客</if>
+								<if condition="$comment_sec.name neq null">{$comment_sec.name}<else /> 匿名游客</if>
 								<span>{$comment_sec.ctm}</span>
 							</h4>
 							<p style="margin-top: 1em;">{$comment_sec.content}</p>
@@ -93,26 +100,30 @@ a.button:active{
 		<div class="pager" style="margin-top:-4em;text-align: right;"><div>{$page}</div></div>
 		
 		<!-- 填写评论区 -->
-		<h2 class="comment-h2" style="margin-top:2em;">发表评论</h2>
+		<h2 class="comment-h2" style="margin-top:2em;" id="post-comment-start">发表评论</h2>
 		<div class="post-comment">
-			<form  action="#">
+			<form id="post-comment" action="/Home/Article/postComment" method="post">
+				<input type="hidden"  name="ArticleComment[aid]" value="{$info.id}">
+				<input type="hidden" id="ArticleCommentPid"  name="ArticleComment[pid]" value="0">
 				<div class="form-group">
 					<label class="control-label">昵称</label>
 					<span style="float:right">(未填写则默认为【匿名游客】)</span>
-					<input type="text" class="form-control">
+					<input type="text" class="form-control" name="ArticleComment[name]">
 				</div>
 				<br>
 				<div class="form-group">
 					<label class="control-label">邮件</label>
 					<span style="float:right">(如填写，当有回复的时会发送邮件提醒)</span>
-					<input type="text" class="form-control">
+					<input type="text" class="form-control" name="ArticleComment[email]">
 				</div>
 				<br>
 				<div class="form-group">
 					<label class="control-label">评论信息</label>
-					<textarea class="col-md-10 form-control" rows="8"></textarea>
+					<span style="float:right">(请不要填写空的评论，这样是不会进行处理的)</span>
+					<textarea class="col-md-10 form-control" rows="8" name="ArticleComment[content]"></textarea>
 				</div>
-				<button style="border: none;" class="button" type="button">提交评论</button>
+				<a href="javascript:void(0);" style="border: none;" class="button" id="comment-submit">提交评论</a>
+				<a href="javascript:void(0);" style="border: none;display:none" class="button" id="no-obj">取消回复对象</a>
 			</form>
 		</div>
 		
@@ -152,13 +163,42 @@ a.button:active{
 <link href="/Template/admin/plugins/SyntaxHighlighter3/styles/shCoreDefault.css" type="text/css" rel="stylesheet" />
 <link href="/Template/css/markdown.css" rel="stylesheet" type="text/css">
 
-<script type="text/javascript">SyntaxHighlighter.all();</script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+
+//评论提交
+$('#comment-submit').click(function(){
+	$('#post-comment').submit();
+});
+
+$('.media-heading .reply').click(function(){
+	$("html,body").stop(true);
+	$("html,body").animate({scrollTop: $("#post-comment-start").offset().top}, 10);
+	//
+	var id = $(this).attr('data-id');
+	var name = $(this).attr('data-name');
+	$('#ArticleCommentPid').val(id);
+	//
+	$('#post-comment-start').text('回复'+name);
+	$('#post-comment-start').css('color','#E24C6D');
+	//
+	$('#no-obj').show();
+});
+
+$('#no-obj').click(function(){
+	$(this).hide();
+	$('#ArticleCommentPid').val(0);
+	$('#post-comment-start').text('发表评论');
+	$('#post-comment-start').css('color','#1b252a');
+});
+
+</script>
 
 <if condition="$p neq 0">
 <script type="text/javascript">
 function mScroll(){
 	$("html,body").stop(true);
-	$("html,body").animate({scrollTop: $("#comment-start").offset().top-450}, 500);
+	$("html,body").animate({scrollTop: $("#comment-start").offset().top-450},100);
 } 
 mScroll();
 </script>

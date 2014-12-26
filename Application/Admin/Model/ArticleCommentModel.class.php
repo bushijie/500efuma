@@ -38,6 +38,24 @@ class ArticleCommentModel extends RelationModel {
 		return $list;
 	}
 	
+	/**
+	 * @todo: 新增评论
+	 * @author Saki <ilulu4ever816@gmail.com>
+	 * @date 2014-12-26 下午5:45:28
+	 * @version V1.0
+	 */
+	public function createComment($post){
+		$model = D('Admin/ArticleComment');
+		if($post['content'] != ''){
+			$data = $post;
+			$data['ctm'] = date('Y-m-d H:i:s',time());
+			try {
+				$isadd = $model->data($data)->add($data);
+			} catch (Exception $e) {
+			}
+		}
+	}
+	
 	
 	
 	

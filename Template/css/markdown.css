@@ -26,16 +26,19 @@
 	border-radius: 4px;
 }
 
-#content-inner .content code, kbd, pre, samp {
+#content-inner .content code, 
+#content-inner .content kbd, 
+#content-inner .content pre, 
+#content-inner .content samp {
 	font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
 }
 
-#content-inner .content a:hover, a:focus {
+#content-inner .content a:hover,#content-inner .content a:focus {
 	color: #2a6496;
 	text-decoration: underline;
 }
 
-#content-inner .content a:active, a:hover {
+#content-inner .content a:active,#content-inner .content a:hover {
 	outline: 0;
 }
 
@@ -46,13 +49,16 @@
 	background: transparent;
 }
 
-#content-inner .content ul, ol {
+#content-inner .content ul, 
+#content-inner .content ol {
 	margin-top: 0;
 	margin-bottom: 10px;
 	box-sizing: border-box;
 }
 
-#content-inner .content ul, menu, dir {
+#content-inner .content ul, 
+#content-inner .content menu, 
+#content-inner .content dir {
 	display: block;
 	list-style-type: disc;
 	-webkit-margin-before: 1em;

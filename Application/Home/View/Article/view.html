@@ -33,6 +33,11 @@
 .control-label{
 	color: #2C2C2C;
 }
+
+a.button:active{
+	color: #FFF;
+}
+
 </style>
 
 <div id="content">
@@ -58,55 +63,37 @@
 		</article>
 		
 		<!-- 评论显示区 -->
-		<hr>
 		<h2 class="comment-h2" >游客评论区</h2>
-		
-		
-		
-		
-		<div class="media">
-			<div class="media-body">
-				<h4 class="media-heading">
-					Media heading 
-					<span>2014-12-26 17:45:18 / <a href="#">回复</a></span>
-				</h4>
-				<p>123</p>
+		<volist name="comments_list" id="comment" key="k">
+			<div class="media">
+				<div class="media-body">
+					<h4 class="media-heading">
+						#{$k}
+						<if condition="$comment.name neq null">{$comment.name}<else /> 匿名游客</if>
+						<span>{$comment.ctm} / <a href="#">回复</a></span>
+					</h4>
+					<p style="margin-top: 1em;">{$comment.content}</p>
+					
+				</div>
+				<if condition="$comment.comment_sec neq null">
+					<div class="media-body comment-in">
+						<volist name="comment.comment_sec" id="comment_sec" >
+							<h4 class="media-heading">
+								<if condition="$comment.name neq null">{$comment_sec.name}<else /> 匿名游客</if>
+								<span>{$comment_sec.ctm} / <a href="#">回复</a></span>
+							</h4>
+							<p style="margin-top: 1em;">{$comment_sec.content}</p>
+						</volist>
+					</div>
+				</if>
 				<hr>
 			</div>
-		</div>
-		<div class="media">
-			<div class="media-body">
-				<h4 class="media-heading">
-					Media heading 
-					<span>2014-12-26 17:45:18 / <a href="#">回复</a></span>
-				</h4>
-				<p>123</p>
-				<hr>
-			</div>
-		</div>
-		
-		<div class="media">
-			<div class="media-body">
-				<h4 class="media-heading">
-					Media heading 
-					<span>2014-12-26 17:45:18 / <a href="#">回复</a></span>
-				</h4>
-				<p>123</p>
-			</div>
-			<div class="media-body comment-in">
-				<h4 class="media-heading">Media heading <span>July 5,2013 / <a href="#">Reply</a></span></h4>
-				<p>33223</p>
-				
-				<h4 class="media-heading">Media heading <span>July 5,2013 / <a href="#">Reply</a></span></h4>
-				<p>33223</p>
-			</div>
-		</div>
-		
+		</volist>
 		<!--end media-->
+		<div class="pager" style="margin-top:-4em;text-align: right;"><div>{$page}</div></div>
 		
 		<!-- 填写评论区 -->
-		<hr>
-		<h2 class="comment-h2" >发表评论</h2>
+		<h2 class="comment-h2" style="margin-top:2em;">发表评论</h2>
 		<div class="post-comment">
 			<form  action="#">
 				<div class="form-group">

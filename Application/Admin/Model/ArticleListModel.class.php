@@ -43,6 +43,8 @@ class ArticleListModel extends RelationModel {
 			array_push ( $temp, $choose );//勾选框
 			array_push ( $temp, $article ['title'] );//类型名称
 			array_push ( $temp, $article ['article_type']['title']);//类型
+			array_push ( $temp, $article ['pv_num']);
+			array_push ( $temp, $article ['comments_num']);
 			array_push ( $temp, $article ['admin']['name']);//创建者
 			array_push ( $temp, $article ['ctm'] );//创建时间
 			$action = "<a href='" . U('ArticleList/view',array('id'=>$article['id'])) . "' class='btn purple btn-sm'>预览</a> " . 
@@ -83,7 +85,7 @@ class ArticleListModel extends RelationModel {
 	/**
 	 * @todo: todo(这里用一句话描述这个方法的作用) 
 	 * @param $post POST数据
-	 * @param $id   操作ID
+	 * @param $id   文章ID
 	 * @author Saki <ilulu4ever816@gmail.com>
 	 * @date 2014-12-15 下午6:06:30 
 	 * @version V1.0
@@ -108,7 +110,7 @@ class ArticleListModel extends RelationModel {
 	
 	/**
 	 * @todo: 删除文章
-	 * @param $id 类型ID
+	 * @param $id 文章ID
 	 * @date 2014-12-12 下午6:18:54
 	 * @version V1.0
 	 */
@@ -125,5 +127,25 @@ class ArticleListModel extends RelationModel {
 		$res['msg'] = $msg;
 		return $res;
 	}
+	
+	/**
+	 * @todo: 增加浏览量
+	 * @param $id  文章ID
+	 * @author Saki <ilulu4ever816@gmail.com>
+	 * @date 2014-12-26 上午11:40:34 
+	 * @version V1.0
+	 */
+	public function addPv($id){
+		$model = D('Admin/ArticleList');
+		$map['id'] = $id;
+		$info = $model->where($map)->find();
+		$data['pv_num'] = $info['pv_num'] + 1;
+		try {
+			$isupdate = $model->where($map)->save($data);
+		} catch (Exception $e) {
+		}
+	}
+	
+	
 	
 }

@@ -29,9 +29,14 @@ class ArticleController extends HomeBaseController{
 		$info['ctm_D'] = date('d',strtotime($info['ctm']));//日期
 		//tags解析
 		$tags = explode(",",$info['tags']);
+		//增加一个浏览量
+		if(Article_Cookie_IP($id)){
+			$model->addPv($id);
+		}
 		//输出
 		$this->assign('info',$info);
 		$this->assign('tags',$tags);
+		$this->assign('ip',$ip);
 		$this->display();
 	}
 	

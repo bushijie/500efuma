@@ -68,7 +68,12 @@ a.button:active{
 			<div class="media">
 				<div class="media-body">
 					<h4 class="media-heading">
-						#{$k+($p-1)*3}
+						<if condition="$p eq null">
+							#{$k+(1-1)*3}
+						<else /> 
+							#{$k+($p-1)*3}
+						</if>
+					
 						<if condition="$comment.name neq null">{$comment.name}<else /> 匿名游客</if>
 						<span>
 							{$comment.ctm} / 

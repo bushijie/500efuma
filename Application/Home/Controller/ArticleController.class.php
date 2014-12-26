@@ -13,6 +13,7 @@ class ArticleController extends HomeBaseController{
 	 */
 	public function View(){
 		$id = $_GET['id'];
+		$p = isset($_GET['p']) ? 1 : 0;//评论分页标志
 		//文章详细信息
 		$model = new \Admin\Model\ArticleListModel();
 		$info = $model->getArticleInfo($id);
@@ -38,6 +39,7 @@ class ArticleController extends HomeBaseController{
 		$this->assign('tags',$tags);
 		$this->assign('comments_list',$comments_list);
 		$this->assign('page',$show);
+		$this->assign('p',$p);
 		$this->display();
 	}
 	

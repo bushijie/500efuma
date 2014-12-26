@@ -63,7 +63,7 @@ a.button:active{
 		</article>
 		
 		<!-- 评论显示区 -->
-		<h2 class="comment-h2" >游客评论区</h2>
+		<h2 class="comment-h2" id="comment-start">游客评论区</h2>
 		<volist name="comments_list" id="comment" key="k">
 			<div class="media">
 				<div class="media-body">
@@ -80,7 +80,7 @@ a.button:active{
 						<volist name="comment.comment_sec" id="comment_sec" >
 							<h4 class="media-heading">
 								<if condition="$comment.name neq null">{$comment_sec.name}<else /> 匿名游客</if>
-								<span>{$comment_sec.ctm} / <a href="#">回复</a></span>
+								<span>{$comment_sec.ctm}</span>
 							</h4>
 							<p style="margin-top: 1em;">{$comment_sec.content}</p>
 						</volist>
@@ -153,3 +153,17 @@ a.button:active{
 <link href="/Template/css/markdown.css" rel="stylesheet" type="text/css">
 
 <script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<if condition="$p neq 0">
+<script type="text/javascript">
+function mScroll(){
+	$("html,body").stop(true);
+	$("html,body").animate({scrollTop: $("#comment-start").offset().top-450}, 500);
+} 
+mScroll();
+</script>
+</if>
+
+
+
+

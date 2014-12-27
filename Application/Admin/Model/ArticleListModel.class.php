@@ -153,6 +153,48 @@ class ArticleListModel extends RelationModel {
 		return $info;
 	}
 	
+	public function getArticleList_Mon($page){
+		$model = D('Admin/ArticleList');
+		//首先计算出月份的分类
+		$sql = "select date_format(ctm,'%Y-%m') as id FROM __PREFIX__article_list group by date_format(ctm,'%Y-%m') order by id desc limit " .$page->firstRow. "," . $page->listRows;
+		$ctm_group = $model->query($sql);
+		//每个月份下的文章列表
+		$group_arr = listID_2_arrID($ctm_group);
+		$str = '';
+		foreach ($group_arr as $tm){
+			$str = $str . "'" . $tm . "'," ;
+		}
+		$str = substr($str,0,strlen($str)-1);
+		$map['_string']  = "date_format(ctm,'%Y-%m') in (" . $str . ")";
+		$list = $model->order('ctm asc')->where($map)->select ();
+		//嵌套遍历进行赋值处理
+		foreach ($ctm_group as $k=>$mon){
+			$temp = array();
+			$count_comments = 0;
+			foreach ($list as $k_a => $article){
+				if(date('Y-m',strtotime($article['ctm'])) == $mon['id']){
+					array_push($temp, $article);
+					$count_comments = $count_comments + $article['comments_num'];
+				}
+			}
+			//总评论量
+			$ctm_group[$k]['count_comments'] = $count_comments;
+			//总文章列表
+			$temp = count($temp) > 0 ? $temp : null;
+			$ctm_group[$k]['article_list'] = $temp;
+			//时间的处理
+			$ctm_group[$k]['ctm_M'] = date('M',strtotime($mon['id']));//月份简写
+			$ctm_F = date('F',strtotime($mon['id']));//月份全写
+			$len_M = strlen($ctm_group[$k]['ctm_M']);//缩写字符串的长度
+			$ctm_F = mb_substr($ctm_F,$len_M);//截取剩余字符串
+			$ctm_group[$k]['ctm_F'] = $ctm_F;//月份全写截取后的剩余字符串
+			$ctm_group[$k]['ctm_Y'] = date('Y',strtotime($mon['id']));//年份
+			
+		}
+		return $ctm_group;
+	}
+	
+	
 	
 	/**
 	 * @todo: 增加浏览量

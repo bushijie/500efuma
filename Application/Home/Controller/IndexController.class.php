@@ -55,8 +55,23 @@ class IndexController extends HomeBaseController {
 	* @version v1.0.0 
 	*/
 	public function listinfo(){
+		$model = new \Admin\Model\ArticleListModel();
+		//计算分类总数
+		$sql = "select count(ctm) as count from (select date_format(ctm,'%Y-%m') as ctm from __PREFIX__article_list group by date_format(ctm,'%Y-%m')) a";
+		$count = $model->query($sql);
+		//分页显示设置
+		$Page = new \Think\Page($count[0]['count'],5);
+		$Page->setConfig('prev','上一页');
+		$Page->setConfig('next','下一页');
+		$Page->setConfig('theme','%FIRST%  %LINK_PAGE%  %END%');
+		$show = $Page->show();
+		//分页数据处理
+		$list = $model->getArticleList_Mon($Page);
+		$this->assign('list',$list);
 		$this->display();
 	}
+	
+	
 	
 	/** 
 	* 关于我

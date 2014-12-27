@@ -20,6 +20,7 @@ class HomeBaseController extends Controller{
 		$this->text();
 		$this->calendar();
 		$this->tags();
+		$this->recent_posts();
 		$action = ACTION_NAME;//当前操作名  
 		if($action != 'index' && $action != 'listinfo' && $action != 'me'){
 			//默认为index
@@ -40,6 +41,20 @@ class HomeBaseController extends Controller{
 		$text = $info['value'];
 		$this->assign('text',$text);
 	}
+	
+	/**
+	 * @todo: 最受关注的文章
+	 * @author Saki <ilulu4ever816@gmail.com>
+	 * @date 2014-12-27 上午10:35:11
+	 * @version V1.0
+	 */
+	public function recent_posts(){
+		$model = new \Admin\Model\ArticleListModel();
+		$list = $model->order('pv_num desc,comments_num desc')->limit (5)->select ();
+		$this->assign('recent_posts',$list);		
+	}
+	
+	
 	
 	/**
 	 * @todo: 文章标签

@@ -3,7 +3,9 @@
 		<h2>最受关注文章</h2>
 	</header>
 	<ul>
-		<li><a href="#">日本众绘师描绘2次元醉酒女子 图文并茂介绍日本酒</a></li>
-		<li><a href="#">剧场版「魔法少女小圆」票房破20亿 各高票房动画一览</a></li>
+		<volist name="recent_posts" id="article">
+			<li><a href="/Home/Article/view/id/{$article.id}">{$article.title}</a></li>
+		</volist>
+	
 	</ul>
 </section>

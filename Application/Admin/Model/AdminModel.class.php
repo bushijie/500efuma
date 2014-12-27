@@ -4,6 +4,7 @@ use Think\Model\RelationModel;
 
 class AdminModel extends RelationModel {
 	
+	protected $tableName = 'admin';
 	
 	public function check_username_password($username,$password){
 		$model = D('Admin/Admin');

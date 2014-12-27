@@ -35,7 +35,9 @@ class HomeBaseController extends Controller{
 	 * @version V1.0
 	 */
 	public function text(){
-		$text = 'shen me gui!';
+		$model = new \Admin\Model\SystemModel();
+		$info = $model->getValue('text');
+		$text = $info['value'];
 		$this->assign('text',$text);
 	}
 	

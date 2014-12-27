@@ -95,7 +95,7 @@ function sidebar(){
 				'sysMsg'=>array(
 					'name'=>'傻逼语录',
 					'key'=>'sysMsg',
-					'url'=>'/System/index',
+					'url'=>'/System/editText',
 				),
 				'sysPhone'=>array(
 					'name'=>'联系方式',

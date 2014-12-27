@@ -54,7 +54,7 @@ a.button:active{
 					<span class="year">, {$info.ctm_Y}</span>
 				</span>
 				<ul class="stats">
-					<li><a href="#" class="link-icon24 link-icon24-1">42</a></li>
+					<li><a href="#" class="link-icon24 link-icon24-1">{$info.comments_num}</a></li>
 				</ul>
 			</div>
 			<div class="content" style="height:auto">
@@ -74,7 +74,16 @@ a.button:active{
 							#{$k+($p-1)*3}
 						</if>
 					
-						<if condition="$comment.name neq null">{$comment.name}<else /> 匿名游客</if>
+						<if condition="$comment.is_admin neq 1">
+							<if condition="$comment.name neq null">
+								{$comment.name}
+							<else />
+								匿名游客
+							</if>
+						<else />
+							<font color="#E74570">站长</font>
+						</if>
+						
 						<span>
 							{$comment.ctm} / 
 							<if condition="$comment.name neq null">
@@ -91,7 +100,16 @@ a.button:active{
 					<div class="media-body comment-in">
 						<volist name="comment.comment_sec" id="comment_sec" >
 							<h4 class="media-heading">
-								<if condition="$comment_sec.name neq null">{$comment_sec.name}<else /> 匿名游客</if>
+							
+								<if condition="$comment_sec.is_admin neq 1">
+									<if condition="$comment_sec.name neq null">
+										{$comment.name}
+									<else />
+										匿名游客
+									</if>
+								<else />
+									<font color="#E74570">站长</font>
+								</if>
 								<span>{$comment_sec.ctm}</span>
 							</h4>
 							<p style="margin-top: 1em;">{$comment_sec.content}</p>

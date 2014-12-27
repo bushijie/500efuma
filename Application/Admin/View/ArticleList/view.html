@@ -10,6 +10,11 @@
 	max-width: 100%;
 }
 
+.pages {
+	display: inline-block;
+	margin-left: 5px;
+	margin-right: 5px;	
+}
 </style>
 
 <div class="row">
@@ -45,55 +50,97 @@
 				{$info['content']}
 				</div>
 				<hr>
+				
+				
+				<h3 id="comment-start">游客评论区</h3>
+				<volist name="comments_list" id="comment" key="k">
 				<div class="media">
-					<h3>Comments</h3>
+					<a href="#" class="pull-left">
+						<if condition="$comment.is_admin neq 1">
+							<img alt="" src="/Template/admin/img/blog/21.png" class="media-object">
+						<else />
+							<img alt="" src="/Upload/headimg/saki.jpg" class="media-object">
+						</if>
+					</a>
 					<div class="media-body">
-						<h4 class="media-heading">Media heading <span>5 hours ago / <a href="#">Reply</a></span></h4>
-						<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-						<hr>
-						<!-- Nested media object -->
-						<div class="media">
-							<div class="media-body">
-								<h4 class="media-heading">Media heading <span>17 hours ago / <a href="#">Reply</a></span></h4>
-								<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+						<h4 class="media-heading">
+							<if condition="$p eq null">
+								#{$k+(1-1)*3}
+							<else /> 
+								#{$k+($p-1)*3}
+							</if>
+							
+							<if condition="$comment.is_admin neq 1">
+								<if condition="$comment.name neq null">
+									{$comment.name}
+								<else />
+									匿名游客
+								</if>
+							<else />
+								<font color="#E74570">站长</font>
+							</if>
+							
+							<span>
+								{$comment.ctm} / 
+								<if condition="$comment.name neq null">
+									<a href="javascript:void(0);" class="reply" data-name='#{$k}-{$comment.name}' data-id='{$comment.id}'>回复</a>
+								<else />
+									<a href="javascript:void(0);" class="reply" data-name='#{$k}-匿名游客' data-id='{$comment.id}'>回复</a>
+								</if>
+							</span>
+						</h4>
+						<p>{$comment.content}</p>
+						<if condition="$comment.comment_sec neq null">
+							<hr>
+							<volist name="comment.comment_sec" id="comment_sec" >
+							<div class="media">
+								<a href="#" class="pull-left">
+									<if condition="$comment_sec.is_admin neq 1">
+										<img alt="" src="/Template/admin/img/blog/22.png" class="media-object">
+									<else />
+										<img alt="" src="/Upload/headimg/saki.jpg" class="media-object">
+									</if>
+								</a>
+								<div class="media-body">
+									<h4 class="media-heading">
+										
+										<if condition="$comment_sec.is_admin neq 1">
+											<if condition="$comment_sec.name neq null">
+												{$comment_sec.name}
+											<else />
+												匿名游客
+											</if>
+										<else />
+											<font color="#E74570">站长</font>
+										</if>
+										
+										<span>{$comment_sec.ctm}</span>
+									</h4>
+									<p>{$comment_sec.content}</p>
+								</div>
 							</div>
-						</div>
-						<!--end media-->
-						<hr>
-						<div class="media">
-							<div class="media-body">
-								<h4 class="media-heading">Media heading <span>2 days ago / <a href="#">Reply</a></span></h4>
-								<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-							</div>
-						</div>
-						<!--end media-->
+							</volist>
+						</if>
 					</div>
 				</div>
-				<!--end media-->
-				<div class="media">
-					<div class="media-body">
-						<h4 class="media-heading">Media heading <span>July 5,2013 / <a href="#">Reply</a></span></h4>
-						<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-					</div>
-				</div>
-				<!--end media-->
 				<hr>
+				</volist>
+				<div style="margin-top:-1em;text-align: right;">
+					<div style="display: inline-block;">{$page}</div>
+				</div>
+				
+				
 				<div class="post-comment">
-					<h3>Leave a Comment</h3>
-					<form role="form" action="#">
+					<h3 id="post-comment-start">发表评论</h3>
+					<form id="post-comment" action="/ArticleList/postComment" method="post">
+						<input type="hidden"  name="ArticleComment[aid]" value="{$info.id}">
+						<input type="hidden" id="ArticleCommentPid"  name="ArticleComment[pid]" value="0">
 						<div class="form-group">
-							<label class="control-label">Name<span class="required">*</span></label>
-							<input type="text" class="form-control">
+							<label class="control-label">评论信息</label>
+							<textarea class="col-md-10 form-control" rows="8" name="ArticleComment[content]"></textarea>
 						</div>
-						<div class="form-group">
-							<label class="control-label">Email<span class="required">*</span></label>
-							<input type="text" class="form-control">
-						</div>
-						<div class="form-group">
-							<label class="control-label">Message<span class="required">*</span></label>
-							<textarea class="col-md-10 form-control" rows="8"></textarea>
-						</div>
-						<button class="margin-top-20 btn blue" type="submit">Post a Comment</button>
+						<button class="margin-top-20 btn blue" type="button" id="comment-submit">提交评论</button>
+						<button class="margin-top-20 btn blue" type="button" style="display:none" id="no-obj">取消回复对象</button>
 					</form>
 				</div>
 			</div>
@@ -134,4 +181,43 @@
 
 <link href="/Template/admin/plugins/SyntaxHighlighter3/styles/shCoreDefault.css" type="text/css" rel="stylesheet" />
 
-<script type="text/javascript">SyntaxHighlighter.all();</script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+
+//评论提交
+$('#comment-submit').click(function(){
+	$('#post-comment').submit();
+});
+
+$('.media-heading .reply').click(function(){
+	$("html,body").stop(true);
+	$("html,body").animate({scrollTop: $("#post-comment-start").offset().top}, 10);
+	//
+	var id = $(this).attr('data-id');
+	var name = $(this).attr('data-name');
+	$('#ArticleCommentPid').val(id);
+	//
+	$('#post-comment-start').text('回复'+name);
+	$('#post-comment-start').css('color','#E24C6D');
+	//
+	$('#no-obj').show();
+});
+
+$('#no-obj').click(function(){
+	$(this).hide();
+	$('#ArticleCommentPid').val(0);
+	$('#post-comment-start').text('发表评论');
+	$('#post-comment-start').css('color','#1b252a');
+});
+</script>
+
+
+<if condition="$p neq 0">
+<script type="text/javascript">
+function mScroll(){
+	$("html,body").stop(true);
+	$("html,body").animate({scrollTop: $("#comment-start").offset().top-355},100);
+} 
+mScroll();
+</script>
+</if>

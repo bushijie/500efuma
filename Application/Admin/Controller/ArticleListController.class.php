@@ -110,20 +110,47 @@ class ArticleListController extends AdminBaseController{
 	 * @version V1.0
 	 */
 	public function view(){
-		$id = $_GET['id'];
+		$p = isset($_GET['p']) ? $_GET['p'] : 0;//评论分页标志
+		//文章详细信息
 		$model = new \Admin\Model\ArticleListModel();
-		$condition['id'] = $id;
-		$info = $model->relation(true)->where($condition)->find();
-		//markdown解析
-		$Parsedown = new \Org\Markdown\Parsedown;
-		$info['content'] = $Parsedown->text($info['content']);
-		//tags解析
+		$info = $model->getArticleInfo($_GET['id']);
 		$tags = explode(",",$info['tags']);
-// 		$info['tags'] = $tags;
+		//查询评论列表
+		$comments_model = new \Admin\Model\ArticleCommentModel();
+		//统计总条数
+		$condition['aid'] = $_GET['id'];
+		$condition['pid'] = 0;
+		$count = $comments_model->where($condition)->count();
+		//分页显示设置
+		$Page = new \Think\Page($count,3);
+		$Page->setConfig('prev','上一页');
+		$Page->setConfig('next','下一页');
+		$Page->setConfig('theme','%FIRST%  %LINK_PAGE%  %END%');
+		$show = $Page->show();
+		$comments_list = $comments_model->getComments_First($Page,$condition);
 		//输出
 		$this->assign('info',$info);
 		$this->assign('tags',$tags);
+		$this->assign('comments_list',$comments_list);
+		$this->assign('page',$show);
+		$this->assign('p',$p);
 		$this->display();
+	}
+	
+	
+	/**
+	 * @todo: 发送评论-后台管理员发送
+	 * @author Saki <ilulu4ever816@gmail.com>
+	 * @date 2014-12-22 上午9:34:18
+	 * @version V1.0
+	 */
+	public function PostComment(){
+		$model = new \Admin\Model\ArticleCommentModel();
+		$post = $_POST['ArticleComment'];
+		$id = $post['aid'];
+		$post['is_admin'] = 1; 
+		$model->createComment($post);
+		$this->redirect('ArticleList/view', array('id' => $id,'p'=>1));
 	}
 	
 	

@@ -15,12 +15,12 @@ class ArticleCommentModel extends RelationModel {
 	 */
 	public function getComments_First($page,$condition){
 		$model = D('Admin/ArticleComment');
-		$list = $model->order('ctm desc')->where($condition)->limit($page->firstRow.','.$page->listRows)->select ();
+		$list = $model->order('ctm asc')->where($condition)->limit($page->firstRow.','.$page->listRows)->select ();
 		//二级回复列表
 		$pid_arr = listID_2_arrID($list);
 		$map['aid'] = $condition['aid'];
 		$map['pid']  = array('in',$pid_arr);
-		$list_sec = $model->order('ctm desc')->where($map)->select ();
+		$list_sec = $model->order('ctm asc')->where($map)->select ();
 		$sql = $model->getLastSql();
 		//进行set
 		if($list_sec){
@@ -51,6 +51,11 @@ class ArticleCommentModel extends RelationModel {
 			$data['ctm'] = date('Y-m-d H:i:s',time());
 			try {
 				$isadd = $model->data($data)->add($data);
+				if($isadd){
+					//评论数+1
+					$article_list_model = new \Admin\Model\ArticleListModel();
+					$article_list_model->addComment($post['aid']);
+				}
 			} catch (Exception $e) {
 			}
 		}

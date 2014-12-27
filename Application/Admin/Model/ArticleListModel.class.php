@@ -172,6 +172,24 @@ class ArticleListModel extends RelationModel {
 		}
 	}
 	
+	/**
+	 * @todo: 增加回复量
+	 * @param $id  文章ID
+	 * @author Saki <ilulu4ever816@gmail.com>
+	 * @date 2014-12-26 上午11:40:34 
+	 * @version V1.0
+	 */
+	public function addComment($id){
+		$model = D('Admin/ArticleList');
+		$map['id'] = $id;
+		$info = $model->where($map)->find();
+		$data['comments_num'] = $info['comments_num'] + 1;
+		try {
+			$isupdate = $model->where($map)->save($data);
+		} catch (Exception $e) {
+		}
+	}
+	
 	
 	
 }

@@ -21,7 +21,7 @@ class IndexController extends HomeBaseController {
 		$model = new \Admin\Model\ArticleListModel();
 		$count = $model->count();
 		//分页显示设置
-		$Page = new \Think\Page($count,5);
+		$Page = new \Think\Page($count,7);
 		$Page->setConfig('prev','上一页');
 		$Page->setConfig('next','下一页');
 		$Page->setConfig('theme','%FIRST%  %LINK_PAGE%  %END%');

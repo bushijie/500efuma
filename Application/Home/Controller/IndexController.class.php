@@ -60,7 +60,7 @@ class IndexController extends HomeBaseController {
 		$sql = "select count(ctm) as count from (select date_format(ctm,'%Y-%m') as ctm from __PREFIX__article_list group by date_format(ctm,'%Y-%m')) a";
 		$count = $model->query($sql);
 		//分页显示设置
-		$Page = new \Think\Page($count[0]['count'],5);
+		$Page = new \Think\Page($count[0]['count'],10);
 		$Page->setConfig('prev','上一页');
 		$Page->setConfig('next','下一页');
 		$Page->setConfig('theme','%FIRST%  %LINK_PAGE%  %END%');
@@ -68,6 +68,7 @@ class IndexController extends HomeBaseController {
 		//分页数据处理
 		$list = $model->getArticleList_Mon($Page);
 		$this->assign('list',$list);
+		$this->assign('page',$show);
 		$this->display();
 	}
 	

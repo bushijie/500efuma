@@ -61,6 +61,25 @@ class ArticleCommentModel extends RelationModel {
 		}
 	}
 	
+	/**
+	 * @todo: 删除评论
+	 * @author Saki <ilulu4ever816@gmail.com>
+	 * @date 2014-12-26 下午5:45:28
+	 * @version V1.0
+	 */
+	public function deleteComment($id){
+		try {
+			$isdelete = D('Admin/ArticleComment')->delete($id);
+			$errcode = $isdelete ? 0 : 500;
+			$msg = $isdelete ? '删除成功' : '删除失败';
+		} catch (Exception $e) {
+			$errcode = 500;
+			$msg = $e->getMessage();
+		}
+		$res['errcode'] = $errcode;
+		$res['msg'] = $msg;
+		return $res;
+	}
 	
 	
 	

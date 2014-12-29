@@ -239,16 +239,16 @@ class ArticleListModel extends RelationModel {
 	}
 	
 	/**
-	 * @todo: 评论减一
+	 * @todo: 评论减$num
 	 * @author Saki <ilulu4ever816@gmail.com>
 	 * @date 2014-12-29 下午7:02:19 
 	 * @version V1.0
 	 */
-	public function minusComment($id){
+	public function minusComment($id,$num){
 		$model = D('Admin/ArticleList');
 		$map['id'] = $id;
 		$info = $model->where($map)->find();
-		$data['comments_num'] = $info['comments_num'] - 1;
+		$data['comments_num'] = $info['comments_num'] - $num;
 		try {
 			$isupdate = $model->where($map)->save($data);
 		} catch (Exception $e) {

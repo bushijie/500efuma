@@ -5,12 +5,23 @@ use Think\Controller;
 
 class ArticleCommentController extends AdminBaseController{
 	
+
+
+
+
+
+
+
+
 	
 	public function update(){
 				
 		
 		
 	}
+
+
+
 
 	public function delete(){
 		$aid = $_GET['aid'];

@@ -112,7 +112,10 @@
 											<font color="#E74570">站长</font>
 										</if>
 										
-										<span>{$comment_sec.ctm}</span>
+										<span>
+											{$comment_sec.ctm} /
+											<a href="<?php echo U('ArticleComment/delete',array('id'=>$comment_sec['id'],'aid'=>$comment_sec['aid'])); ?>" data-id='{$comment.id}'>删除</a>
+										</span>
 									</h4>
 									<p>{$comment_sec.content}</p>
 								</div>

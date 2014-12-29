@@ -70,12 +70,17 @@ class ArticleCommentModel extends RelationModel {
 	 * @version V1.0
 	 */
 	public function deleteComment($id,$aid){
+		$model = D('Admin/ArticleComment');
 		try {
-			$isdelete = D('Admin/ArticleComment')->delete($id);
+			$map['id'] = $id;
+			$map['_logic'] = 'OR';
+			$map['pid'] = $id;
+			$count = $model->where($map)->count();
+			$isdelete = $model->where($map)->delete();
 			if($isdelete){
-				//评论数-1
+				//评论数-n
 				$article_list_model = new \Admin\Model\ArticleListModel();
-				$article_list_model->minusComment($aid);
+				$article_list_model->minusComment($aid,$count);
 			}
 			$errcode = $isdelete ? 0 : 500;
 			$msg = $isdelete ? '删除成功' : '删除失败';
@@ -87,6 +92,5 @@ class ArticleCommentModel extends RelationModel {
 		$res['msg'] = $msg;
 		return $res;
 	}
-	
-	
+
 }

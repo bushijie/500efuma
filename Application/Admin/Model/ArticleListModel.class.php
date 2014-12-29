@@ -71,7 +71,6 @@ class ArticleListModel extends RelationModel {
 		$data['ctm'] = date('Y-m-d H:i:s',time());
 		$data['title'] = htmlspecialchars($post['title']);
 		$data['tags'] = htmlspecialchars($post['tags']);
-// 		$data['content'] = htmlspecialchars($post['content']);
 		try {
 			$isadd = $model->data($data)->add($data);
 			$errcode = $isadd ? 0 : 500;
@@ -99,7 +98,6 @@ class ArticleListModel extends RelationModel {
 		$data = $post;
 		$data['title'] = htmlspecialchars($post['title']);
 		$data['tags'] = htmlspecialchars($post['tags']);
-		$data['content'] = htmlspecialchars($post['content']);
 		$data['utm'] = date('Y-m-d H:i:s',time());
 		try {
 			$isupdate = $model->where($map)->save($data);
@@ -147,7 +145,7 @@ class ArticleListModel extends RelationModel {
 		$info = $model->relation(true)->where($condition)->find();
 		//markdown--文章内容解析
 		$Parsedown = new \Org\Markdown\Parsedown;
-// 		$info['content'] = $Parsedown->text(htmlspecialchars_decode($info['content']));
+		$Parsedown->setMarkupEscaped(true);
 		$info['content'] = $Parsedown->text($info['content']);
 		//文章时间解析
 		$info['ctm_M'] = date('M',strtotime($info['ctm']));//月份简写

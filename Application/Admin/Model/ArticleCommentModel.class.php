@@ -48,6 +48,9 @@ class ArticleCommentModel extends RelationModel {
 		$model = D('Admin/ArticleComment');
 		if($post['content'] != ''){
 			$data = $post;
+			$data['content'] = htmlspecialchars($post['content']);
+			$data['name'] = htmlspecialchars($post['name']);
+			$data['email'] = htmlspecialchars($post['email']);
 			$data['ctm'] = date('Y-m-d H:i:s',time());
 			try {
 				$isadd = $model->data($data)->add($data);

@@ -68,29 +68,22 @@ a.button:active{
 			<div class="media">
 				<div class="media-body">
 					<h4 class="media-heading">
-						<if condition="$p eq null">
-							#{$k+(1-1)*3}
-						<else /> 
-							#{$k+($p-1)*3}
-						</if>
-					
-						<if condition="$comment.is_admin neq 1">
-							<if condition="$comment.name neq null">
-								{$comment.name}
+						<font class="custom-name">
+							<if condition="$p eq null">#{$k+(1-1)*3}<else />#{$k+($p-1)*3}</if>
+							<if condition="$comment.is_admin neq 1">
+								<if condition="$comment.name neq null">
+									{$comment.name}
+								<else />
+									匿名游客
+								</if>
 							<else />
-								匿名游客
+								<font color="#E74570">站长</font>
 							</if>
-						<else />
-							<font color="#E74570">站长</font>
-						</if>
+						</font>
 						
 						<span>
 							{$comment.ctm} / 
-							<if condition="$comment.name neq null">
-								<a href="javascript:void(0);" class="reply" data-name='#{$k}-{$comment.name}' data-id='{$comment.id}'>回复</a>
-							<else />
-								<a href="javascript:void(0);" class="reply" data-name='#{$k}-匿名游客' data-id='{$comment.id}'>回复</a>
-							</if>
+							<a href="javascript:void(0);" class="reply" data-name='#{$k}' data-id='{$comment.id}'>回复</a>
 						</span>
 					</h4>
 					<p style="margin-top: 1em;">{$comment.content}</p>

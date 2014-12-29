@@ -84,7 +84,7 @@
 								{$comment.ctm} / 
 								<a href="javascript:void(0);" class="reply" data-name='#{$k}' data-id='{$comment.id}'>回复</a>
 								/
-									<a href="javascript:void(0);" data-id='{$comment.id}'>删除</a>
+									<a href="<?php echo U('ArticleComment/delete',array('id'=>$comment['id'],'aid'=>$comment['aid'])); ?>" data-id='{$comment.id}'>删除</a>
 							</span>
 						</h4>
 						<p>{$comment.content}</p>

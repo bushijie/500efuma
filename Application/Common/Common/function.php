@@ -133,7 +133,7 @@ function getMail($to,$from,$title,$content,$url){
 		<tr>
 			<td style='border-bottom: 1px solid #364050; border-left: 1px solid #364050; padding: 0px 20px 20px; background: #ffffff; border-right: 1px solid #364050;'>
 				<hr style='color:#ccc;'>
-				<p style='color:#c94663;font-size:9pt;'>想了解更多信息，请访问 <a href='http://www.oschina.net' target='_blank'>http://www.oschina.net</a></p>
+				<p style='color:#c94663;font-size:9pt;'>想了解更多信息，请访问 <a href='http://www.500efuma.com/' target='_blank'>http://www.500efuma.com/</a></p>
 			</td>
 		</tr>
 	</table>";

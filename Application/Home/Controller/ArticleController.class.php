@@ -79,8 +79,9 @@ class ArticleController extends HomeBaseController{
 			}else{
 				$title = '有一位游客评论了你的文章：' . $article_info['title'] . '(请不要回复此邮件)';
 			}
-			$content = $post['content'];
-			$url = 'http://500efuma.me/Home/Article/view/id/' . $id;
+			$content = htmlspecialchars($post['content']);
+			//'http://500efuma.me/Home/Article/view/id/' . $id;
+			$url = 'http://500efuma.com'. U('Home/Article/view',array('id'=>$id));
 			$body = getMail($to,$from,$article_info['title'],$content,$url);
 			$is_send = sendMail($info['email'], $info['email'], $title, $body);
 		}

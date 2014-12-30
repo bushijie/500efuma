@@ -86,7 +86,7 @@ a.button:active{
 							<a href="javascript:void(0);" class="reply" data-name='#{$k}' data-id='{$comment.id}'>回复</a>
 						</span>
 					</h4>
-					<p style="margin-top: 1em;">{$comment.content}</p>
+					<div style="margin-top: 1em;">{$comment.content}</div>
 					
 				</div>
 				<if condition="$comment.comment_sec neq null">
@@ -105,7 +105,7 @@ a.button:active{
 								</if>
 								<span>{$comment_sec.ctm}</span>
 							</h4>
-							<p style="margin-top: 1em;">{$comment_sec.content}</p>
+							<div style="margin-top: 1em;">{$comment_sec.content}</div>
 						</volist>
 					</div>
 				</if>

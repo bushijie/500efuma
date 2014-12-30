@@ -141,3 +141,14 @@ function getMail($to,$from,$title,$content,$url){
 	return $body;
 }
 
+function getContent($text){
+	$text = str_replace("\r\n", "\n", $text);
+	$text = str_replace("\r", "\n", $text);
+	# replace tabs with spaces
+	$text = str_replace("\t", '    ', $text);
+	# remove surrounding line breaks
+	$text = str_replace("\n","<br />",$text);
+	$text = trim($text, "\n");
+	return $text;
+}
+

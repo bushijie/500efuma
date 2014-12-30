@@ -81,7 +81,8 @@ class ArticleController extends HomeBaseController{
 			}
 			$content = htmlspecialchars($post['content']);
 			//'http://500efuma.me/Home/Article/view/id/' . $id;
-			$url = 'http://500efuma.com'. U('Home/Article/view',array('id'=>$id));
+			$url = 'http://www.500efuma.com'. U('Home/Article/view',array('id'=>$id));
+			$content = getContent($content);
 			$body = getMail($to,$from,$article_info['title'],$content,$url);
 			$is_send = sendMail($info['email'], $info['email'], $title, $body);
 		}

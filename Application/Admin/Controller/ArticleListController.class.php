@@ -137,21 +137,4 @@ class ArticleListController extends AdminBaseController{
 		$this->display();
 	}
 	
-	
-	/**
-	 * @todo: 发送评论-后台管理员发送
-	 * @author Saki <ilulu4ever816@gmail.com>
-	 * @date 2014-12-22 上午9:34:18
-	 * @version V1.0
-	 */
-	public function PostComment(){
-		$model = new \Admin\Model\ArticleCommentModel();
-		$post = $_POST['ArticleComment'];
-		$id = $post['aid'];
-		$post['is_admin'] = 1; 
-		$model->createComment($post);
-		$this->redirect('ArticleList/view', array('id' => $id,'p'=>1));
-	}
-	
-	
 }

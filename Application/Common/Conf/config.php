@@ -35,16 +35,27 @@ return array(
 	'APP_SUB_DOMAIN_RULES'=>array(
 			'admin'=>array('Admin/'),  // admin域名指向Admin分组
 	),
-	//邮件配置
+	//邮件配置，500efuma企业邮箱配置
 	'THINK_EMAIL' => array(
-		'SMTP_HOST'   => 'smtp.gmail.com', //SMTP服务器
-		'SMTP_PORT'   => '465', //SMTP服务器端口
-		'SMTP_USER'   => 'colorfes.server@gmail.com', //SMTP服务器用户名
-		'SMTP_PASS'   => 'colorfes123!', //SMTP服务器密码
-		'FROM_EMAIL'  => 'colorfes.server@gmail.com', //发件人EMAIL
-		'FROM_NAME'   => 'MC-漫步森林', //发件人名称
+		'SMTP_HOST'   => 'SMTP.500efuma.com', //SMTP服务器
+		'SMTP_PORT'   => 25, //SMTP服务器端口
+		'SMTP_USER'   => 'postmaster@500efuma.com', //SMTP服务器用户名
+		'SMTP_PASS'   => 'Yinlu584521816', //SMTP服务器密码
+		'FROM_EMAIL'  => 'postmaster@500efuma.com', //发件人EMAIL
+		'FROM_NAME'   => '魔王的傻逼主页', //发件人名称
 		'REPLY_EMAIL' => '', //回复EMAIL（留空则为发件人EMAIL）
 		'REPLY_NAME'  => '', //回复名称（留空则为发件人名称）
 	),
+		//*163配置如下*//
+// 		'THINK_EMAIL' => array(
+// 				'SMTP_HOST'   => 'smtp.163.com', //SMTP服务器
+// 				'SMTP_PORT'   => 25, //SMTP服务器端口
+// 				'SMTP_USER'   => 'inclulu@163.com', //SMTP服务器用户名
+// 				'SMTP_PASS'   => 'q584521816!', //SMTP服务器密码
+// 				'FROM_EMAIL'  => 'no-reply@500efuma.com', //发件人EMAIL
+// 				'FROM_NAME'   => '魔王的傻逼主页', //发件人名称
+// 				'REPLY_EMAIL' => '', //回复EMAIL（留空则为发件人EMAIL）
+// 				'REPLY_NAME'  => '', //回复名称（留空则为发件人名称）
+// 		),
 );
 ?>

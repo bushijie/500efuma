@@ -158,6 +158,12 @@ class ArticleListModel extends RelationModel {
 		return $info;
 	}
 	
+	/**
+	 * @todo: 按月份取出文章列表信息
+	 * @author Saki <ilulu4ever816@gmail.com>
+	 * @date 2014-12-30 上午10:09:23 
+	 * @version V1.0
+	 */
 	public function getArticleList_Mon($page){
 		$model = D('Admin/ArticleList');
 		//首先计算出月份的分类

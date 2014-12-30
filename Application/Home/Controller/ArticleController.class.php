@@ -54,10 +54,30 @@ class ArticleController extends HomeBaseController{
 		$post = $_POST['ArticleComment'];
 		$id = $post['aid'];
 		$model->createComment($post);
+		//发送邮件，这里为游客发送评论，则为管理员邮箱收到邮件
+		/*1.首先查找到当前文章的详细信息*/
+		$map['id'] = $id;
+		$article_info = D('Admin/ArticleList')->where($map)->find();
+		/*2.获取管理员邮箱地址*/
+		$condition['id'] = $article_info['admin_id'];
+		$email = D('Admin/Admin')->where($condition)->getField('email');
+		/*3.发送邮件提醒 */
+		if($email){
+			/*4.获取被评论的文章信息*/
+			$title = '有一位游客评论了你的文章：' . $article_info['title'] . '(请不要回复此邮件)';
+			$body = '有人评论了你的文章！！';
+			$is_send = sendMail($email, $email, $title, $body);
+		}
 		$this->redirect('Article/view', array('id' => $id,'p'=>1));
 	}
 	
 	
-	
+	public function CCC(){
+		$email = '395408934@qq.com';
+		$title = '有一位游客评论了你的文章：' .  '(请不要回复此邮件)';
+		$body = file_get_contents('./Template/email/mail.html');
+		$is_send = sendMail($email, $email, $title, $body);
+		var_dump($is_send);
+	}
 	
 }

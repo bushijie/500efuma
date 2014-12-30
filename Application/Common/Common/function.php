@@ -106,3 +106,38 @@ function sendMail($to, $name, $subject, $body, $attachment = null){
 	return $data;
 }
 
+
+function getMail($to,$from,$title,$content,$url){
+	$text = "<body>
+	<table style='margin: 25px auto;background:#364050;background-image: url(http://500efuma.me/Template/css/images/bg1.png);' border='0' cellspacing='0' cellpadding='0' width='700' align='center'>
+		<tr>
+			<td style='color:#FFFFFF;'>
+				<div style='height: 42px;width: 160px;background-color: #c94663;padding: 0.1em 0.1em 0.1em 0.1em;background-image: url(http://500efuma.me/Template/css/images/bg1.png);text-align: center;margin: 15px;border-radius: 0.4em;'>
+					<h1 style='margin-top: 1px;margin-bottom: 1px;'>500efuma</h1>
+				</div>
+			</td>
+		</tr>
+		
+		<tr>
+			<td style='border-left: 1px solid #364050; padding: 20px 20px 0px; background: #ffffff;border-right: 1px solid #364050;'>
+				<p>%s, 你好 </p>
+			</td>
+		</tr>
+		<tr>
+			<td style='border-left: 1px solid #364050; padding: 10px 20px; background: #ffffff; border-right: 1px solid #364050;'>
+				<p><strong>%s</strong> 在博客： <strong><a href='#' target='_blank'>%s</a></strong> 发表评论如下:</p>
+				<div style='border:1px solid #ddd;padding: 10px 20px; font-family: sans-serif;background:#f2f2f2;line-height:24px;'>%s</div>
+				<p>你可以点击这里查看评论:<br><a href='%s' target='_blank'>%s</a>.</p>
+			</td>
+		</tr>
+		<tr>
+			<td style='border-bottom: 1px solid #364050; border-left: 1px solid #364050; padding: 0px 20px 20px; background: #ffffff; border-right: 1px solid #364050;'>
+				<hr style='color:#ccc;'>
+				<p style='color:#c94663;font-size:9pt;'>想了解更多信息，请访问 <a href='http://www.oschina.net' target='_blank'>http://www.oschina.net</a></p>
+			</td>
+		</tr>
+	</table>";
+	$body = sprintf ($text,$to,$from,$title,$content,$url,$url);
+	return $body;
+}
+

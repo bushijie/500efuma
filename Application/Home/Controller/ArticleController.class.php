@@ -1,6 +1,7 @@
 <?php
 namespace Home\Controller;
 use Think\Controller;
+use Admin\Model\ArticleCommentModel;
 
 
 class ArticleController extends HomeBaseController{
@@ -58,26 +59,32 @@ class ArticleController extends HomeBaseController{
 		/*1.首先查找到当前文章的详细信息*/
 		$map['id'] = $id;
 		$article_info = D('Admin/ArticleList')->where($map)->find();
-		/*2.获取管理员邮箱地址*/
-		$condition['id'] = $article_info['admin_id'];
-		$email = D('Admin/Admin')->where($condition)->getField('email');
+		/*2.获取被评论者的邮箱地址*/
+		if($post['pid'] != 0){
+			//评论作者
+			$condition['id'] = $post['pid'];
+			$info = D('Admin/ArticleComment')->where($condition)->find();
+		}else{
+			//文章作者
+			$condition['id'] = $article_info['admin_id'];
+			$info = D('Admin/Admin')->where($condition)->find();
+		}
 		/*3.发送邮件提醒 */
-		if($email){
+		if($info['email']){
 			/*4.获取被评论的文章信息*/
-			$title = '有一位游客评论了你的文章：' . $article_info['title'] . '(请不要回复此邮件)';
-			$body = '有人评论了你的文章！！';
-			$is_send = sendMail($email, $email, $title, $body);
+			$to = $info['name'];//接收对象
+			$from = $post['name'] ? $post['name'] : '匿名用户' ;//发送对象
+			if($post['pid'] != 0){
+				$title = '有一位游客回复了你的评论：' . $article_info['title'] . '(请不要回复此邮件)';
+			}else{
+				$title = '有一位游客评论了你的文章：' . $article_info['title'] . '(请不要回复此邮件)';
+			}
+			$content = $post['content'];
+			$url = 'http://500efuma.me/Home/Article/view/id/' . $id;
+			$body = getMail($to,$from,$article_info['title'],$content,$url);
+			$is_send = sendMail($info['email'], $info['email'], $title, $body);
 		}
 		$this->redirect('Article/view', array('id' => $id,'p'=>1));
-	}
-	
-	
-	public function CCC(){
-		$email = '395408934@qq.com';
-		$title = '有一位游客评论了你的文章：' .  '(请不要回复此邮件)';
-		$body = file_get_contents('./Template/email/mail.html');
-		$is_send = sendMail($email, $email, $title, $body);
-		var_dump($is_send);
 	}
 	
 }

@@ -1,7 +1,6 @@
 <?php
 namespace Home\Controller;
 use Think\Controller;
-use Admin\Model\ArticleCommentModel;
 
 
 class ArticleController extends HomeBaseController{
@@ -54,7 +53,7 @@ class ArticleController extends HomeBaseController{
 		$model = new \Admin\Model\ArticleCommentModel();
 		$post = $_POST['ArticleComment'];
 		$id = $post['aid'];
-		$model->createComment($post);
+		$comment_id = $model->createComment($post);
 		//发送邮件，这里为游客发送评论，则为管理员邮箱收到邮件
 		/*1.首先查找到当前文章的详细信息*/
 		$map['id'] = $id;
@@ -87,5 +86,18 @@ class ArticleController extends HomeBaseController{
 		}
 		$this->redirect('Article/view', array('id' => $id,'p'=>1));
 	}
+	
+	public function c(){
+		if($_GET['id'] == 0){
+			echo 'Behaviors!';
+			$param = '123';
+			\Think\Hook::listen('c',$param);
+// 			\Think\Hook::add('c','Home\\Behaviors\\emailBehavior');
+		}else{
+			echo 'nothing to do!';
+		}
+	}
+	
+	
 	
 }

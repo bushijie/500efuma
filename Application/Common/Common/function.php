@@ -106,7 +106,13 @@ function sendMail($to, $name, $subject, $body, $attachment = null){
 	return $data;
 }
 
-
+/**
+ * @todo: 邮件的html内容生成
+ * @return string    
+ * @author Saki <ilulu4ever816@gmail.com>
+ * @date 2014-12-31 下午5:48:53 
+ * @version V1.0
+ */
 function getMail($to,$from,$title,$content,$url){
 	$text = "<body>
 	<table style='margin: 25px auto;background:#364050;background-image: url(http://500efuma.me/Template/css/images/bg1.png);' border='0' cellspacing='0' cellpadding='0' width='700' align='center'>
@@ -141,6 +147,12 @@ function getMail($to,$from,$title,$content,$url){
 	return $body;
 }
 
+/**
+ * @todo: 处理字符串中的空格，回车的转义操作
+ * @author Saki <ilulu4ever816@gmail.com>
+ * @date 2014-12-31 下午5:48:25 
+ * @version V1.0
+ */
 function getContent($content){
 	$content = htmlspecialchars($content);
 	$content = str_replace(" ","&nbsp",$content); //替换空格为

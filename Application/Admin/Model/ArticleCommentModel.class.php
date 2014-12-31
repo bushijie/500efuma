@@ -45,6 +45,7 @@ class ArticleCommentModel extends RelationModel {
 	 * @version V1.0
 	 */
 	public function createComment($post){
+		$isadd = 0;
 		$model = D('Admin/ArticleComment');
 		if($post['content'] != ''){
 			$data = $post;
@@ -61,6 +62,7 @@ class ArticleCommentModel extends RelationModel {
 			} catch (Exception $e) {
 			}
 		}
+		return $isadd;
 	}
 	
 	/**

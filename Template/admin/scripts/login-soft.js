@@ -6,7 +6,7 @@ var Login = function () {
 		var remember = $("input[name='remember']").val();
         $.ajax({
             type:'post',
-            url:'/Admin/checkLogin',
+            url:'../Admin/checkLogin',
             dataType:"json", 
             data:{
             	'username' : username,
@@ -16,7 +16,7 @@ var Login = function () {
             success:function(data){
                 var errcode = data['errcode'];
 				if(errcode == 0 ){
-					window.location.href="/Index/index"; 
+					window.location.href="../Index/index"; 
 				}else{
 					$('.error-account-passwd', $('.login-form')).show();
 				}

@@ -10,7 +10,7 @@ function sidebar(){
 		'home' => array(
 			'name'=>'首页',
 			'key'=>'home',	
-			'url'=>'/Home/index',
+			'url'=> U('Admin/Home/index'),
 			'icon'=>'fa-home',
 		),
 		'article' => array(
@@ -22,25 +22,25 @@ function sidebar(){
 				'workType'=>array(
 					'name'=>'文章类型',
 					'key'=>'articleType',
-					'url'=>'/ArticleType/index',
+					'url'=> U('Admin/ArticleType/index'),
 				),
 				'workList'=>array(
 					'name'=>'文章列表',
 					'key'=>'articleList',
-					'url'=>'/ArticleList/index',
+					'url'=> U('Admin/ArticleList/index'),
 				),
 			),
 		),
 		'reply' => array(
 			'name'=>'回复管理',
 			'key'=>'reply',
-			'url'=>'/Reply/index',
+			'url'=>U('Admin/Reply/index'),
 			'icon'=>'fa-bar-chart-o',
 		),
 		'self' => array(
 			'name'=>'简历管理',
 			'key'=>'self',
-			'url'=>'/Self/index',
+			'url'=>U('Admin/Self/index'),
 			'icon'=>'fa-file-text',
 		),
 		'system' => array(
@@ -52,12 +52,12 @@ function sidebar(){
 				'sysMsg'=>array(
 					'name'=>'傻逼语录',
 					'key'=>'sysMsg',
-					'url'=>'/System/editText',
+					'url'=>U('Admin/System/editText'),
 				),
 				'sysPhone'=>array(
 					'name'=>'联系方式',
 					'key'=>'sysPhone',
-					'url'=>'/System/index',
+					'url'=>U('Admin/System/index'),
 				),
 			),
 		),

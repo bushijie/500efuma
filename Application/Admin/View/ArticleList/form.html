@@ -221,7 +221,7 @@ jQuery(document).ready(function() {
                 success:function(data){
                     var errcode = data['errcode'];
 					if(errcode == 0){
-						window.location.href="/ArticleList/index"; 
+						window.location.href="../ArticleList/index"; 
 					}else{
 						bootbox.alert(data['msg'], function() {
 	                        location.reload();
@@ -255,7 +255,7 @@ jQuery(document).ready(function() {
 	
     
     $('#fileupload').fileupload({
-        url: '/Util/uploadImg',
+        url: '../Util/uploadImg',
         dataType: 'json',
         done: function (e, data) {
             $.each(data.result.files, function (index, file) {

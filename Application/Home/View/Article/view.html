@@ -91,9 +91,9 @@ a.button:active{
 				</div>
 				<if condition="$comment.comment_sec neq null">
 					<div class="media-body comment-in">
-						<volist name="comment.comment_sec" id="comment_sec" >
+						<volist name="comment.comment_sec" id="comment_sec" key="k_sec">
 							<h4 class="media-heading">
-							
+								#{$k_sec}
 								<if condition="$comment_sec.is_admin neq 1">
 									<if condition="$comment_sec.name neq null">
 										{$comment.name}

@@ -44,7 +44,9 @@ class emailBehavior extends \Think\Behavior {
 		if($pid != 0){
 			$condition['id'] = $comment_info['pid'];
 			$info = D('Admin/ArticleComment')->where($condition)->find();
-			$this->send($info,$comment_info,$article_info);		
+			if($comment_info['email'] != $info['email']){
+				$this->send($info,$comment_info,$article_info);		
+			}
 		}
 		return $info;
 	}
@@ -73,10 +75,14 @@ class emailBehavior extends \Think\Behavior {
 	 * @version V1.0
 	 */
 	private function getTitle($comment_info,$article_info){
-		if($comment_info['pid'] != 0){
-			$title = '有一位游客回复了你的评论：' . $article_info['title'] . '(请不要回复此邮件)';
+		if($comment_info['is_admin'] == 0){
+			if($comment_info['pid'] != 0){
+				$title = '有一位游客回复了你的评论：' . $article_info['title'] . '(请不要回复此邮件)';
+			}else{
+				$title = '有一位游客评论了你的文章：' . $article_info['title'] . '(请不要回复此邮件)';
+			}
 		}else{
-			$title = '有一位游客评论了你的文章：' . $article_info['title'] . '(请不要回复此邮件)';
+			$title = '站长在文章 ：' . $article_info['title'] .  ',回复了你的评论(请不要回复此邮件)';
 		}
 		return $title;
 	}
@@ -100,7 +106,7 @@ class emailBehavior extends \Think\Behavior {
 			$title = $this->getTitle($comment_info, $article_info);
 			$content = getContent($comment_info['content']);
 			$url = 'http://www.500efuma.com'. U('Home/Article/view',array('id'=>$comment_info['aid']));
-			$body = getMail($to_name,$from_name,$title,$content,$url);
+			$body = getMail($to_name,$from_name,$article_info['title'],$content,$url);
 			$is_send = sendMail($to_email,$to_email, $title, $body);
 		}
 	}
@@ -116,7 +122,11 @@ class emailBehavior extends \Think\Behavior {
 		if(isset($info['email'])){
 			$to_email = $info['email'];//接收对象邮件地址
 			$to_name = $info['name'];//接收对象昵称
-			$from_name = $comment_info['name'] ? $comment_info['name'] : '匿名用户' ;//发送对象
+			if($comment_info['is_admin'] == 0){
+				$from_name = $comment_info['name'] ? $comment_info['name'] : '匿名用户' ;//发送对象
+			}else{
+				$from_name = '站长';
+			}
 			$title = $this->getTitle($comment_info, $article_info);//邮件标题
 			$content = getContent($comment_info['content']);//邮件内容
 			$url = 'http://www.500efuma.com'. U('Home/Article/view',array('id'=>$comment_info['aid']));

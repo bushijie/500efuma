@@ -7,21 +7,17 @@
 	top: 0px;
 	float: right;
 }
-
 .media-heading span a {
 	color: #5987CF;
 }
-
 .media-heading span a:hover {
 	text-decoration: underline;
 }
-
 .comment-h2 {
 	font-size: 2em;
 	text-align: center;
 	margin-bottom: 20px;
 }
-
 .comment-in {
 	border: 1px solid #ddd;
 	border-radius: 4px;
@@ -29,15 +25,12 @@
 	padding: 10px 10px 0px 10px;
 	margin-left: 50px;
 }
-
 .control-label{
 	color: #2C2C2C;
 }
-
 a.button:active{
 	color: #FFF;
 }
-
 </style>
 
 <div id="content">
@@ -83,7 +76,7 @@ a.button:active{
 						
 						<span>
 							{$comment.ctm} / 
-							<a href="javascript:void(0);" class="reply" data-name='#{$k}' data-id='{$comment.id}'>回复</a>
+							<a href="javascript:void(0);" class="reply" data-name='#{$k}' data-id='{$comment.id}' data-tid='0'>回复</a>
 						</span>
 					</h4>
 					<div style="margin-top: 1em;">{$comment.content}</div>
@@ -93,17 +86,25 @@ a.button:active{
 					<div class="media-body comment-in">
 						<volist name="comment.comment_sec" id="comment_sec" key="k_sec">
 							<h4 class="media-heading">
-								#{$k_sec}
+								<if condition="$p eq null">#{$k+(1-1)*3}<else />#{$k+($p-1)*3}</if>-{$k_sec}
 								<if condition="$comment_sec.is_admin neq 1">
 									<if condition="$comment_sec.name neq null">
-										{$comment.name}
+										{$comment_sec.name}
 									<else />
 										匿名游客
 									</if>
 								<else />
 									<font color="#E74570">站长</font>
 								</if>
-								<span>{$comment_sec.ctm}</span>
+								
+								<font color="#5E7CD8">
+								{:W('Tool/CommentToName',array($comment_sec['tid']))} 
+								</font>
+								
+								<span>
+									{$comment_sec.ctm} /
+									<a href="javascript:void(0);" class="reply" data-name='<if condition="$p eq null">#{$k+(1-1)*3}<else />#{$k+($p-1)*3}</if>-{$k_sec}' data-id='{$comment.id}' data-tid='{$comment_sec.id}'>回复</a>
+								</span>
 							</h4>
 							<div style="margin-top: 1em;">{$comment_sec.content}</div>
 						</volist>
@@ -121,6 +122,7 @@ a.button:active{
 			<form id="post-comment" action="/Home/Article/postComment" method="post">
 				<input type="hidden"  name="ArticleComment[aid]" value="{$info.id}">
 				<input type="hidden" id="ArticleCommentPid"  name="ArticleComment[pid]" value="0">
+				<input type="hidden" id="ArticleCommentTid"  name="ArticleComment[tid]" value="0">
 				<div class="form-group">
 					<label class="control-label">昵称</label>
 					<span style="float:right">(未填写则默认为【匿名游客】)</span>
@@ -193,7 +195,9 @@ $('.media-heading .reply').click(function(){
 	//
 	var id = $(this).attr('data-id');
 	var name = $(this).attr('data-name');
+	var tid = $(this).attr('data-tid');
 	$('#ArticleCommentPid').val(id);
+	$('#ArticleCommentTid').val(tid);
 	//
 	$('#post-comment-start').text('回复'+name);
 	$('#post-comment-start').css('color','#E24C6D');
@@ -204,6 +208,7 @@ $('.media-heading .reply').click(function(){
 $('#no-obj').click(function(){
 	$(this).hide();
 	$('#ArticleCommentPid').val(0);
+	$('#ArticleCommentTid').val(0);
 	$('#post-comment-start').text('发表评论');
 	$('#post-comment-start').css('color','#1b252a');
 });

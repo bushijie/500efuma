@@ -55,49 +55,22 @@ class ArticleController extends HomeBaseController{
 		$id = $post['aid'];
 		$comment_id = $model->createComment($post);
 		//发送邮件，这里为游客发送评论，则为管理员邮箱收到邮件
-		/*1.首先查找到当前文章的详细信息*/
-		$map['id'] = $id;
-		$article_info = D('Admin/ArticleList')->where($map)->find();
-		/*2.获取被评论者的邮箱地址*/
-		if($post['pid'] != 0){
-			//评论作者
-			$condition['id'] = $post['pid'];
-			$info = D('Admin/ArticleComment')->where($condition)->find();
-		}else{
-			//文章作者
-			$condition['id'] = $article_info['admin_id'];
-			$info = D('Admin/Admin')->where($condition)->find();
-		}
-		/*3.发送邮件提醒 */
-		if($info['email']){
-			/*4.获取被评论的文章信息*/
-			$to = $info['name'];//接收对象
-			$from = $post['name'] ? $post['name'] : '匿名用户' ;//发送对象
-			if($post['pid'] != 0){
-				$title = '有一位游客回复了你的评论：' . $article_info['title'] . '(请不要回复此邮件)';
-			}else{
-				$title = '有一位游客评论了你的文章：' . $article_info['title'] . '(请不要回复此邮件)';
-			}
-			$content = getContent($post['content']);
-			//'http://500efuma.me/Home/Article/view/id/' . $id;
-			$url = 'http://www.500efuma.com'. U('Home/Article/view',array('id'=>$id));
-			$body = getMail($to,$from,$article_info['title'],$content,$url);
-			$is_send = sendMail($info['email'], $info['email'], $title, $body);
+		if($comment_id){
+			\Think\Hook::listen('postComment',$comment_id);
+			\Think\Hook::add('postComment','Home\\Behaviors\\emailBehavior');
 		}
 		$this->redirect('Article/view', array('id' => $id,'p'=>1));
 	}
 	
-	public function c(){
-		if($_GET['id'] == 0){
-			echo 'Behaviors!';
-			$param = '123';
-			\Think\Hook::listen('c',$param);
+// 	public function c(){
+// 		if($_GET['id'] == 0){
+// 			echo 'Behaviors!';
+// 			$param = '123';
+// 			\Think\Hook::listen('c',$param);
 // 			\Think\Hook::add('c','Home\\Behaviors\\emailBehavior');
-		}else{
-			echo 'nothing to do!';
-		}
-	}
-	
-	
+// 		}else{
+// 			echo 'nothing to do!';
+// 		}
+// 	}
 	
 }

@@ -73,6 +73,9 @@
 							<if condition="$comment.is_admin neq 1">
 								<if condition="$comment.name neq null">
 									{$comment.name}
+									<if condition="$comment.email neq null">
+										({$comment.email})
+									</if>
 								<else />
 									匿名游客
 								</if>
@@ -90,7 +93,7 @@
 						<p>{$comment.content}</p>
 						<if condition="$comment.comment_sec neq null">
 							<hr>
-							<volist name="comment.comment_sec" id="comment_sec" >
+							<volist name="comment.comment_sec" id="comment_sec" key="k_sec">
 							<div class="media">
 								<a href="#" class="pull-left">
 									<if condition="$comment_sec.is_admin neq 1">
@@ -101,10 +104,13 @@
 								</a>
 								<div class="media-body">
 									<h4 class="media-heading">
-										
+										<if condition="$p eq null">#{$k+(1-1)*3}<else />#{$k+($p-1)*3}</if>-{$k_sec}
 										<if condition="$comment_sec.is_admin neq 1">
 											<if condition="$comment_sec.name neq null">
 												{$comment_sec.name}
+												<if condition="$comment_sec.email neq null">
+													({$comment_sec.email})
+												</if>
 											<else />
 												匿名游客
 											</if>
@@ -112,8 +118,14 @@
 											<font color="#E74570">站长</font>
 										</if>
 										
+										<font color="#5E7CD8">
+										{:W('Tool/CommentToName',array($comment_sec['tid']))} 
+										</font>
+										
 										<span>
 											{$comment_sec.ctm} /
+											<a href="javascript:void(0);" class="reply" data-name='<if condition="$p eq null">#{$k+(1-1)*3}<else />#{$k+($p-1)*3}</if>-{$k_sec}' data-id='{$comment.id}' data-tid='{$comment_sec.id}'>回复</a>
+											/
 											<a href="<?php echo U('ArticleComment/delete',array('id'=>$comment_sec['id'],'aid'=>$comment_sec['aid'])); ?>" data-id='{$comment.id}'>删除</a>
 										</span>
 									</h4>
@@ -136,6 +148,7 @@
 					<form id="post-comment" action="/ArticleComment/postComment" method="post">
 						<input type="hidden"  name="ArticleComment[aid]" value="{$info.id}">
 						<input type="hidden" id="ArticleCommentPid"  name="ArticleComment[pid]" value="0">
+						<input type="hidden" id="ArticleCommentTid"  name="ArticleComment[tid]" value="0">
 						<div class="form-group">
 							<label class="control-label">评论信息</label>
 							<textarea class="col-md-10 form-control" rows="8" name="ArticleComment[content]"></textarea>
@@ -196,7 +209,9 @@ $('.media-heading .reply').click(function(){
 	//
 	var id = $(this).attr('data-id');
 	var name = $(this).attr('data-name');
+	var tid = $(this).attr('data-tid');
 	$('#ArticleCommentPid').val(id);
+	$('#ArticleCommentTid').val(tid);
 	//
 	$('#post-comment-start').text('回复'+name);
 	$('#post-comment-start').css('color','#E24C6D');
@@ -207,6 +222,7 @@ $('.media-heading .reply').click(function(){
 $('#no-obj').click(function(){
 	$(this).hide();
 	$('#ArticleCommentPid').val(0);
+	$('#ArticleCommentTid').val(0);
 	$('#post-comment-start').text('发表评论');
 	$('#post-comment-start').css('color','#1b252a');
 });

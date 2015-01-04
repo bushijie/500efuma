@@ -22,7 +22,11 @@ class ArticleCommentController extends AdminBaseController{
 		$id = $post['aid'];
 		$admin_info = $this->admin_info;
 		$post['is_admin'] = $admin_info['id'];
-		$model->createComment($post);
+		$comment_id = $model->createComment($post);
+		if($comment_id){
+			\Think\Hook::listen('postComment',$comment_id);
+			\Think\Hook::add('postComment','Home\\Behaviors\\emailBehavior');
+		}
 		$this->redirect('ArticleList/view', array('id' => $id,'p'=>1));
 	}
 	

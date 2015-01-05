@@ -1,0 +1,77 @@
+<link href="/Template/admin/plugins/nouislider/jquery.nouislider.css" rel="stylesheet" type="text/css" />
+<link href="/Template/admin/css/plugins.css" rel="stylesheet" type="text/css" />
+
+<style>
+.noUi-background {
+	background: #DF5252;
+}
+
+.noUi-connect {
+	background: #DDD;
+}
+
+.nouislider-saki {
+	padding-top: 16px !important;
+	height: 48px;
+}
+
+</style>
+<!-- END PAGE LEVEL SCRIPTS -->
+<div class="row">
+	<div class="col-md-12">
+		<!-- BEGIN VALIDATION STATES-->
+		<div class="portlet box blue">
+			<div class="portlet-title">
+				<div class="caption">
+					<i class="fa fa-reorder"></i> 天赋技能
+				</div>
+				<div class="actions">
+					<a href="#" class="btn purple"><i class="fa fa-pencil"></i> 添加</a> 
+				</div>
+			</div>
+			<div class="portlet-body form">
+				<!-- BEGIN FORM-->
+				<form action="<?php echo U('Self/skill'); ?>" method="post" class="form-horizontal form-bordered">
+					<div class="form-group">
+						<label class="col-md-2 control-label ">PHP</label>
+						<div class="col-md-4 nouislider-saki">
+							<div id="slider_1"></div>
+						</div>
+						<div class="col-md-2">
+							<a id="slider_4_btn" href="javascript:;" class=" btn yellow btn-sm">数值</a>
+						</div>
+						<div class="col-md-2">
+							<a id="slider_4_btn" href="javascript:;" class=" btn red btn-sm"><i class="fa fa-trash-o"></i> 删除</a>
+						</div>
+					</div>
+					<div class="form-actions fluid">
+						<div class="col-md-offset-3 col-md-9">
+							<button type="submit" class="btn green">提交</button>
+							<a href="<?php echo U('Self/skill'); ?>" class="btn default">重置</a>
+						</div>
+					</div>
+				</form>
+				<!-- END FORM-->
+			</div>
+			<!-- END VALIDATION STATES-->
+		</div>
+	</div>
+</div>
+
+<script src="/Template/admin/plugins/nouislider/jquery.nouislider.js"></script>
+
+<script>
+	jQuery(document).ready(function() {
+		$("#slider_1").noUiSlider({
+			range : [ 0, 100 ],
+			start : [ 10, 100 ],
+			connect : true,
+			handles : 1,
+		});
+
+		$("#slider_4_btn").click(function() {
+			alert($("#slider_1").val());
+		});
+
+	});
+</script>

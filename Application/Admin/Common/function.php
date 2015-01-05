@@ -42,6 +42,28 @@ function sidebar(){
 			'key'=>'self',
 			'url'=>U('Admin/Self/index'),
 			'icon'=>'fa-file-text',
+			'child'=>array(
+				'selfInfo'=>array(
+					'name'=>'基本信息',
+					'key'=>'selfInfo',
+					'url'=>U('Admin/Self/info'),
+				),
+				'selfSkill'=>array(
+					'name'=>'天赋技能',
+					'key'=>'selfSkill',
+					'url'=>U('Admin/Self/skill'),
+				),
+				'selfCompany'=>array(
+					'name'=>'历史成就',
+					'key'=>'selfCompany',
+					'url'=>U('Admin/Self/company'),
+				),
+				'selfProject'=>array(
+					'name'=>'首领击杀',
+					'key'=>'selfProject',
+					'url'=>U('Admin/Self/project'),
+				),
+			),
 		),
 		'system' => array(
 			'name'=>'系统管理',

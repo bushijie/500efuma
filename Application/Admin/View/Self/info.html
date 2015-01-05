@@ -1,0 +1,84 @@
+<link rel="stylesheet" type="text/css" href="/Template/admin/plugins/bootstrap-datepicker/css/datepicker.css" />
+<link rel="stylesheet" type="text/css" href="/Template/admin/plugins/jquery-tags-input/jquery.tagsinput.css" />
+
+<!-- END PAGE LEVEL SCRIPTS -->
+<div class="row">
+	<div class="col-md-12">
+		<!-- BEGIN VALIDATION STATES-->
+		<div class="portlet box blue">
+			<div class="portlet-title">
+				<div class="caption"><i class="fa fa-reorder"></i>
+				基本信息
+				</div>
+				<div class="tools">
+					<a href="javascript:;" class="collapse"></a>
+					<a href="javascript:;" class="remove"></a>
+				</div>
+			</div>
+			<div class="portlet-body form">
+				<!-- BEGIN FORM-->
+				<form action="<?php echo U('Self/info'); ?>" method="post" id="form_create_article" class="form-horizontal">
+					<div class="form-body">
+						<div class="form-group">
+							<label class="control-label col-md-2">网名</label>
+							<div class="col-md-4">
+								<input type="text" name="Self[name]"  class="form-control" value="{$info['name']}"/>
+							</div>
+						</div>
+					</div>
+					<div class="form-body">
+						<div class="form-group">
+							<label class="control-label col-md-2">称谓</label>
+							<div class="col-md-9">
+								<input id="tags" type="text" name="Self[profession]" class="form-control tags" value="{$info['profession']}" />
+							</div>
+						</div>
+					</div>
+					<div class="form-body">
+						<div class="form-group">
+							<label class="control-label col-md-2">出生日期</label>
+							<div class="col-md-3">
+								<input class="form-control form-control-inline input-medium date-picker" name="Self[birthday]" type="text" value="{$info['birthday']}"" />
+							</div>
+						</div>
+					</div>
+					<div class="form-body">
+						<div class="form-group">
+							<label class="control-label col-md-2">电子信箱</label>
+							<div class="col-md-6">
+								<input type="text" name="Self[email]" class="form-control" value="{$info['email']}"/>
+							</div>
+						</div>
+					</div>
+					<div class="form-actions fluid">
+						<div class="col-md-offset-3 col-md-9">
+							<button type="submit" class="btn green">提交</button>
+							<a href="<?php echo U('Self/info'); ?>" class="btn default">重置</a>                           
+						</div>
+					</div>
+				</form>
+				<!-- END FORM-->
+			</div>
+			<!-- END VALIDATION STATES-->
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="/Template/admin/plugins/jquery-tags-input/jquery.tagsinput.min.js" ></script>
+<script type="text/javascript" src="/Template/admin/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="/Template/admin/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script>
+	jQuery(document).ready(function() {  
+		$('#tags').tagsInput({width: 'auto'});
+		
+		if (jQuery().datepicker) {
+            $('.date-picker').datepicker({
+            	format: 'yyyy.mm.dd',
+                rtl: App.isRTL(),
+                autoclose: true
+            });
+            $('body').removeClass("modal-open"); // fix bug when inline picker is used in modal
+        }
+	});
+</script>
+	

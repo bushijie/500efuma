@@ -221,7 +221,7 @@ jQuery(document).ready(function() {
                 success:function(data){
                     var errcode = data['errcode'];
 					if(errcode == 0){
-						window.location.href="../ArticleList/index"; 
+						window.location.href= "<?php echo U('ArticleList/index'); ?>"; 
 					}else{
 						bootbox.alert(data['msg'], function() {
 	                        location.reload();

@@ -1,18 +1,16 @@
-<!-- BEGIN PAGE LEVEL STYLES --> 
-<link rel="stylesheet" type="text/css" href="/Template/admin/plugins/select2/select2_metro.css" />
-<link rel="stylesheet" type="text/css" href="/Template/admin/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css">
-<!-- END PAGE LEVEL SCRIPTS -->
+<link rel="stylesheet" type="text/css" href="/Template/admin/plugins/bootstrap-datepicker/css/datepicker.css" />
+<link rel="stylesheet" type="text/css" href="/Template/admin/plugins/jquery-tags-input/jquery.tagsinput.css" />
+
 <div class="row">
 	<div class="col-md-12">
 		<!-- BEGIN VALIDATION STATES-->
 		<div class="portlet box blue">
 			<div class="portlet-title">
 				<div class="caption"><i class="fa fa-reorder"></i>
-				<if condition="$action eq 'create' ">创建文章类型<else />编辑文章类型【{$type_info['title']}】</if>
+				<if condition="$action eq 'create' ">创建项目信息<else />编辑项目【{$project.title}】</if>
 				</div>
 				<div class="tools">
 					<a href="javascript:;" class="collapse"></a>
-					<a href="javascript:;" class="reload"></a>
 					<a href="javascript:;" class="remove"></a>
 				</div>
 			</div>
@@ -20,7 +18,6 @@
 				<!-- BEGIN FORM-->
 				<form action="#" id="form_create_type" class="form-horizontal">
 					<div class="form-body">
-						<h3 class="form-section"><small>请不要创建重复的文章类型(相同的名称，相同的关键字)</small></h3>
 						<div class="alert alert-danger display-hide">
 							<button class="close" data-close="alert"></button>
 							您填写的内容有些不符合规范，请按照提示改正！
@@ -30,22 +27,58 @@
 							您填写的内容检测通过！
 						</div>
 						<div class="form-group">
-							<label class="control-label col-md-3">类型名称<span class="required">*</span></label>
-							<div class="col-md-4">
-								<input type="text" name="ArticleType[title]" data-required="1" class="form-control" value="{$type_info['title']}"/>
+							<label class="control-label col-md-3">项目名称</label>
+							<div class="col-md-6">
+								<input type="text" name="Self[title]" class="form-control" value="{$project.title}"/>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label col-md-3">关键字<span class="required">*</span></label>
+							<label class="control-label col-md-3">所属公司</label>
+							<div class="col-md-6">
+								<select  class="form-control" name="Self[company_id]">
+									<volist name="company_list" id="company" >
+										<if condition="($project.company_id eq $company['id'])"> 
+											<option value="{$company.id}" selected>{$company.name}</option>
+										<else />
+											<option value="{$company.id}">{$company.name}</option>
+										</if>
+									</volist>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3">项目地址</label>
+							<div class="col-md-6">
+								<input type="text" name="Self[url]"  class="form-control" value="{$project.url}"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3">使用技术</label>
+							<div class="col-md-6">
+								<input type="text" name="Self[technology_used]"  class="form-control tags" value="{$project.technology_used}"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3">项目介绍</label>
+							<div class="col-md-7">
+								<textarea class="col-md-10 form-control" rows="12" name="Self[content]">{$project.content}</textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3">项目工期</label>
 							<div class="col-md-4">
-								<input type="text" name="ArticleType[key]" data-required="1" class="form-control" value="{$type_info['key']}"/>
+								<div class="input-group input-large date-picker input-daterange" >
+									<input type="text" class="form-control" name="Self[stm]" value="{$project.stm}">
+									<span class="input-group-addon">to</span>
+									<input type="text" class="form-control" name="Self[etm]" value="{$project.etm}">
+								</div>
 							</div>
 						</div>
 					</div>
 					<div class="form-actions fluid">
 						<div class="col-md-offset-3 col-md-9">
 							<button type="submit" class="btn green">提交</button>
-							<a href="<?php echo U('ArticleType/index'); ?>" class="btn default">取消</a>                       
+							<a href="<?php echo U('Self/project'); ?>" class="btn default">取消</a>                       
 						</div>
 					</div>
 				</form>
@@ -59,13 +92,22 @@
 <!-- BEGIN PAGE LEVEL PLUGINS -->
 <script type="text/javascript" src="/Template/admin/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
 <script type="text/javascript" src="/Template/admin/plugins/jquery-validation/dist/additional-methods.min.js"></script>
-<script type="text/javascript" src="/Template/admin/plugins/select2/select2.min.js"></script>
-<script type="text/javascript" src="/Template/admin/plugins/ckeditor/ckeditor.js"></script>
-<script type="text/javascript" src="/Template/admin/plugins/bootstrap-markdown/js/bootstrap-markdown.js"></script>
-<script type="text/javascript" src="/Template/admin/plugins/bootstrap-markdown/lib/markdown.js"></script>
-
+<script type="text/javascript" src="/Template/admin/plugins/jquery-tags-input/jquery.tagsinput.min.js" ></script>
+<script type="text/javascript" src="/Template/admin/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="/Template/admin/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
 <script>
 jQuery(document).ready(function() {   
+	
+	$('.tags').tagsInput({width: 'auto'});
+	
+	if (jQuery().datepicker) {
+        $('.date-picker').datepicker({
+        	format: 'yyyy-mm-dd',
+            rtl: App.isRTL(),
+            autoclose: true
+        });
+        $('body').removeClass("modal-open"); // fix bug when inline picker is used in modal
+    }
 	
     var form3 = $('#form_create_type');
     var error3 = $('.alert-danger', form3);
@@ -77,23 +119,27 @@ jQuery(document).ready(function() {
         focusInvalid: false, // do not focus the last invalid input
         ignore: "",
         rules: {
-            'ArticleType[title]': {
+            'Self[title]': {
                 required: true,
-            	rangelength:[1,20],
+            	rangelength:[1,50],
             },
-            'ArticleType[key]': {
-                required: true,
-                rangelength:[1,20],
+            'Self[url]': {
+            	url:true ,
+            },
+            'Self[content]':{
+            	required: true,
             },
         },
         messages: { // custom messages for radio buttons and checkboxes
-        	'ArticleType[title]': {
-                required: '请填写名称',
-            	rangelength:'长度只能在1-20之间',
+        	'Self[title]': {
+                required: '请填写项目名称',
+            	rangelength:'只能在1-50个字之间',
             },
-            'ArticleType[key]': {
-                required: '请填写关键字',
-                rangelength:'长度只能在1-20之间',
+            'Self[url]': {
+            	url:'请填写正确的地址格式',
+            },
+            'Self[content]':{
+            	required: '请填写项目介绍',
             },
         },
         errorPlacement: function (error, element) { // render error placement for each input type
@@ -113,11 +159,9 @@ jQuery(document).ready(function() {
                 error.insertAfter(element); // for other inputs, just perform default behavior
             }
         },
-
         invalidHandler: function (event, validator) { //display error alert on form submit   
             success3.hide();
             error3.show();
-            //App.scrollTo(error3, -200);
         },
         highlight: function (element) { // hightlight error inputs
            $(element).closest('.form-group').addClass('has-error'); // set error class to the control group
@@ -136,13 +180,18 @@ jQuery(document).ready(function() {
                 url: window.location.href ,
                 dataType:"json", 
                 data:{
-                	'ArticleType[title]' : $("input[name='ArticleType[title]']").val(),
-                    'ArticleType[key]' : $("input[name='ArticleType[key]']").val(),
+                	'Self[title]' : $("input[name='Self[title]']").val(),
+                    'Self[url]' : $("input[name='Self[url]']").val(),
+                    'Self[technology_used]' : $("input[name='Self[technology_used]']").val(),
+                    'Self[content]' : $("textarea[name='Self[content]']").val(),
+                    'Self[company_id]' : $("select[name='Self[company_id]']").val(),
+                    'Self[stm]' : $("input[name='Self[stm]']").val(),
+                    'Self[etm]' : $("input[name='Self[etm]']").val(),
                 },
                 success:function(data){
                     var errcode = data['errcode'];
 					if(errcode == 0){
-						window.location.href="<?php echo U('ArticleType/index'); ?>"; 
+						window.location.href = "<?php echo U('Self/project'); ?>"; 
 					}else{
 						bootbox.alert(data['msg'], function() {
 	                        location.reload();
@@ -153,11 +202,6 @@ jQuery(document).ready(function() {
         }
     });
 
-	//apply validation on select2 dropdown value change, this only needed for chosen dropdown integration.
-    //$('.select2me', form3).change(function () {
-        //revalidate the chosen dropdown value and show error or success message for the input
-    //   form3.validate().element($(this)); 
-    //});
 
 });
 </script>

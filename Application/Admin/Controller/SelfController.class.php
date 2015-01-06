@@ -35,9 +35,19 @@ class SelfController extends AdminBaseController{
 	 * @version V1.0
 	 */
 	public function Skill(){
-		
-		
-		
+		$model = new \Admin\Model\SelfSkillModel();
+		$admin_info = $this->admin_info;
+		$action = $_GET['action'];
+		if($_POST['Self']){
+			if($action == 'create'){
+				$model->createSkill($_POST['Self'], $admin_info);
+			}else if($action == 'update'){
+				$model->updateSkill($_POST['Self']);
+			}
+		}
+		$map['admin_id'] = $admin_info['id'];
+		$list = $model->where($map)->select();
+		$this->assign('list',$list);
 		$this->display();
 	}
 	

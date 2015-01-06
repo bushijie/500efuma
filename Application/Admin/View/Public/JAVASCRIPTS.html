@@ -31,7 +31,11 @@
 		function changeFrame(){
 			var mainbody = $("#frame").contents().find(".main_body");
 			var bodyheight = mainbody.height();
-			var mainheight = bodyheight+30;
+			var addheight = 30;
+			if(bodyheight < 400){
+				addheight = 100;
+			}
+			var mainheight = bodyheight+addheight;
 			$("#frame").height(mainheight);
 		}
 		

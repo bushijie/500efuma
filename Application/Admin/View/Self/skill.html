@@ -26,24 +26,23 @@
 					<i class="fa fa-reorder"></i> 天赋技能
 				</div>
 				<div class="actions">
-					<a href="#" class="btn purple"><i class="fa fa-pencil"></i> 添加</a> 
+					<a href="#" class="btn purple" id="addSkill" data-toggle="modal" data-target="#skillModal"><i class="fa fa-pencil"></i> 添加</a> 
 				</div>
 			</div>
 			<div class="portlet-body form">
 				<!-- BEGIN FORM-->
-				<form action="<?php echo U('Self/skill'); ?>" method="post" class="form-horizontal form-bordered">
-					<div class="form-group">
-						<label class="col-md-2 control-label ">PHP</label>
-						<div class="col-md-4 nouislider-saki">
-							<div id="slider_1"></div>
+				<form action="<?php echo U('Self/skill',array('action'=>'update')); ?>" method="post" class="form-horizontal form-bordered">
+					<volist name="list" id="skill" key="k">
+						<div class="form-group">
+							<label class="col-md-3 control-label ">{$skill.title}</label>
+							<input type="hidden" name="Self[{$skill.id}][title]" value="{$skill.title}">
+							<input type="hidden" name="Self[{$skill.id}][id]" value="{$skill.id}">
+							<div class="col-md-6 nouislider-saki">
+								<div id="slider_{$k}"></div>
+								<input type="hidden" name="Self[{$skill.id}][value]" value="{$skill.value}">
+							</div>
 						</div>
-						<div class="col-md-2">
-							<a id="slider_4_btn" href="javascript:;" class=" btn yellow btn-sm">数值</a>
-						</div>
-						<div class="col-md-2">
-							<a id="slider_4_btn" href="javascript:;" class=" btn red btn-sm"><i class="fa fa-trash-o"></i> 删除</a>
-						</div>
-					</div>
+					</volist>
 					<div class="form-actions fluid">
 						<div class="col-md-offset-3 col-md-9">
 							<button type="submit" class="btn green">提交</button>
@@ -58,20 +57,68 @@
 	</div>
 </div>
 
-<script src="/Template/admin/plugins/nouislider/jquery.nouislider.js"></script>
 
+<div class="modal fade" id="skillModal" tabindex="-1" role="basic" aria-hidden="true" data-backdrop='false'>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+				<h4 class="modal-title">添加技能</h4>
+			</div>
+			<form action="<?php echo U('Self/skill',array('action'=>'create')); ?>" method="post" id="create-skill-from">
+				<div class="modal-body">
+					<h4>技能名称</h4>
+					<input id="tags" type="text" name="Self[title]" class="form-control tags" />
+					<h4>技能数值</h4>
+					<div id="slider_add"></div>
+					<input type="hidden" name="Self[value]">
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn yellow" id="skill-add-get">获取数值</button>
+					<button type="submit" class="btn green" id="skill-add">确定</button>
+					<button type="button" class="btn default" data-dismiss="modal">关闭</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+<script src="/Template/admin/plugins/bootbox/bootbox.min.js" ></script>
+<script src="/Template/admin/plugins/nouislider/jquery.nouislider.js"></script>
 <script>
 	jQuery(document).ready(function() {
-		$("#slider_1").noUiSlider({
+		//新增技能
+		$("#skill-add-get").click(function() {
+			alert($("#slider_add").val());
+		});
+				
+		$("#slider_add").noUiSlider({
 			range : [ 0, 100 ],
-			start : [ 10, 100 ],
+			start : [ 1, 100 ],
 			connect : true,
 			handles : 1,
+			step : 1,
+			slide:function(){
+				var values= $(this).val();
+				$(this).next("input").val(values);
+			}
 		});
+		
+		<volist name="list" id="skill" key="k">
+			$("#slider_{$k}").noUiSlider({
+				range : [ 0, 100 ],
+				start : [ {$skill.value}, 100 ],
+				connect : true,
+				handles : 1,
+				step : 1,
+				slide:function(){
+					var values= $(this).val();
+					$(this).next("input").val(values);
+				}
+			});
+		</volist>
 
-		$("#slider_4_btn").click(function() {
-			alert($("#slider_1").val());
-		});
 
 	});
 </script>

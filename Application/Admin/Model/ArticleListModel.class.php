@@ -206,7 +206,6 @@ class ArticleListModel extends RelationModel {
 	}
 	
 	
-	
 	/**
 	 * @todo: 增加浏览量
 	 * @param $id  文章ID

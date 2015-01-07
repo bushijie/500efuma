@@ -1,0 +1,32 @@
+<div id="content">
+	<div id="content-inner">
+		<!-- 文章列表 -->
+		<volist name="list" id="article">
+			<article class="is-post is-post-excerpt">
+				<header>
+					<h2><a href="/Home/Article/view/id/{$article.id}">{$article.title}</a></h2>
+				</header>
+				<div class="info">
+					<span class="date">
+						<span class="month">{$article.ctm_M}<span>{$article.ctm_F}</span></span> 
+						<span class="day">{$article.ctm_D}</span>
+						<span class="year">, {$article.ctm_Y}</span>
+					</span>
+					<ul class="stats">
+						<li><a href="#" class="link-icon24 link-icon24-1">{$article.comments_num}</a></li>
+						<!-- 
+						<li><a href="#" class="link-icon24 link-icon24-2">{$article.pv_num}</a></li>
+						 -->
+					</ul>
+				</div>
+				<div class="content">
+					{$article.content}
+				</div>
+			</article>
+		</volist>
+			
+		<!-- Pager -->
+		<div class="pager">{$page}</div>
+		 	
+	</div>
+</div>

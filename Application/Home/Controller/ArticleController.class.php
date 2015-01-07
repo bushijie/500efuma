@@ -62,4 +62,51 @@ class ArticleController extends HomeBaseController{
 		$this->redirect('Article/view', array('id' => $id,'p'=>1));
 	}
 	
+	
+	/**
+	 * @todo: 前台点击【文章标签】操作控制器
+	 * @author Saki <ilulu4ever816@gmail.com>
+	 * @date 2015-1-7 下午3:12:21
+	 * @version V1.0
+	 */
+	public function Tagslog(){
+		$model = new \Admin\Model\ArticleListModel();
+		$type_model = D('Admin/ArticleType');
+		//查询条件判断
+		$map['admin_id'] = 1;
+		if(isset($_GET['code'])){
+			$condition['id'] = $_GET['code'];
+			$ishas_type = D('Admin/ArticleType')->where($condition)->limit(1)->find();
+			if($ishas_type){
+				$map['type_id'] = $_GET['code'];
+			}
+		}
+		$count = $model->where($map)->count();
+		//分页显示设置
+		$Page = new \Think\Page($count,7);
+		$Page->setConfig('prev','上一页');
+		$Page->setConfig('next','下一页');
+		$Page->setConfig('theme','%FIRST%  %LINK_PAGE%  %END%');
+		$show = $Page->show();
+		//分页数据处理
+		$Parsedown = new \Org\Markdown\Parsedown;
+		$list = $model->relation(true)->where($map)->order('ctm desc')->limit ($Page->firstRow.','.$Page->listRows)->select ();
+		foreach ($list as $k=>$article){
+			//内容的截取
+			$content = $article['content'];
+			$new_content = strip_tags($Parsedown->text($content));
+			$list[$k]['content'] = mb_substr($new_content,0,200, 'utf-8') . '...';
+			//时间的处理
+			$list[$k]['ctm_M'] = date('M',strtotime($article['ctm']));//月份简写
+			$ctm_F = date('F',strtotime($article['ctm']));//月份全写
+			$len_M = strlen($list[$k]['ctm_M']);//缩写字符串的长度
+			$ctm_F = mb_substr($ctm_F,$len_M);//截取剩余字符串
+			$list[$k]['ctm_F'] = $ctm_F;//月份全写截取后的剩余字符串
+			$list[$k]['ctm_Y'] = date('Y',strtotime($article['ctm']));//年份
+			$list[$k]['ctm_D'] = date('d',strtotime($article['ctm']));//日期
+		}
+		$this->assign('list',$list);
+		$this->assign('page',$show);
+		$this->display('tags');
+	}
 }

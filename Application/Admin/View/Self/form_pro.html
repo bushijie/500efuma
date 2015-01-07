@@ -68,9 +68,9 @@
 							<label class="control-label col-md-3">项目工期</label>
 							<div class="col-md-4">
 								<div class="input-group input-large date-picker input-daterange" >
-									<input type="text" class="form-control" name="Self[stm]" value="{$project.stm}">
+									<input type="text" class="form-control" name="Self[stm]" value="{$project.stm|strtotime|date='Y.m.d',###}">
 									<span class="input-group-addon">to</span>
-									<input type="text" class="form-control" name="Self[etm]" value="{$project.etm}">
+									<input type="text" class="form-control" name="Self[etm]" value="{$project.etm|strtotime|date='Y.m.d',###}">
 								</div>
 							</div>
 						</div>
@@ -102,7 +102,7 @@ jQuery(document).ready(function() {
 	
 	if (jQuery().datepicker) {
         $('.date-picker').datepicker({
-        	format: 'yyyy-mm-dd',
+        	format: 'yyyy.mm.dd',
             rtl: App.isRTL(),
             autoclose: true
         });

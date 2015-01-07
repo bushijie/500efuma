@@ -35,12 +35,12 @@ class SelfProjectModel extends RelationModel {
 			array_push ( $temp, $choose );//勾选框
 			array_push ( $temp, $project ['title'] );
 			array_push ( $temp, $project ['company']['name']);
-			array_push ( $temp, $project ['url']);
+// 			array_push ( $temp, $project ['url']);
 			//实用技术的html化
 			$technology_used_arr = explode(',',$project ['technology_used']);
 			$technology_str = '';
 			foreach ($technology_used_arr as $technology){
-				$technology_str .= "<span class='label label-sm label-success'>".$technology."</span> ";
+				$technology_str .= "<span class='label label-sm label-info'>".$technology."</span> ";
 			}
 			array_push ( $temp, $technology_str);
 			array_push ( $temp, date('Y-m-d',strtotime($project['stm'])));

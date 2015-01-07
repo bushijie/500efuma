@@ -38,7 +38,7 @@
 						<div class="form-group">
 							<label class="control-label col-md-2">出生日期</label>
 							<div class="col-md-3">
-								<input class="form-control form-control-inline input-medium date-picker" name="Self[birthday]" type="text" value="{$info['birthday']}"" />
+								<input class="form-control form-control-inline input-medium date-picker" name="Self[birthday]" type="text" value="{$info['birthday']|strtotime|date='Y.m.d',###}" />
 							</div>
 						</div>
 					</div>

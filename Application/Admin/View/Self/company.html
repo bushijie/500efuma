@@ -50,9 +50,9 @@
 								<label class="control-label col-md-3">工作时间</label>
 								<div class="col-md-4">
 									<div class="input-group input-large date-picker input-daterange" >
-										<input type="text" class="form-control" name="Self[{$company.id}][stm]" value="{$company.stm}">
+										<input type="text" class="form-control" name="Self[{$company.id}][stm]" value="{$company.stm|strtotime|date='Y.m.d',###}">
 										<span class="input-group-addon">to</span>
-										<input type="text" class="form-control" name="Self[{$company.id}][etm]" value="{$company.etm}">
+										<input type="text" class="form-control" name="Self[{$company.id}][etm]" value="{$company.etm|strtotime|date='Y.m.d',###}">
 									</div>
 								</div>
 							</div>
@@ -121,7 +121,7 @@
 		
 		if (jQuery().datepicker) {
             $('.date-picker').datepicker({
-            	format: 'yyyy-mm-dd',
+            	format: 'yyyy.mm.dd',
                 rtl: App.isRTL(),
                 autoclose: true
             });

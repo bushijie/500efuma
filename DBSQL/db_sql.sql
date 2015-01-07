@@ -223,7 +223,7 @@ CREATE TABLE `fm_self_project` (
   `ctm` datetime NOT NULL,
   `utm` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -232,7 +232,7 @@ CREATE TABLE `fm_self_project` (
 
 LOCK TABLES `fm_self_project` WRITE;
 /*!40000 ALTER TABLE `fm_self_project` DISABLE KEYS */;
-INSERT INTO `fm_self_project` VALUES (1,'滴答微学习','http://www.91dida.com/','php,mysql,apache','123123666888',NULL,'2014-01-01 00:00:00','2014-01-01 00:00:00',1,1,'2014-01-01 00:00:00','2015-01-06 11:30:28');
+INSERT INTO `fm_self_project` VALUES (1,'滴答微学习','http://www.91dida.com/','php,mysql,apache,thinksns','Web项目，使用ThinkSNS进行的二次开发。其中的名师堂，资料室等应用是由本人进行开发的。技术方面主要使用PHP,MySQL,JQuery,AJAX等等。这个网站的目的是简化学生和老师的学习以及工作，并且提供无纸化操作的学习交流平台。',NULL,'2012-09-10 00:00:00','2013-04-08 00:00:00',1,1,'2014-01-01 00:00:00','2015-01-07 01:35:40'),(5,'微学习Android客户端','http://www.title.91dida.com/TitleBank/SNSClient/didastudyV2.0.7_r.apk','php,thinkphp,thinksns,mysql,apache,linux','Android项目，这个工程整个开发过程中一共做了3个版本，第一和第二个版本都使用的SSI框架(spring3 struts2 mybatis)，区别就是第二个版本中使用了黑盒的公共JAR包将请求URL等信息和文件同步的方法进行了封装。但是到后来公司决定换成使用PHP作为服务器，于是就有了第三个版本，依旧是使用ThinkSNS进行开发，与上面的项目是同一个工程，本人编写了全部的API和测试，文档等工作。点击上面的标题可以下载体验下。',NULL,'2013-05-22 00:00:00','2014-02-10 00:00:00',1,1,'2015-01-07 09:34:26','2015-01-07 01:40:38');
 /*!40000 ALTER TABLE `fm_self_project` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -302,4 +302,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-01-06 19:38:02
+-- Dump completed on 2015-01-07  9:43:45

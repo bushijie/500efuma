@@ -62,15 +62,4 @@ class ArticleController extends HomeBaseController{
 		$this->redirect('Article/view', array('id' => $id,'p'=>1));
 	}
 	
-// 	public function c(){
-// 		if($_GET['id'] == 0){
-// 			echo 'Behaviors!';
-// 			$param = '123';
-// 			\Think\Hook::listen('c',$param);
-// 			\Think\Hook::add('c','Home\\Behaviors\\emailBehavior');
-// 		}else{
-// 			echo 'nothing to do!';
-// 		}
-// 	}
-	
 }

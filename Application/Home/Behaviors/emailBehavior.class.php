@@ -104,7 +104,7 @@ class emailBehavior extends \Think\Behavior {
 			$to_name = $info['name'];//接收对象昵称
 			$from_name = $comment_info['name'] ? $comment_info['name'] : '匿名用户' ;//发送对象
 			$title = $this->getTitle($comment_info, $article_info);
-			$content = getContent($comment_info['content']);
+			$content = $comment_info['content'];
 			$url = 'http://www.500efuma.com'. U('Home/Article/view',array('id'=>$comment_info['aid']));
 			$body = getMail($to_name,$from_name,$article_info['title'],$content,$url);
 			$is_send = sendMail($to_email,$to_email, $title, $body);
@@ -128,7 +128,7 @@ class emailBehavior extends \Think\Behavior {
 				$from_name = '站长';
 			}
 			$title = $this->getTitle($comment_info, $article_info);//邮件标题
-			$content = getContent($comment_info['content']);//邮件内容
+			$content = $comment_info['content'];//邮件内容
 			$url = 'http://www.500efuma.com'. U('Home/Article/view',array('id'=>$comment_info['aid']));
 			$body = getMail($to_name,$from_name,$article_info['title'],$content,$url);
 			$is_send = sendMail($to_email,$to_email, $title, $body);

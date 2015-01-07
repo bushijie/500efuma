@@ -159,4 +159,3 @@ function getContent($content){
 	$content = nl2br($content); //将回车替换为
 	return $content;
 }
-

@@ -10,21 +10,22 @@
 				<header class="postlist">
 					<div class="resume-group">
 						<div class="resume-label">网名:</div>
-						<div class="resume-info">大魔王</div>
+						<div class="resume-info">{$info.name}</div>
 					</div>
 					<div class="resume-group">
 						<div class="resume-label">称谓:</div>
-						<div class="resume-info">J2EE,PHP初级炼金术师</div>
+						<div class="resume-info">{$info.profession}</div>
 					</div>
 					<div class="resume-group">
 						<div class="resume-label">出生日期:</div>
-						<div class="resume-info">1991.4.23</div>
+						<div class="resume-info">{$info.birthday|strtotime|date='Y.m.d',###}</div>
 					</div>
 					<div class="resume-group">
 						<div class="resume-label">电子信箱:</div>
-						<div class="resume-info">zha_zha@outlook.com</div>
+						<div class="resume-info">{$info.email}</div>
 					</div>
 				</header>
+				<div style="height:1em;"></div>
 			</article>
 			<!-- 天赋技能 -->
 			<article class="is-post is-post-excerpt">
@@ -34,78 +35,19 @@
 					</span>
 				</div>
 				<header class="postlist">
+				
+					<volist name="skill_list" id="skill">
 					<div class="resume-group">
-						<div class="resume-label">JAVA</div>
+						<div class="resume-label">{$skill.title}</div>
 						<div class="resume-info">
 							<div class="resume-bar">
 								<div class="slider-bg bg-grey"></div>
-								<div class="slider-bar color-bar level9 animate-bar"></div>
+								<div class="slider-bar color-bar animate-bar" style="width:{$skill.value}%"></div>
 							</div>
 						</div>
 					</div>
-					<div class="resume-group">
-						<div class="resume-label">PHP</div>
-						<div class="resume-info">
-							<div class="resume-bar">
-								<div class="slider-bg bg-grey"></div>
-								<div class="slider-bar color-bar level8 animate-bar"></div>
-							</div>
-						</div>
-					</div>
-					<div class="resume-group">
-						<div class="resume-label">HTML</div>
-						<div class="resume-info">
-							<div class="resume-bar">
-								<div class="slider-bg bg-grey"></div>
-								<div class="slider-bar color-bar level8 animate-bar"></div>
-							</div>
-						</div>
-					</div>
-					<div class="resume-group">
-						<div class="resume-label">CSS</div>
-						<div class="resume-info">
-							<div class="resume-bar">
-								<div class="slider-bg bg-grey"></div>
-								<div class="slider-bar color-bar level7 animate-bar"></div>
-							</div>
-						</div>
-					</div>
-					<div class="resume-group">
-						<div class="resume-label">Javascript</div>
-						<div class="resume-info">
-							<div class="resume-bar">
-								<div class="slider-bg bg-grey"></div>
-								<div class="slider-bar color-bar level8 animate-bar"></div>
-							</div>
-						</div>
-					</div>
-					<div class="resume-group">
-						<div class="resume-label">jQuery</div>
-						<div class="resume-info">
-							<div class="resume-bar">
-								<div class="slider-bg bg-grey"></div>
-								<div class="slider-bar color-bar level7 animate-bar"></div>
-							</div>
-						</div>
-					</div>
-					<div class="resume-group">
-						<div class="resume-label">MySQL</div>
-						<div class="resume-info">
-							<div class="resume-bar">
-								<div class="slider-bg bg-grey"></div>
-								<div class="slider-bar color-bar level9 animate-bar"></div>
-							</div>
-						</div>
-					</div>
-					<div class="resume-group">
-						<div class="resume-label">Linux</div>
-						<div class="resume-info">
-							<div class="resume-bar">
-								<div class="slider-bg bg-grey"></div>
-								<div class="slider-bar color-bar level5 animate-bar"></div>
-							</div>
-						</div>
-					</div>
+					</volist>
+					
 					<div style="height:1em;"></div>
 				</header>
 			</article>
@@ -117,12 +59,15 @@
 					</span>
 				</div>
 				<header class="postlist">
+					<volist name="company_list" id="company">
 					<div class="work-info">
-						<h2>武汉中金慧天科技有限公司</h2>
-						<span class="work-time">服务器组长,2012-2014<span>
-
+						<h2>{$company.name} &nbsp&nbsp ({$company.stm|strtotime|date='Y.m.d',###} -- {$company.etm|strtotime|date='Y.m.d',###})</h2>
+						<span class="work-time">{$company.work}</span>
+						<p style="margin-top: 0.4em;">{$company.achievement}</p>
 					</div>
+					</volist>
 				</header>
+				<div style="height:1em;"></div>
 			</article>
 			<!-- 首领击杀 -->
 			<article class="is-post is-post-excerpt">
@@ -132,14 +77,13 @@
 					</span>
 				</div>
 				<header class="postlist">
+					<volist name="project_list" id="project">
 					<div class="work-info">
-						<h2><a href="http://www.91dida.com/">滴答微学习(http://www.91dida.com/)</a></h2>
-						<p>Web项目，使用ThinkSNS进行的二次开发。其中的名师堂，资料室等应用是由本人进行开发的。技术方面主要使用PHP,MySQL,JQuery,AJAX等等。这个网站的目的是简化学生和老师的学习以及工作，并且提供无纸化操作的学习交流平台。</p>
+						<h2><a href="{$project.url}" target="_blank">{$project.title}</a> &nbsp&nbsp ({$project.stm|strtotime|date='Y.m.d',###} -- {$project.etm|strtotime|date='Y.m.d',###})</h2>
+						<span class="work-time">{$project.technology_used}</span>
+						<p style="margin-top: 0.4em;">{$project.content}</p>
 					</div>
-					<div class="work-info">
-						<h2><a href="http://www.title.91dida.com/TitleBank/SNSClient/TinyStudy_V1.1.1_rc.apk">微学习Android客户端</a></h2>
-						<p>Android项目，这个工程整个开发过程中一共做了3个版本，第一和第二个版本都使用的SSI框架(spring3 struts2 mybatis)，区别就是第二个版本中使用了黑盒的公共JAR包将请求URL等信息和文件同步的方法进行了封装。但是到后来公司决定换成使用PHP作为服务器，于是就有了第三个版本，依旧是使用ThinkSNS进行开发，与上面的项目是同一个工程，本人编写了全部的API和测试，文档等工作。点击上面的标题可以下载体验下。</p>
-					</div>
+					</volist>
 				</header>
 			</article>
 	</div>

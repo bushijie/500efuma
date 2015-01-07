@@ -81,6 +81,26 @@ class IndexController extends HomeBaseController {
 	* @version v1.0.0 
 	*/
 	public function me(){
+		//模型定义
+		$info_model = new \Admin\Model\SelfInfoModel();
+		$skill_model = new \Admin\Model\SelfSkillModel();
+		$company_model = new \Admin\Model\SelfCompanyModel();
+		$pro_model = new \Admin\Model\SelfProjectModel();
+		//信息查询
+		$map['admin_id'] = 1;//目前先写死
+		/*基本信息*/
+		$info = $info_model->where($map)->find();
+		/*天赋技能*/
+		$skill_list = $skill_model->where($map)->select();
+		/*历史成就*/
+		$company_list = $company_model->where($map)->select();
+		/*首领击杀*/
+		$project_list = $pro_model->where($map)->select();
+		/**/
+		$this->assign('info',$info);
+		$this->assign('skill_list',$skill_list);
+		$this->assign('company_list',$company_list);
+		$this->assign('project_list',$project_list);
 		$this->display();
 	}
 }

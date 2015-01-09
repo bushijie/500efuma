@@ -22,13 +22,19 @@ class ToolWidget extends Controller {
 		$model = D('Admin/ArticleComment');
 		//被@的对象游客
 		$info = $model->where($map)->find();
+		//查找所有的pid相同下的二级评论列表
+		$condition['pid'] = $info['pid'];
+		$list = $model->order('ctm asc')->where($condition)->select();
+		$key_array = array_keys($list,$info);
+		//楼层数显式
+		$num_str = '#'.$info['pid'].'-'.($key_array[0]+1);
 		//如果存在被@的对象
 		if($info){
 			//如果被@的对象为管理员
 			if($info['is_admin']){
-				$name = '@站长';
+				$name = '@'.$num_str.' 站长';
 			}else{
-				$name = $info['name'] ? '@'.$info['name'] : '@匿名用户';
+				$name = $info['name'] ? '@'.$num_str.' '.$info['name'] : '@'.$num_str.' 匿名用户';
 			}
 		}else{
 			$name = '';

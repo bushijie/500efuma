@@ -85,7 +85,11 @@
 							
 							<span>
 								{$comment.ctm} / 
-								<a href="javascript:void(0);" class="reply" data-name='#{$k}' data-id='{$comment.id}'>回复</a>
+								<if condition="$p eq null">
+									<a href="javascript:void(0);" class="reply" data-name='#{$k+(1-1)*3}' data-id='{$comment.id}'>回复</a>
+								<else />
+									<a href="javascript:void(0);" class="reply" data-name='#{$k+($p-1)*3}' data-id='{$comment.id}'>回复</a>
+								</if>
 								/
 									<a href="<?php echo U('ArticleComment/delete',array('id'=>$comment['id'],'aid'=>$comment['aid'])); ?>" data-id='{$comment.id}'>删除</a>
 							</span>

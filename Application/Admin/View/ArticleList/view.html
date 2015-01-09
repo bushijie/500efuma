@@ -73,11 +73,11 @@
 							<if condition="$comment.is_admin neq 1">
 								<if condition="$comment.name neq null">
 									{$comment.name}
-									<if condition="$comment.email neq null">
-										({$comment.email})
-									</if>
 								<else />
 									匿名游客
+								</if>
+								<if condition="$comment.email neq null">
+									({$comment.email})
 								</if>
 							<else />
 								<font color="#E74570">站长</font>
@@ -108,18 +108,18 @@
 										<if condition="$comment_sec.is_admin neq 1">
 											<if condition="$comment_sec.name neq null">
 												{$comment_sec.name}
-												<if condition="$comment_sec.email neq null">
-													({$comment_sec.email})
-												</if>
 											<else />
 												匿名游客
+											</if>
+											<if condition="$comment_sec.email neq null">
+												({$comment_sec.email})
 											</if>
 										<else />
 											<font color="#E74570">站长</font>
 										</if>
 										
 										<font color="#5E7CD8">
-										{:W('Tool/CommentToName',array($comment_sec['tid']))} 
+											{:W('Tool/CommentToName',array($comment_sec['tid']))} 
 										</font>
 										
 										<span>

@@ -20,11 +20,18 @@ class ToolWidget extends Controller {
 	public function commentToName($tid){
 		$map['id'] = $tid;
 		$model = D('Admin/ArticleComment');
+		//被@的对象游客
 		$info = $model->where($map)->find();
-		if($info['is_admin'] == 1){
-			$name = '@站长';
+		//如果存在被@的对象
+		if($info){
+			//如果被@的对象为管理员
+			if($info['is_admin']){
+				$name = '@站长';
+			}else{
+				$name = $info['name'] ? '@'.$info['name'] : '@匿名用户';
+			}
 		}else{
-			$name = ($info['name']) ? '@'.$info['name'] : '';
+			$name = '';
 		}
 		echo $name;
 	}

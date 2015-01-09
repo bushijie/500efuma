@@ -22,12 +22,20 @@ class ToolWidget extends Controller {
 		$model = D('Admin/ArticleComment');
 		//被@的对象游客
 		$info = $model->where($map)->find();
+		//被@对象的一级游客 
+		$map2['id'] = $info['pid'];
+		$info2 = $model->where($map2)->find();
+		//查找1级评论的索引值
+		$condition['aid'] = $info['aid'];
+		$condition['pid'] = 0;
+		$list_1 = $model->order('ctm asc')->where($condition)->select();
+		$key_array_1 = array_keys($list_1,$info2);
 		//查找所有的pid相同下的二级评论列表
-		$condition['pid'] = $info['pid'];
-		$list = $model->order('ctm asc')->where($condition)->select();
-		$key_array = array_keys($list,$info);
+		$condition2['pid'] = $info['pid'];
+		$list_2 = $model->order('ctm asc')->where($condition2)->select();
+		$key_array_2 = array_keys($list_2,$info);
 		//楼层数显式
-		$num_str = '#'.$info['pid'].'-'.($key_array[0]+1);
+		$num_str = '#'.($key_array_1[0]+1).'-'.($key_array_2[0]+1);
 		//如果存在被@的对象
 		if($info){
 			//如果被@的对象为管理员

@@ -159,3 +159,31 @@ function getContent($content){
 	$content = nl2br($content); //将回车替换为
 	return $content;
 }
+
+/**
+ * 解析xml
+ * @author Saki <zha_zha@outlook.com>
+ * @date 2014-5-29下午5:09:51
+ * @version v1.0.0
+ */
+function resolveXML($xml){
+	//解析xml文件
+	$p = xml_parser_create();
+	xml_parser_set_option($p, XML_OPTION_CASE_FOLDING, false);
+	xml_parse_into_struct($p, $xml, $vals, $index);
+	xml_parser_free($p);
+	/*遍历xml对象，将key-value放入数组中，然后在包装成object*/
+	$newArr = array();
+	foreach($vals as $xmlObj){
+		if($xmlObj['tag'] != 'xml'){
+			$temp[$xmlObj['tag']] = $xmlObj['value'];
+			array_push($newArr, $temp);
+		}
+	}
+	$res = (object)end($newArr);
+	return $res;
+}
+
+
+
+

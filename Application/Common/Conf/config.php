@@ -36,6 +36,12 @@ return array(
 			'admin'=>array('Admin/'),  // admin域名指向Admin分组
 			'wechat'=>array('Wechat/'),
 	),
+	//微信公众号配置	
+	'WECHAT' => array(
+		'AppID' 	=> 'wx7732c37d01fbc7fc',
+		'AppSecret' => 'becab177fbebea874093258ba6813ae0',
+		'Token' 	=> '500efuma',
+	),
 	//邮件配置，500efuma企业邮箱配置
 	'THINK_EMAIL' => array(
 		'SMTP_HOST'   => 'SMTP.500efuma.com', //SMTP服务器

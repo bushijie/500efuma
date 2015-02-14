@@ -4,59 +4,44 @@ use Think\Controller;
 
 class IndexController extends Controller {
 	
-	protected $token;
-	
+	public $wechatUtil;
 	
 	public function _initialize(){
 		$this->token = '500efuma';
 		layout(false);
+		$config = C('THINK_EMAIL');//调用系统配置
+		$this->wechatUtil = new \Org\Wechat\WechatUtil($config['AppID'], $config['AppSecret'], $config['Token']);
 		/*网站接入*/
-		$this->valid();
+// 		$this->wechatUtil->valid();
 	}
-	
 	
 	public function index(){
-		$this->display();
-	}
-	
-	
-	/**
-	 * 微信开发者url接入方法
-	 * @author Saki <zha_zha@outlook.com>
-	 * @date 2014-6-6下午2:27:14
-	 * @version v1.0.0
-	 */
-	public function valid(){
-		if(isset($_GET["echostr"])){
-			$echoStr = $_GET["echostr"];
-			if($this->checkSignature()){
-				echo $echoStr;
-				exit;
+		//接受微信xml文件
+		if(isset($GLOBALS["HTTP_RAW_POST_DATA"])){
+			$xml = $GLOBALS["HTTP_RAW_POST_DATA"];
+			$xmlObj = resolveXML($xml);
+			//获取用户openid
+			$Developers = $xmlObj->ToUserName;//开发者微信号
+			$OpenID = $xmlObj->FromUserName;//用户OpenID
+			if($OpenID){
+				//判断事件类型
+				if($xmlObj->MsgType == 'text'){
+					/*如果为文本消息*/
+					$message = trim($xmlObj->Content);//用户发送的内容
+					if ($message == '新年快乐'){
+						$Content = '同乐，同乐';
+						$text = $this->wechatUtil->createTextXML($OpenID, $Developers, $Content);
+					}else {
+
+						
+					}
+				}elseif($xmlObj->MsgType == 'event'){
+				}
 			}
+			/*推送xml信息返回给用户*/
+			echo $text;
 		}
 	}
 	
-	/**
-	 * 检查微信服务器发送的参数并进行处理返回
-	 * @author Saki <zha_zha@outlook.com>
-	 * @date 2014-6-6下午2:27:14
-	 * @version v1.0.0
-	 */
-	public function checkSignature(){
-		if(isset($_GET["signature"]) && isset($_GET["timestamp"]) && isset($_GET["nonce"])){
-			$signature = $_GET["signature"];
-			$timestamp = $_GET["timestamp"];
-			$nonce = $_GET["nonce"];
-			$token = $this->token;
-			$tmpArr = array($token, $timestamp, $nonce);
-			sort($tmpArr, SORT_STRING);
-			$tmpStr = implode( $tmpArr );
-			$tmpStr = sha1( $tmpStr );
-			if( $tmpStr == $signature ){
-				return true;
-			}else{
-				return false;
-			}
-		}
-	}
+	
 }

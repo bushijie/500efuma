@@ -23,7 +23,7 @@ return array(
 	'DB_PORT'=> 3306,        	// 端口
 	'DB_PREFIX' => 'fm_',
 		
-	'APP_GROUP_LIST'=>'Home,Admin',	//分组配置
+	'APP_GROUP_LIST'=>'Home,Admin,Wechat',	//分组配置
 	'DEFAULT_GROUP'=>'Home',		//默认分组
 		// '配置项'=>'配置值'
 		'LAYOUT_ON' => true,
@@ -34,6 +34,7 @@ return array(
 	 */
 	'APP_SUB_DOMAIN_RULES'=>array(
 			'admin'=>array('Admin/'),  // admin域名指向Admin分组
+			'wechat'=>array('Wechat/'),
 	),
 	//邮件配置，500efuma企业邮箱配置
 	'THINK_EMAIL' => array(

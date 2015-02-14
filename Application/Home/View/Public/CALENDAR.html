@@ -17,7 +17,10 @@
 				<volist name="calendar" id="data">
 					<tr>
 						<if condition="($data['type'] eq 'top')">
-							<td colspan="{$data['colspan']}" class="pad"><span>&nbsp;</span></td>
+							<if condition="($data['colspan'] neq 0)">
+								<td colspan="{$data['colspan']}" class="pad"><span>&nbsp;</span></td>
+							<else />
+							</if>
 						</if>
 						<for start="$data['start']" end="$data['end']">
 							<if condition="($i eq $d)">

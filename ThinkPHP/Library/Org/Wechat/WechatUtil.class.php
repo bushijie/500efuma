@@ -56,6 +56,9 @@ class WechatUtil {
 				case '注册':
 					$result = "如果您是500efuma成员请输入\n'saki,xxxx'(QQ号)进行身份认证";
 					break;
+				case '我爱你们':
+					$result = "这个是魔王用心想对你们说的话：<a href='http://www.500efuma.com/wechat/Index/friend'>观看</a>";
+					break;
 				case '新年快乐':
 					$result = '小助手祝你羊年大吉！';
 					break;

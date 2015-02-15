@@ -36,6 +36,20 @@ class IndexController extends Controller {
 						$text = $this->wechatUtil->createTextXML($OpenID, $Developers, $Content);
 					}
 				}elseif($xmlObj->MsgType == 'event'){
+					/*如果为按钮事件*/
+// 					if($xmlObj->Event == 'CLICK'){
+// 					}
+					/*如果为关注事件*/
+					if($xmlObj->Event == 'subscribe'){
+						$Content = "欢迎关注\n我是魔王的助手\n如果您是500efuma成员请输入\n'saki,xxxx'(QQ号)进行身份认证";
+						$text = $this->wechatUtil->createTextXML($OpenID, $Developers, $Content);
+					}
+					/*如果为取消关注事件*/
+// 					else if($xmlObj->Event == 'unsubscribe'){
+// 					}
+					/*如果为地理位置事件*/
+// 					else if($xmlObj->Event == 'LOCATION'){
+// 					}
 				}
 			}
 			/*推送xml信息返回给用户*/

@@ -184,6 +184,58 @@ function resolveXML($xml){
 	return $res;
 }
 
+/**
+ * @todo: 解析朕的爱卿的QQ号  O(∩_∩)O哈哈~ 
+ * @param $qq	QQ号    
+ * @author Saki <ilulu4ever816@gmail.com>
+ * @date 2015-2-15 上午11:40:29 
+ * @version V1.0
+ */
+function resolveQQ($qq){
+	$data['errcode'] = 1;
+	switch ($qq) {
+		case '327918461':
+			$name = '小CC';
+		break;
+		case '839505713':
+			$name = '小小野';
+		break;
+		case '743532251':
+			$name = '小宥姐';
+		break;
+		case '609883609':
+			$name = '小福妈';
+		break;
+		case '461558577':
+			$name = '小百合';
+		break;
+		case '441391504':
+			$name = '小佳织';
+		break;
+		case '547683826':
+			$name = '小哲士';
+		break;
+		case '327469590':
+			$name = '小人妻';
+		break;
+		case '16707696':
+			$name = '小角虫';
+		break;
+		case '931757623':
+			$name = '小龙华';
+		break;
+		case '395408934':
+			$name = '小魔王';
+		break;
+		default:
+			$data['errcode'] = 0;
+			$name = '';
+		break;
+	}
+	$data['name'] = $name;
+	return $data;
+}
+
 
 
 

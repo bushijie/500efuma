@@ -21,7 +21,7 @@ class WechatUtil {
 	
 	public function createTextXML($OpenID,$Developers,$Content){
 		$temp['ToUserName'] = "<![CDATA[$OpenID]]>";
-		$temp['ToUserName'] = "<![CDATA[$Developers]]>";
+		$temp['FromUserName'] = "<![CDATA[$Developers]]>";
 		$temp['CreateTime'] = time();
 		$temp['MsgType'] = "<![CDATA[text]]>";
 		$temp['Content'] = "<![CDATA[$Content]]>";

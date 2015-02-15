@@ -52,5 +52,12 @@ class IndexController extends Controller {
 		}
 	}
 	
+	public function friend(){
+		
+		
+		$this->display('index');
+	}
+	
+	
 	
 }

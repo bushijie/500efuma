@@ -53,6 +53,9 @@ class WechatUtil {
 			}
 		}else{//正常的信息回复
 			switch ($message) {
+				case '注册':
+					$result = "如果您是500efuma成员请输入\n'saki,xxxx'(QQ号)进行身份认证";
+					break;
 				case '新年快乐':
 					$result = '小助手祝你羊年大吉！';
 					break;

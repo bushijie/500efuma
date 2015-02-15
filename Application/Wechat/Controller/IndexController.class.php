@@ -28,13 +28,8 @@ class IndexController extends Controller {
 				if($xmlObj->MsgType == 'text'){
 					/*如果为文本消息*/
 					$message = trim($xmlObj->Content);//用户发送的内容
-					if ($message == '新年快乐'){
-						$Content = '同乐，同乐';
-						$text = $this->wechatUtil->createTextXML($OpenID, $Developers, $Content);
-					}else {
-						$Content = '测试自动回复';
-						$text = $this->wechatUtil->createTextXML($OpenID, $Developers, $Content);
-					}
+					$Content = $this->wechatUtil->resolveText($message, $OpenID);
+					$text = $this->wechatUtil->createTextXML($OpenID, $Developers, $Content);
 				}elseif($xmlObj->MsgType == 'event'){
 					/*如果为按钮事件*/
 // 					if($xmlObj->Event == 'CLICK'){

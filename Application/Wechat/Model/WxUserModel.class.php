@@ -64,7 +64,7 @@ class WxUserModel extends RelationModel{
 		$data['ctm'] = date('Y-m-d H:i:s',time());
 		try {
 			$isadd = $model->add($data);
-			$errcode = $isadd ? 0 : 500;
+			$errcode = $isadd ? 1 : 500;
 			$msg = $isadd ? '添加成功' : '添加失败';
 		} catch (Exception $e) {
 			$msg = $e->getMessage();

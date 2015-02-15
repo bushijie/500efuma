@@ -35,10 +35,18 @@ class WechatUtil {
 				$is_qq = resolveQQ($qq);
 				if($is_qq['errcode'] == 1){
 					//本群人员,查询是否在数据库中
-					
-					
-					
-					
+					$wxuser_model = new \Wechat\Model\WxUserModel();
+					$is_has = $wxuser_model->checkQQ($qq);
+					if(!$is_has){
+						$is_add = $wxuser_model->createWxUser($OpenID, $qq, $is_qq['name'], $is_qq['headimgurl'], $is_qq['email']);
+						if($is_add['errcode'] == 1){
+							$result = '注册成功！' . $is_qq['name'];
+						}else{
+							$result = '注册失败，请将错误发给魔王：' . $is_add['msg'];
+						}
+					}else{
+						$result = '亲！你已经注册过了！';
+					}
 				}else{
 					$result = '不好意思，经查询你不是500efuma中的成员';
 				}

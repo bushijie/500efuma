@@ -12,7 +12,7 @@ class IndexController extends Controller {
 		$config = C('THINK_EMAIL');//调用系统配置
 		$this->wechatUtil = new \Org\Wechat\WechatUtil($config['AppID'], $config['AppSecret'], $config['Token']);
 		/*网站接入*/
-// 		$this->wechatUtil->valid();
+		$this->wechatUtil->valid();
 	}
 	
 	public function index(){
@@ -32,8 +32,8 @@ class IndexController extends Controller {
 						$Content = '同乐，同乐';
 						$text = $this->wechatUtil->createTextXML($OpenID, $Developers, $Content);
 					}else {
-
-						
+						$Content = '测试自动回复';
+						$text = $this->wechatUtil->createTextXML($OpenID, $Developers, $Content);
 					}
 				}elseif($xmlObj->MsgType == 'event'){
 				}

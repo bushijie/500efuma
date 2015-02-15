@@ -20,11 +20,11 @@ class WechatUtil {
 	}
 	
 	public function createTextXML($OpenID,$Developers,$Content){
-		$temp['ToUserName'] = $OpenID;
-		$temp['ToUserName'] = $Developers;
+		$temp['ToUserName'] = "<![CDATA[$OpenID]]>";
+		$temp['ToUserName'] = "<![CDATA[$Developers]]>";
 		$temp['CreateTime'] = time();
-		$temp['MsgType'] = 'text';
-		$temp['Content'] = $Content;
+		$temp['MsgType'] = "<![CDATA[text]]>";
+		$temp['Content'] = "<![CDATA[$Content]]>";
 		$xml = $this->arrayToXml($temp);
 		return $xml;
 	}

@@ -23,7 +23,7 @@ class AdminModel extends RelationModel {
 		// 把查询条件传入查询方法
 		$info = $model->where($condition)->find();
 		return $info;
-	}
+	} 
 	
 	
 	/**

@@ -2,6 +2,7 @@
 namespace Admin\Controller;
 use Think\Controller;
 /**
+ * test
  * @ClassName: Admin\Controller$AdminBaseController 
  * @Description: 后台控制器基类
  * @author Saki <ilulu4ever816@gmail.com>

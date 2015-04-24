@@ -20,6 +20,11 @@
 			<li ><a href="/Home/Index/me">关于我</a></li>
 		</if>
 		
+		<if condition="($action eq 'links')">
+			<li class="current_page_item"><a href="/Home/Index/links">友情链接</a></li>
+		<else /> 
+			<li ><a href="/Home/Index/links">友情链接</a></li>
+		</if>
 		
 	</ul>
 </nav>

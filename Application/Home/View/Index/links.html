@@ -1,0 +1,88 @@
+<style>
+.comment-h2 {
+	font-size: 1.2em;
+	text-align: center;
+	margin-bottom: 20px;
+}
+.comment-in {
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	background-color: #eee;
+	padding: 10px 10px 0px 10px;
+	margin-left: 50px;
+}
+.control-label{
+	color: #2C2C2C;
+}
+a.button:active{
+	color: #FFF;
+}
+</style>
+
+<div id="content">
+	<div id="content-inner">
+		<!-- 基本信息 -->
+		<article class="is-post is-post-excerpt">
+			<div class="info">
+				<span class="date" id="date_postlist">
+					<span class="month" style="font-size:20px">友情链接<span></span></span> 
+				</span>
+			</div>
+			<header class="postlist">
+				<volist name="links_list" id="link">
+					<div class="resume-group">
+						<div class="resume-label">
+							<a href="{$link.url}" target='_blank'>{$link.name}</a>
+						</div>
+						<div class="resume-info">({$link.description})</div>
+					</div>
+				</volist>
+			</header>
+			<div style="height:1em;"></div>
+		</article>
+		
+		<!-- 申请友链 -->
+		<h2 class="comment-h2" style="margin-top:2em;" id="post-comment-start">申请友链</h2>
+		<div class="post-comment">
+			<form>
+				<div class="form-group">
+					<label class="control-label">友链名称</label>
+					<span style="float:right">(没填的话是不会添加的哦～)</span>
+					<input type="text" class="form-control" name="Links[name]">
+				</div>
+				<br>
+				<div class="form-group">
+					<label class="control-label">您的邮箱</label>
+					<span style="float:right">(如填写，会与您进行联系)</span>
+					<input type="text" class="form-control" name="Links[email]">
+				</div>
+				<br>
+				<div class="form-group">
+					<label class="control-label">您的链接地址</label>
+					<span style="float:right">(这个不填，那叫我怎么跟你做朋友=。=)</span>
+					<input type="text" class="form-control" name="Links[url]">
+				</div>
+				<a href="javascript:void(0);" style="border: none;margin-top:7px" class="button" id="comment-submit">提交</a>
+			</form>
+		</div>
+		
+	</div>
+</div>
+
+<script type="text/javascript">
+$('#comment-submit').click(function(){
+	$.ajax({
+		type:'post',
+		url:'/Home/Links/applyLink',
+		dataType:"json", 
+		data:{
+			'Links[name]' : $("input[name='Links[name]']").val(),
+			'Links[email]' : $("input[name='Links[email]']").val(),
+			'Links[url]' : $("input[name='Links[url]']").val(),
+		},
+		success:function(data){
+			alert(data['msg']);
+		}   
+	});
+});
+</script>

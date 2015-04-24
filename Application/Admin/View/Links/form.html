@@ -1,0 +1,195 @@
+<!-- BEGIN PAGE LEVEL STYLES --> 
+<link rel="stylesheet" type="text/css" href="/Template/admin/plugins/select2/select2_metro.css" />
+<link rel="stylesheet" type="text/css" href="/Template/admin/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css">
+<!-- END PAGE LEVEL SCRIPTS -->
+<div class="row">
+	<div class="col-md-12">
+		<!-- BEGIN VALIDATION STATES-->
+		<div class="portlet box blue">
+			<div class="portlet-title">
+				<div class="caption"><i class="fa fa-reorder"></i>
+				<if condition="$action eq 'create' ">创建友链<else />编辑友链【{$link_info['name']}】</if>
+				</div>
+				<div class="tools">
+					<a href="javascript:;" class="collapse"></a>
+					<a href="javascript:;" class="reload"></a>
+					<a href="javascript:;" class="remove"></a>
+				</div>
+			</div>
+			<div class="portlet-body form">
+				<!-- BEGIN FORM-->
+				<form action="#" id="form_create_article" class="form-horizontal">
+					<div class="form-body">
+						<div class="alert alert-danger display-hide">
+							<button class="close" data-close="alert"></button>
+							您填写的内容有些不符合规范，请按照提示改正！
+						</div>
+						<div class="alert alert-success display-hide">
+							<button class="close" data-close="alert"></button>
+							您填写的内容检测通过！
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-2">友链名称</label>
+							<div class="col-md-7">
+								<input type="text" name="Links[name]" data-required="1" class="form-control" value="{$link_info['name']}"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-2">地址</label>
+							<div class="col-md-7">
+								<input type="text" name="Links[url]" data-required="1" class="form-control" value="{$link_info['url']}"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-2">简单描述</label>
+							<div class="col-md-7">
+								<input type="text" name="Links[description]" data-required="1" class="form-control" value="{$link_info['description']}"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-2">站长邮箱</label>
+							<div class="col-md-7">
+								<input type="text" name="Links[email]" data-required="1" class="form-control" value="{$link_info['email']}"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-2">状态</label>
+							<div class="col-md-4">
+								<select class="form-control" name="Links[status]">
+									<if condition="0 eq $link_info['status']">
+										<option value="0" selected>未审核</option>
+									<else /> 
+										<option value="0" >未审核</option>
+									</if>
+									<if condition="1 eq $link_info['status']">
+										<option value="1" selected>审核通过</option>
+									<else /> 
+										<option value="1" >审核通过</option>
+									</if>
+									<if condition="2 eq $link_info['status']">
+										<option value="2" selected>无效外链</option>
+									<else /> 
+										<option value="2" >无效外链</option>
+									</if>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="form-actions fluid">
+						<div class="col-md-offset-3 col-md-9">
+							<button type="submit" class="btn green">提交</button>
+							<a href="<?php echo U('Links/index'); ?>" class="btn default">取消</a>                           
+						</div>
+					</div>
+				</form>
+				<!-- END FORM-->
+			</div>
+			<!-- END VALIDATION STATES-->
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript" src="/Template/admin/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
+<script type="text/javascript" src="/Template/admin/plugins/jquery-validation/dist/additional-methods.min.js"></script>
+<script type="text/javascript" src="/Template/admin/plugins/select2/select2.min.js"></script>
+<script type="text/javascript" src="/Template/admin/plugins/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="/Template/admin/plugins/bootstrap-markdown/js/bootstrap-markdown.js"></script>
+<script type="text/javascript" src="/Template/admin/plugins/bootstrap-markdown/lib/markdown.js"></script>
+
+
+<!-- END PAGE LEVEL PLUGINS -->
+<script>
+jQuery(document).ready(function() {   
+	
+	var form3 = $('#form_create_article');
+	var error3 = $('.alert-danger', form3);
+	var success3 = $('.alert-success', form3);
+	
+    form3.validate({
+        errorElement: 'span', //default input error message container
+        errorClass: 'help-block', // default input error message class
+        focusInvalid: false, // do not focus the last invalid input
+        ignore: "",
+        rules: {
+            'Links[name]': {
+            	required: true,
+            	rangelength:[1,100],
+            },
+            'Links[url]': {
+            	required: true,
+            	url:true
+            },
+        },
+        messages: { // custom messages for radio buttons and checkboxes
+        	'Links[name]': {
+            	required: '请填写友链名称',
+            	rangelength:'长度只能在1-100之间',
+            },
+            'Links[url]': {
+            	required: '友链地址不能为空',
+            	url : '请填写正确的网址格式'
+            },
+        },
+        errorPlacement: function (error, element) { // render error placement for each input type
+            if (element.parent(".input-group").size() > 0) {
+                error.insertAfter(element.parent(".input-group"));
+            } else if (element.attr("data-error-container")) { 
+                error.appendTo(element.attr("data-error-container"));
+            } else if (element.parents('.radio-list').size() > 0) { 
+                error.appendTo(element.parents('.radio-list').attr("data-error-container"));
+            } else if (element.parents('.radio-inline').size() > 0) { 
+                error.appendTo(element.parents('.radio-inline').attr("data-error-container"));
+            } else if (element.parents('.checkbox-list').size() > 0) {
+                error.appendTo(element.parents('.checkbox-list').attr("data-error-container"));
+            } else if (element.parents('.checkbox-inline').size() > 0) { 
+                error.appendTo(element.parents('.checkbox-inline').attr("data-error-container"));
+            } else {
+                error.insertAfter(element); // for other inputs, just perform default behavior
+            }
+        },
+        invalidHandler: function (event, validator) { //display error alert on form submit   
+            success3.hide();
+            error3.show();
+            //App.scrollTo(error3, -200);
+        },
+        highlight: function (element) { // hightlight error inputs
+           $(element).closest('.form-group').addClass('has-error'); // set error class to the control group
+        },
+        unhighlight: function (element) { // revert the change done by hightlight
+            $(element).closest('.form-group').removeClass('has-error'); // set error class to the control group
+        },
+        success: function (label) {
+            label.closest('.form-group').removeClass('has-error'); // set success class to the control group
+        },
+        submitHandler: function (form) {
+            success3.show();
+            error3.hide();
+            $.ajax({
+                type:'post',
+                url: window.location.href ,
+                dataType:"json", 
+                data:{
+                	'Links[name]' : $("input[name='Links[name]']").val(),
+                    'Links[url]' : $("input[name='Links[url]']").val(),
+                    'Links[description]' : $("input[name='Links[description]']").val(),
+                    'Links[status]' : $("select[name='Links[status]']").val(),
+                },
+                success:function(data){
+                    var errcode = data['errcode'];
+					if(errcode == 0){
+						window.location.href= "<?php echo U('Links/index'); ?>"; 
+					}else{
+						bootbox.alert(data['msg'], function() {
+	                        location.reload();
+	                    });
+					}
+                }   
+            });
+        }
+
+    });
+	
+    
+});
+</script>

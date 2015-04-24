@@ -103,4 +103,13 @@ class IndexController extends HomeBaseController {
 		$this->assign('project_list',$project_list);
 		$this->display();
 	}
+	
+	public function links(){
+	    $links_model = new \Admin\Model\LinksModel();
+	    $map['status'] = 1;
+	    $links_list = $links_model->where($map)->select();
+	    /**/
+	    $this->assign('links_list',$links_list);
+	    $this->display();
+	}
 }

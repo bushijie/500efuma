@@ -31,12 +31,12 @@ function sidebar(){
 				),
 			),
 		),
-		'reply' => array(
-			'name'=>'回复管理',
-			'key'=>'reply',
-			'url'=>U('Admin/Reply/index'),
-			'icon'=>'fa-bar-chart-o',
-		),
+// 		'reply' => array(
+// 			'name'=>'回复管理',
+// 			'key'=>'reply',
+// 			'url'=>U('Admin/Reply/index'),
+// 			'icon'=>'fa-bar-chart-o',
+// 		),
 		'self' => array(
 			'name'=>'简历管理',
 			'key'=>'self',
@@ -76,12 +76,19 @@ function sidebar(){
 					'key'=>'sysMsg',
 					'url'=>U('Admin/System/editText'),
 				),
-				'sysPhone'=>array(
-					'name'=>'联系方式',
-					'key'=>'sysPhone',
-					'url'=>U('Admin/System/index'),
-				),
+// 				'sysPhone'=>array(
+// 					'name'=>'联系方式',
+// 					'key'=>'sysPhone',
+// 					'url'=>U('Admin/System/index'),
+// 				),
 			),
 		),
+		'links' => array(
+			'name'=>'友链管理',
+			'key'=>'links',
+			'url'=>U('Admin/Links/index'),
+			'icon'=>'fa-bar-chart-o',
+		),
+	    
 	);
 }

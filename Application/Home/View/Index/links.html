@@ -17,6 +17,14 @@
 a.button:active{
 	color: #FFF;
 }
+
+.links-comm input, .links-comm select, .links-comm textarea {
+  border-radius: 0.4em;
+  -webkit-appearance: none;
+  border: solid 1px #ddd;
+  padding: 0.5em;
+  width: 100%;
+}
 </style>
 
 <div id="content">
@@ -44,7 +52,7 @@ a.button:active{
 		<!-- 申请友链 -->
 		<h2 class="comment-h2" style="margin-top:2em;" id="post-comment-start">申请友链</h2>
 		<div class="post-comment">
-			<form>
+			<div class="links-comm">
 				<div class="form-group">
 					<label class="control-label">友链名称</label>
 					<span style="float:right">(没填的话是不会添加的哦～)</span>
@@ -52,18 +60,18 @@ a.button:active{
 				</div>
 				<br>
 				<div class="form-group">
-					<label class="control-label">您的邮箱</label>
-					<span style="float:right">(如填写，会与您进行联系)</span>
-					<input type="text" class="form-control" name="Links[email]">
-				</div>
-				<br>
-				<div class="form-group">
 					<label class="control-label">您的链接地址</label>
 					<span style="float:right">(这个不填，那叫我怎么跟你做朋友=。=)</span>
 					<input type="text" class="form-control" name="Links[url]">
 				</div>
+				<br>
+				<div class="form-group">
+					<label class="control-label">您的邮箱</label>
+					<span style="float:right">(如填写，会与您进行联系)</span>
+					<input type="text" class="form-control" name="Links[email]">
+				</div>
 				<a href="javascript:void(0);" style="border: none;margin-top:7px" class="button" id="comment-submit">提交</a>
-			</form>
+			</div>
 		</div>
 		
 	</div>
@@ -82,6 +90,9 @@ $('#comment-submit').click(function(){
 		},
 		success:function(data){
 			alert(data['msg']);
+			if(data['errcode'] == 0){
+				location.reload();
+			}
 		}   
 	});
 });

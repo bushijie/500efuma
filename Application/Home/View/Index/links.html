@@ -42,7 +42,9 @@ a.button:active{
 						<div class="resume-label">
 							<a href="{$link.url}" target='_blank'>{$link.name}</a>
 						</div>
-						<div class="resume-info">({$link.description})</div>
+						<notempty  name="link.description">
+							<div class="resume-info">({$link.description})</div>
+						</notempty >
 					</div>
 				</volist>
 			</header>

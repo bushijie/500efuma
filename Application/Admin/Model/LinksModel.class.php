@@ -18,6 +18,7 @@ class LinksModel extends RelationModel {
             array_push ( $temp, $link['name']);
             array_push ( $temp, $link['url']);
             array_push ( $temp, $link['description']);
+            array_push ( $temp, $link['email']);
             $status = $this->getStatus_HTML($link['status']);
             array_push ( $temp, $status);
             array_push ( $temp, $link['ctm']);

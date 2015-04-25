@@ -23,6 +23,7 @@ class LinksModel extends RelationModel {
             array_push ( $temp, $status);
             array_push ( $temp, $link['ctm']);
             $action = "<a href='" . $link['url'] . "' target='_blank' class='btn purple btn-sm'>预览</a> " .
+                "<button type='button' data-id='".$link['id']."' class='btn btn-sm yellow sendEmail'>发邮件</button> " .
                 "<a href='" . U('Links/update',array('id'=>$link['id'])) . "' class='btn blue btn-sm'>编辑</a> " .
                 "<a href='" . U('Links/delete',array('id'=>$link['id'])) . "' class='btn red btn-sm'>删除</a> ";
             array_push ( $temp, $action);

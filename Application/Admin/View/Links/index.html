@@ -56,6 +56,21 @@
 <script>
 jQuery(document).ready(function() {    
 	
+	$('.sendEmail').live('click', function() { 
+		var id =  $(this).attr('data-id');
+		$.ajax({
+			type:'post',
+			url:'../Links/sendMail',
+			dataType:"json", 
+			data:{
+				'id' : id,
+			},
+			success:function(data){
+				alert(data['msg']);
+			}   
+		});
+	});
+	
     $('#dblist').dataTable({
     	"bAutoWidth":true,
         "aoColumns": [
@@ -118,7 +133,5 @@ jQuery(document).ready(function() {
          $(this).parents('tr').toggleClass("active");
     });
 
-	
 });
 </script>
-

@@ -788,7 +788,7 @@ class Parsedown
                 'alignments' => $alignments,
                 'identified' => true,
                 'element' => array(
-                    'name' => 'table',
+                    'name' => 'table border="1"',
                     'handler' => 'elements',
                 ),
             );

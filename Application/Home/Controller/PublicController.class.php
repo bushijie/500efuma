@@ -11,8 +11,8 @@ use Think\Controller;
 class PublicController extends HomeBaseController{
 
 	/**
-	 * 
-	 * 
+	 * APP ID：101215106
+	 * APP KEY：09fc27016ac20dcbbf14b5be8faddff1
 	 */
 	public function qqcallback(){
 		echo '腾讯回调地址';

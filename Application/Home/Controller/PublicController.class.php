@@ -15,7 +15,8 @@ class PublicController extends HomeBaseController{
 	 * APP KEY：09fc27016ac20dcbbf14b5be8faddff1
 	 */
 	public function qqcallback(){
-		echo '腾讯回调地址';
+// 		echo '腾讯回调地址';
+		$this->display();
 	}
 	
 	

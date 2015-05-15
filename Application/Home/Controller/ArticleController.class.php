@@ -42,6 +42,7 @@ class ArticleController extends HomeBaseController{
 						"client_id=101215106&" . 
 						"redirect_uri=$now_url&" .
 						"state=".$id;
+		session('state',$id);  //设置session
 		$this->assign('info',$info);
 		$this->assign('tags',$tags);
 		$this->assign('comments_list',$comments_list);

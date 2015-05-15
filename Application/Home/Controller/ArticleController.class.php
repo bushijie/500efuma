@@ -36,7 +36,7 @@ class ArticleController extends HomeBaseController{
 			$model->addPv($id);
 		}
 		//qq-login-url 
-		$now_url = urlencode(C('ROOT_URL_PATH'));
+		$now_url = urlencode(C('QQ_REDIRECT_URI'));
 		$qq_login_url = "https://graph.qq.com/oauth2.0/authorize?".
 						"response_type=code&" . 
 						"client_id=101215106&" . 

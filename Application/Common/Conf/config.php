@@ -42,8 +42,7 @@ return array(
 		'AppSecret' => 'becab177fbebea874093258ba6813ae0',
 		'Token' 	=> '500efuma',
 	),
-// 	'ROOT_URL_PATH' => 'http://500efuma.me',	//本地域名根地址
-	'ROOT_URL_PATH' => 'http://www.500efuma.com',	//线上域名根地址
+	'QQ_REDIRECT_URI' => 'http://www.500efuma.com/Home/Public/qqlogin',	//线上域名根地址
 	//邮件配置，500efuma企业邮箱配置
 	'THINK_EMAIL' => array(
 		'SMTP_HOST'   => 'SMTP.500efuma.com', //SMTP服务器

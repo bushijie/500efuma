@@ -23,7 +23,7 @@ class PublicController extends HomeBaseController{
 		$session_state = session('state');
 		if ($session_state == $state){
 			$token_url = "https://graph.qq.com/oauth2.0/token?grant_type=authorization_code&"
-					. "client_id=" . 101215106 . "&redirect_uri=" . urlencode(C('ROOT_URL_PATH'))
+					. "client_id=" . 101215106 . "&redirect_uri=" . urlencode(C('QQ_REDIRECT_URI'))
 					. "&client_secret=" . '09fc27016ac20dcbbf14b5be8faddff1' . "&code=" . $code;
 			$response = file_get_contents($token_url);
 			var_dump($response);

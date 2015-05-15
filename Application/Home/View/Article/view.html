@@ -50,7 +50,13 @@ th {
   padding: 5px;
 }
 
-
+.media-commit-img{
+  height: 60px;
+  position: relative;
+  top: 30px;
+  width: 60px;
+  float: left;
+}
 </style>
 
 <div id="content">
@@ -76,6 +82,7 @@ th {
 		</article>
 		
 		<!-- 评论显示区 -->
+		<if condition="$comments_list neq null">
 		<h2 class="comment-h2" id="comment-start">游客评论区</h2>
 		<volist name="comments_list" id="comment" key="k">
 			<div class="media">
@@ -139,26 +146,36 @@ th {
 		</volist>
 		<!--end media-->
 		<div class="pager" style="margin-top:-4em;text-align: right;"><div>{$page}</div></div>
+		</if>
 		
 		<!-- 填写评论区 -->
-		<h2 class="comment-h2" style="margin-top:2em;" id="post-comment-start">发表评论</h2>
 		
+		<h2 class="comment-h2" style="margin-top:2em;" id="post-comment-start">发表评论</h2>
 		<div class="post-comment">
 			<form id="post-comment" action="/Home/Article/postComment" method="post">
 				<input type="hidden"  name="ArticleComment[aid]" value="{$info.id}">
 				<input type="hidden" id="ArticleCommentPid"  name="ArticleComment[pid]" value="0">
 				<input type="hidden" id="ArticleCommentTid"  name="ArticleComment[tid]" value="0">
+				
+				
+				<!-- 
+				<img alt="" src="/Upload/headimg/1.jpg" class="media-commit-img">
 				<div class="form-group">
 					<label class="control-label">昵称
 					<span style="float:right">(未填写则默认为【匿名游客】)</span>
 					<input type="text" class="form-control" name="ArticleComment[name]">
 				</div>
+				 -->
+				
+				
 				<br>
 				<div class="form-group">
 					<label class="control-label">邮件</label>
 					<span style="float:right">(如填写，当有回复的时会发送邮件提醒)</span>
 					<input type="text" class="form-control" name="ArticleComment[email]">
 				</div>
+				
+				
 				<br>
 				<div class="form-group">
 					<label class="control-label">评论信息</label>
@@ -168,7 +185,8 @@ th {
 				<a href="javascript:void(0);" style="border: none;" class="button" id="comment-submit">提交评论</a>
 				<a href="javascript:void(0);" style="border: none;display:none" class="button" id="no-obj">取消回复对象</a>
 				<a href="javascript:void(0);" style="border: none;float: right;" class="button" id="qq-login">使用QQ登录
-				<img src='/Template/css/images/Connect_logo_1.png'></label></a>
+					<img src='/Template/css/images/Connect_logo_1.png'>
+				</a>
 			</form>
 		</div>
 		
@@ -240,8 +258,9 @@ $('#no-obj').click(function(){
 	$('#post-comment-start').css('color','#1b252a');
 });
 
-QC.Login({//按默认样式插入QQ登录按钮
-	btnId:"qq-login"	//插入按钮的节点id
+
+$("#qq-login").click(function(){
+	window.location.href = '{$qq_login_url}';
 });
 
 </script>

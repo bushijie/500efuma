@@ -35,11 +35,19 @@ class ArticleController extends HomeBaseController{
 		if(Article_Cookie_IP($id)){
 			$model->addPv($id);
 		}
+		//qq-login-url 
+		$now_url = urlencode($config['ROOT_URL_PATH'].'/Home/Article/view/id/'.$id);
+		$qq_login_url = "https://graph.qq.com/oauth2.0/authorize?".
+						"response_type=code&" . 
+						"client_id=101215106&" . 
+						"redirect_uri=" . $now_url.
+						"state=test";
 		$this->assign('info',$info);
 		$this->assign('tags',$tags);
 		$this->assign('comments_list',$comments_list);
 		$this->assign('page',$show);
 		$this->assign('p',$p);
+		$this->assign('qq_login_url',$qq_login_url);
 		$this->display();
 	}
 	

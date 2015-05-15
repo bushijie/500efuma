@@ -40,7 +40,7 @@ class ArticleController extends HomeBaseController{
 		$qq_login_url = "https://graph.qq.com/oauth2.0/authorize?".
 						"response_type=code&" . 
 						"client_id=101215106&" . 
-						"redirect_uri=" . $now_url.
+						"redirect_uri=$now_url&" .
 						"state=".$id;
 		$this->assign('info',$info);
 		$this->assign('tags',$tags);

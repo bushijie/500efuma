@@ -37,6 +37,7 @@ class ArticleController extends HomeBaseController{
 		}
 		//判断用户是否进行了QQ登录
 		$qq_headurl = cookie('qq_headurl');
+		$qq_nickname = cookie('qq_nickname');
 		$headurl = !empty($qq_headurl) ? $qq_headurl : 'http://admin.500efuma.com/Template/admin/img/blog/21.png';
 		$is_qq_login = !empty($qq_headurl) ? 1 : 0;
 		//qq-login-url 
@@ -54,6 +55,7 @@ class ArticleController extends HomeBaseController{
 		$this->assign('page',$show);
 		$this->assign('p',$p);
 		$this->assign('qq_login_url',$qq_login_url);
+		$this->assign('qq_nickname',$qq_nickname);
 		$this->assign('headurl',$headurl);
 		$this->assign('is_qq_login',$is_qq_login);
 		$this->display();

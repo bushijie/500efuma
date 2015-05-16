@@ -24,13 +24,28 @@ class PublicController extends HomeBaseController{
 		if ($session_state == $state){
 			$token_res = $qqUtil->getAccessToken($code);
 			$params = $token_res['data'];
-			//Step4：使用Access Token来获取用户的OpenID
-			$open_res = $qqUtil->getOpenID($params['access_token']);
-			//getUserInfo
-			$user_info = $qqUtil->getUserInfo($params['access_token'], $open_res['data']);
+			$token = $params['access_token'];
+			//判断access_token是否存在，且是否有效，即这个人是否登录过
+			$model = new \Admin\Model\QqLoginModel();
+			$result = $model->checkToken($token);
+			if ($result){
+				//token有效
+				$openId = $result['openid'];
+				$user_info = $qqUtil->getUserInfo($token, $openId);
+			}else {
+				//Step4：使用Access Token来获取用户的OpenID
+				$open_res = $qqUtil->getOpenID($token);
+				$openId =  $open_res['data'];
+				$user_info = $qqUtil->getUserInfo($token, $openId);
+				//添加新的数据
+				$model->saveLoginInfo($params, $user_info, $openId);
+			}
 		}
-		var_dump($user_info);
-		echo $params['access_token'];
+// 		var_dump($user_info);
+// 		echo $params['access_token'];
+		//跳转到当前浏览的帖子
+		$state_arr = explode('-', $state);
+		$this->redirect($state_arr[1].'/'.$state_arr[2],array($state_arr[3]=>$state_arr[4]));
 	}
 	
 	

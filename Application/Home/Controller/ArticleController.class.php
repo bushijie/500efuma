@@ -35,6 +35,10 @@ class ArticleController extends HomeBaseController{
 		if(Article_Cookie_IP($id)){
 			$model->addPv($id);
 		}
+		//判断用户是否进行了QQ登录
+		$qq_headurl = cookie('qq_headurl');
+		$headurl = !empty($qq_headurl) ? $qq_headurl : 'http://admin.500efuma.com/Template/admin/img/blog/21.png';
+		$is_qq_login = !empty($qq_headurl) ? 1 : 0;
 		//qq-login-url 
 		$now_url = urlencode(C('QQ_REDIRECT_URI'));
 		$state = MODULE_NAME .'-'. CONTROLLER_NAME  . '-' . ACTION_NAME .'-id-' . $id;
@@ -50,6 +54,8 @@ class ArticleController extends HomeBaseController{
 		$this->assign('page',$show);
 		$this->assign('p',$p);
 		$this->assign('qq_login_url',$qq_login_url);
+		$this->assign('headurl',$headurl);
+		$this->assign('is_qq_login',$is_qq_login);
 		$this->display();
 	}
 	

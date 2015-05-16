@@ -51,10 +51,10 @@ th {
 }
 
 .media-commit-img{
-  height: 60px;
+  height: 40px;
   position: relative;
-  top: 30px;
-  width: 60px;
+  top: 23px;
+  width: 40px;
   float: left;
 }
 </style>
@@ -156,26 +156,19 @@ th {
 				<input type="hidden"  name="ArticleComment[aid]" value="{$info.id}">
 				<input type="hidden" id="ArticleCommentPid"  name="ArticleComment[pid]" value="0">
 				<input type="hidden" id="ArticleCommentTid"  name="ArticleComment[tid]" value="0">
-				
-				
+				<input type="hidden" name="ArticleComment[headimg_url]" value="{$headurl}">
 				<!-- 
-				<img alt="" src="/Upload/headimg/1.jpg" class="media-commit-img">
 				<div class="form-group">
 					<label class="control-label">昵称
 					<span style="float:right">(未填写则默认为【匿名游客】)</span>
 					<input type="text" class="form-control" name="ArticleComment[name]">
 				</div>
 				 -->
-				
-				
+				<img alt="" src="{$headurl}" class="media-commit-img">
 				<br>
-				<div class="form-group">
-					<label class="control-label">邮件</label>
-					<span style="float:right">(如填写，当有回复的时会发送邮件提醒)</span>
-					<input type="text" class="form-control" name="ArticleComment[email]">
+				<div class="form-group" style="margin-left: 6%;">
+					<input type="text" class="form-control" name="ArticleComment[email]" placeholder="邮箱：(如填写，当有回复的时会发送邮件提醒)">
 				</div>
-				
-				
 				<br>
 				<div class="form-group">
 					<label class="control-label">评论信息</label>
@@ -184,9 +177,11 @@ th {
 				</div>
 				<a href="javascript:void(0);" style="border: none;" class="button" id="comment-submit">提交评论</a>
 				<a href="javascript:void(0);" style="border: none;display:none" class="button" id="no-obj">取消回复对象</a>
+				<if condition="$is_qq_login neq 1">
 				<a href="javascript:void(0);" style="border: none;float: right;" class="button" id="qq-login">使用QQ登录
 					<img src='/Template/css/images/Connect_logo_1.png'>
 				</a>
+				</if>
 			</form>
 		</div>
 		

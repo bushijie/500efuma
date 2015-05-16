@@ -40,14 +40,25 @@ class PublicController extends HomeBaseController{
 				//添加新的数据
 				$model->saveLoginInfo($params, $user_info, $openId);
 			}
+			//将用户的信息放进Cookie中
+			cookie('qq_nickname',$user_info->nickname,3600*24*7);
+			cookie('qq_headurl',$user_info->figureurl_qq_1,3600*24*7);
 		}
-// 		var_dump($user_info);
-// 		echo $params['access_token'];
 		//跳转到当前浏览的帖子
 		$state_arr = explode('-', $state);
 		$this->redirect($state_arr[1].'/'.$state_arr[2],array($state_arr[3]=>$state_arr[4]));
 	}
 	
+	
+	/**
+	 * @todo 处理QQ退出方法
+	 * @author Saki <ilulu4ever816@gmail.com>
+	 * @date 2015-05-16 下午8:16:46
+	 */
+	public function qqlogout(){
+		
+		
+	}
 	
 	
 	

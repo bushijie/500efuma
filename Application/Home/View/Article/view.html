@@ -22,8 +22,9 @@
 	border: 1px solid #ddd;
 	border-radius: 4px;
 	background-color: #eee;
-	padding: 10px 10px 0px 10px;
+	padding: 0px 10px 8px 10px;
 	margin-left: 50px;
+	margin-top: 10px;
 }
 .control-label{
 	color: #2C2C2C;
@@ -50,12 +51,28 @@ th {
   padding: 5px;
 }
 
-.media-commit-img{
+.media-commit-img-post{
   height: 40px;
   position: relative;
-  top: 23px;
+  top: 25px;
   width: 40px;
   float: left;
+}
+
+.media-commit-img{
+  position: relative;
+  top: 2px;
+  width: 50px;
+  float: left;
+  margin-right: 8px;
+}
+
+.media-commit-img-2{
+  position: relative;
+  top: 2px;
+  width: 35px;
+  float: left;
+  margin-right: 8px;
 }
 </style>
 
@@ -87,8 +104,15 @@ th {
 		<volist name="comments_list" id="comment" key="k">
 			<div class="media">
 				<div class="media-body">
-					<h4 class="media-heading">
+					<h4 class="media-heading" style="margin-top: 13px">
 						<font class="custom-name">
+						
+							<if condition="$comment.headimg_url neq null">
+								<img alt="" src="{$comment.headimg_url}" class="media-commit-img">
+							<else />
+								<img alt="" src="http://admin.500efuma.com/Template/admin/img/blog/21.png" class="media-commit-img">
+							</if>
+							
 							<if condition="$p eq null">#{$k+(1-1)*3}<else />#{$k+($p-1)*3}</if>
 							<if condition="$comment.is_admin neq 1">
 								<if condition="$comment.name neq null">
@@ -110,13 +134,21 @@ th {
 							</if>
 						</span>
 					</h4>
-					<div style="margin-top: 1em;">{$comment.content}</div>
+					<div style="margin-top: 10px;  margin-left: 45px;">{$comment.content}</div>
 					
 				</div>
 				<if condition="$comment.comment_sec neq null">
 					<div class="media-body comment-in">
 						<volist name="comment.comment_sec" id="comment_sec" key="k_sec">
-							<h4 class="media-heading">
+							<h4 class="media-heading" style="margin-top: 13px">
+							
+								<if condition="$comment_sec.headimg_url neq null">
+									<img alt="" src="{$comment_sec.headimg_url}" class="media-commit-img-2">
+								<else />
+									<img alt="" src="http://admin.500efuma.com/Template/admin/img/blog/22.png" class="media-commit-img-2">
+								</if>
+							
+							
 								<if condition="$p eq null">#{$k+(1-1)*3}<else />#{$k+($p-1)*3}</if>-{$k_sec}
 								<if condition="$comment_sec.is_admin neq 1">
 									<if condition="$comment_sec.name neq null">
@@ -137,7 +169,7 @@ th {
 									<a href="javascript:void(0);" class="reply" data-name='<if condition="$p eq null">#{$k+(1-1)*3}<else />#{$k+($p-1)*3}</if>-{$k_sec}' data-id='{$comment.id}' data-tid='{$comment_sec.id}'>回复</a>
 								</span>
 							</h4>
-							<div style="margin-top: 1em;">{$comment_sec.content}</div>
+							<div style="margin-top: 10px;  margin-left: 45px;">{$comment_sec.content}</div>
 						</volist>
 					</div>
 				</if>
@@ -165,7 +197,7 @@ th {
 					<input type="text" class="form-control" name="ArticleComment[name]">
 				</div>
 				 -->
-				<img alt="" src="{$headurl}" class="media-commit-img">
+				<img alt="" src="{$headurl}" class="media-commit-img-post">
 				<br>
 				<div class="form-group" style="margin-left: 6%;">
 					<input type="text" class="form-control" name="ArticleComment[email]" placeholder="邮箱：(如填写，当有回复的时会发送邮件提醒)">

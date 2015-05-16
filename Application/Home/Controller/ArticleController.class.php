@@ -37,12 +37,12 @@ class ArticleController extends HomeBaseController{
 		}
 		//qq-login-url 
 		$now_url = urlencode(C('QQ_REDIRECT_URI'));
+		$state = MODULE_NAME .'-'. CONTROLLER_NAME  . '-' . ACTION_NAME .'-id-' . $id;
 		$qq_login_url = "https://graph.qq.com/oauth2.0/authorize?".
 						"response_type=code&" . 
 						"client_id=101215106&" . 
 						"redirect_uri=$now_url&" .
-						"state=".$id;
-		$state = MODULE_NAME .'-'. CONTROLLER_NAME  . '-' . ACTION_NAME .'-id-' . $id;
+						"state=".$state;
 		session('state',$state);  //设置session
 		$this->assign('info',$info);
 		$this->assign('tags',$tags);

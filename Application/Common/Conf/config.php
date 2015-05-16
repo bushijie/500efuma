@@ -1,5 +1,7 @@
 <?php
 return array(
+		
+	//'ERROR_PAGE' =>'Home/Public/404.html',
 	//I500efuma
 	
 	//747599
@@ -43,6 +45,8 @@ return array(
 		'Token' 	=> '500efuma',
 	),
 	'QQ_REDIRECT_URI' => 'http://www.500efuma.com/Home/Public/qqlogin',	//线上域名根地址
+	'QQ_APP_ID' => '101215106',
+	'QQ_APP_KEY' => '09fc27016ac20dcbbf14b5be8faddff1',
 	//邮件配置，500efuma企业邮箱配置
 	'THINK_EMAIL' => array(
 		'SMTP_HOST'   => 'SMTP.500efuma.com', //SMTP服务器

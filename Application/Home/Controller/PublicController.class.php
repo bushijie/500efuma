@@ -18,7 +18,7 @@ class PublicController extends HomeBaseController{
 	public function qqlogin(){
 		$qqUtil = new \Org\QQ\QQUtil();
 		$code = $_GET['code'];
-		$state = $_GET['state'];
+		$state = $_GET['state'];//存储文章ID
 		$session_state = session('state');
 		//Step3：通过Authorization Code获取Access Token
 		if ($session_state == $state){
@@ -30,6 +30,7 @@ class PublicController extends HomeBaseController{
 			$user_info = $qqUtil->getUserInfo($params['access_token'], $open_res['data']);
 		}
 		var_dump($user_info);
+		echo $params['access_token'];
 	}
 	
 	

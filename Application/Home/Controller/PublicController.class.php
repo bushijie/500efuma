@@ -29,7 +29,7 @@ class PublicController extends HomeBaseController{
 			//getUserInfo
 			$user_info = $qqUtil->getUserInfo($params['access_token'], $open_res['data']);
 		}
-		var_dump($user_info);
+		var_dump($token_res);
 	}
 	
 	

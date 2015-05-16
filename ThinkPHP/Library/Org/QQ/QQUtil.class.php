@@ -56,7 +56,7 @@ class QQUtil {
 			$data['errmsg'] = $user->error . ':' . $user->error_description;
 		}else {
 			$data['errcode'] = 1;
-			$data['data'] = $openid;
+			$data['data'] = $user->openid;
 		}
 		return $data;
 	}

@@ -56,8 +56,14 @@ class PublicController extends HomeBaseController{
 	 * @date 2015-05-16 下午8:16:46
 	 */
 	public function qqlogout(){
-		
-		
+	    //清空cookie中的QQ登录信息
+	    cookie('qq_nickname',null);
+	    cookie('qq_headurl',null);
+	    //存储文章ID
+	    $state = $_GET['state'];
+	    //跳转到当前浏览的帖子
+	    $state_arr = explode('-', $state);
+	    $this->redirect($state_arr[1].'/'.$state_arr[2],array($state_arr[3]=>$state_arr[4]));
 	}
 	
 	

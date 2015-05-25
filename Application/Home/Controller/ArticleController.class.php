@@ -38,7 +38,7 @@ class ArticleController extends HomeBaseController{
 		//判断用户是否进行了QQ登录
 		$qq_headurl = cookie('qq_headurl');
 		$qq_nickname = cookie('qq_nickname');
-		$headurl = !empty($qq_headurl) ? $qq_headurl : 'http://admin.500efuma.com/Template/admin/img/blog/21.png';
+		$headurl = !empty($qq_headurl) ? $qq_headurl : '/Template/admin/img/blog/21.png';
 		$is_qq_login = !empty($qq_headurl) ? 1 : 0;
 		//qq-login-url 
 		$now_url = urlencode(C('QQ_REDIRECT_URI'));
@@ -48,6 +48,7 @@ class ArticleController extends HomeBaseController{
 						"client_id=101215106&" . 
 						"redirect_uri=$now_url&" .
 						"state=".$state;
+		$qq_logout_url = U('Public/qqlogout',array('state'=>$state));
 		session('state',$state);  //设置session
 		$this->assign('info',$info);
 		$this->assign('tags',$tags);
@@ -58,6 +59,7 @@ class ArticleController extends HomeBaseController{
 		$this->assign('qq_nickname',$qq_nickname);
 		$this->assign('headurl',$headurl);
 		$this->assign('is_qq_login',$is_qq_login);
+		$this->assign('qq_logout_url',$qq_logout_url);
 		$this->display();
 	}
 	

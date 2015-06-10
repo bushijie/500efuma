@@ -114,7 +114,7 @@ class HomeBaseController extends Controller{
 		}
 		//当前月发表过文章的列表信息
 		$model = new \Admin\Model\ArticleListModel();
-		$sql = "select group_concat(date_format(ctm,'%d')) as ctm FROM __PREFIX__article_list where date_format(ctm,'%Y-%m')=date_format(now(),'%Y-%m')";
+		$sql = "select group_concat(date_format(ctm,'%d')) as ctm FROM __PREFIX__article_list where date_format(ctm,'%Y-%m')=date_format(now(),'%Y-%m') and status=1";
 		$has_ctm = $model->query($sql);
 		$this->assign('calendar',$data);
 		$this->assign('has_ctm',$has_ctm[0]['ctm']);

@@ -1,6 +1,6 @@
 <?php
 namespace Home\Controller;
-use Think\Controller;
+// use Think\Controller;
 
 /**
  * 前端页面的入口控制类
@@ -28,7 +28,7 @@ class IndexController extends HomeBaseController {
 		$show = $Page->show();
 		//分页数据处理
 		$Parsedown = new \Org\Markdown\Parsedown;
-		$list = $model->relation(true)->order('ctm desc')->limit ($Page->firstRow.','.$Page->listRows)->select ();
+		$list = $model->relation(true)->where('status=1')->order('ctm desc')->limit ($Page->firstRow.','.$Page->listRows)->select ();
 		foreach ($list as $k=>$article){
 			//内容的截取
 			$content = $article['content'];

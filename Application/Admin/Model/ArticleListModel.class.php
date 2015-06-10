@@ -183,7 +183,7 @@ class ArticleListModel extends RelationModel {
 			$str = $str . "'" . $tm . "'," ;
 		}
 		$str = substr($str,0,strlen($str)-1);
-		$map['_string']  = "date_format(ctm,'%Y-%m') in (" . $str . ")";
+		$map['_string']  = "date_format(ctm,'%Y-%m') in (" . $str . ") and status=1";
 		$list = $model->order('ctm asc')->where($map)->select ();
 		//嵌套遍历进行赋值处理
 		foreach ($ctm_group as $k=>$mon){

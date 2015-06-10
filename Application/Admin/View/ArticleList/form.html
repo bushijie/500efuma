@@ -65,6 +65,20 @@
 							</div>
 						</div>
 						<div class="form-group">
+							<label class="control-label col-md-2">状态</label>
+							<div class="col-md-4">
+								<select class="form-control" name="Article[status]">
+									<if condition="1 eq $article_info['status']">
+										<option value="1" selected>上线</option>
+										<option value="0" >不上线</option>
+									<else /> 
+										<option value="1" >上线</option>
+										<option value="0" selected>不上线</option>
+									</if>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
 							<label class="control-label col-md-2">内容</label>
 							<div class="col-md-9">
 								<textarea name="Article[content]"  id="content-markdown" rows="20" data-error-container="#editor_error">{$article_info['content']}</textarea>
@@ -216,6 +230,7 @@ jQuery(document).ready(function() {
                 	'Article[title]' : $("input[name='Article[title]']").val(),
                     'Article[type_id]' : $("select[name='Article[type_id]']").val(),
                     'Article[tags]' : $("input[name='Article[tags]']").val(),
+                    'Article[status]' : $("select[name='Article[status]']").val(),
                     'Article[content]' : $("textarea[name='Article[content]']").val(),
                 },
                 success:function(data){

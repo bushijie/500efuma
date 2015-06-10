@@ -1,6 +1,6 @@
 <?php
 namespace Home\Controller;
-use Think\Controller;
+// use Think\Controller;
 
 class LinksController extends HomeBaseController {
     

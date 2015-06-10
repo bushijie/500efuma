@@ -1,6 +1,7 @@
 <?php
 namespace Admin\Model;
 use Think\Model\RelationModel;
+use Think\Exception;
 /**
  * @ClassName: ArticleTypeModel 
  * @Description: 文章类型模型文件

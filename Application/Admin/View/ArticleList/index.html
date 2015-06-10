@@ -36,6 +36,7 @@
 							<th>浏览量</th>
 							<th>评论量</th>
 							<th>创建者</th>
+							<th>状态</th>
 							<th>创建时间</th>
 							<th>操作</th>
 						</tr>
@@ -67,6 +68,7 @@ jQuery(document).ready(function() {
           { "bSortable": false },
           { "bSortable": false },
           { "bSortable": false },
+          { "bSortable": false },
         ],
         "bProcessing": true,//开关，以指定当正在处理数据的时候，是否显示“正在处理”这个提示信息
 		"serverSide": true,
@@ -78,7 +80,7 @@ jQuery(document).ready(function() {
 			//ajax表格加载完成后设置完成的标志，以便外层js获取状态改变iframe高度
 			$("#table-status").attr('data-status','ok');
 		},
-        "iDisplayLength": 10,//每页显示个数
+        "iDisplayLength": 15,//每页显示个数
         "bLengthChange":false,//去掉选取每页显示个数
         "bInfo":false,//去掉左下角页脚信息
         "bFilter":false,//去掉过滤功能

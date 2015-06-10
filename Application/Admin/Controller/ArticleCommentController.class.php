@@ -1,6 +1,6 @@
 <?php
 namespace Admin\Controller;
-use Think\Controller;
+// use Think\Controller;
 
 /**
  * @ClassName: Admin\Controller$ArticleCommentController 
@@ -40,7 +40,7 @@ class ArticleCommentController extends AdminBaseController{
 		$aid = $_GET['aid'];
 		$id = $_GET['id'];
 		$model = new \Admin\Model\ArticleCommentModel();
-		$model->deleteComment($id,$aid);
+		$data = $model->deleteComment($id,$aid);
 		//删除成功进行页面跳转
 		if($data['errcode'] == 0){
 			$this->redirect('ArticleList/view',array('id'=>$aid,'p'=>1));

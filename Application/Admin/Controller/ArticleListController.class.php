@@ -1,6 +1,6 @@
 <?php
 namespace Admin\Controller;
-use Think\Controller;
+// use Think\Controller;
 
 /**
  * @ClassName: Admin\Controller$ArticleListController 

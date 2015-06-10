@@ -1,6 +1,7 @@
 <?php
 namespace Admin\Model;
 use Think\Model\RelationModel;
+use Think\Exception;
 /**
  * @ClassName: Admin\Model$ArticleListModel 
  * @Description:  文章列表模型文件
@@ -45,6 +46,12 @@ class ArticleListModel extends RelationModel {
 			array_push ( $temp, $article ['article_type']['title']);//类型
 			array_push ( $temp, $article ['pv_num']);
 			array_push ( $temp, $article ['comments_num']);
+			if ($article ['status'] == 1){
+    			$status_html = '<span class="label label-sm label-success">上线</span>';
+			}else{
+    			$status_html = '<span class="label label-sm label-default">未上线</span>';
+			}
+			array_push ( $temp, $status_html);
 			array_push ( $temp, $article ['admin']['name']);//创建者
 			array_push ( $temp, $article ['ctm'] );//创建时间
 			$action = "<a href='" . U('ArticleList/view',array('id'=>$article['id'])) . "' class='btn purple btn-sm'>预览</a> " . 
@@ -149,7 +156,7 @@ class ArticleListModel extends RelationModel {
 		$info['content'] = $Parsedown->text($info['content']);
 		//文章时间解析
 		$info['ctm_M'] = date('M',strtotime($info['ctm']));//月份简写
-		$ctm_F = date('F',strtotime($article['ctm']));//月份全写
+		$ctm_F = date('F',strtotime($info['ctm']));//月份全写
 		$len_M = strlen($info['ctm_M']);//缩写字符串的长度
 		$ctm_F = mb_substr($ctm_F,$len_M);//截取剩余字符串
 		$info['ctm_F'] = $ctm_F;//月份全写截取后的剩余字符串

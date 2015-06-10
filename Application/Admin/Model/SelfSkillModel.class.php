@@ -1,6 +1,7 @@
 <?php
 namespace Admin\Model;
 use Think\Model\RelationModel;
+use Think\Exception;
 
 /**
  * @ClassName: Admin\Model$SelfSkillModel 

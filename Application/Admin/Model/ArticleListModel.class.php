@@ -174,7 +174,7 @@ class ArticleListModel extends RelationModel {
 	public function getArticleList_Mon($page){
 		$model = D('Admin/ArticleList');
 		//首先计算出月份的分类
-		$sql = "select date_format(ctm,'%Y-%m') as id FROM __PREFIX__article_list group by date_format(ctm,'%Y-%m') order by id desc limit " .$page->firstRow. "," . $page->listRows;
+		$sql = "select date_format(ctm,'%Y-%m') as id FROM __PREFIX__article_list where status=1 group by date_format(ctm,'%Y-%m') order by id desc limit " .$page->firstRow. "," . $page->listRows;
 		$ctm_group = $model->query($sql);
 		//每个月份下的文章列表
 		$group_arr = listID_2_arrID($ctm_group);

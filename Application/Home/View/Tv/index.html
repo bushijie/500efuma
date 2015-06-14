@@ -4,25 +4,35 @@
 <script type="text/javascript" src="__ROOT__/Template/tv/flowplayer-3.2.8.min.js"></script>
 <title>魔王的傻逼直播间</title>
 </head>
-
-<body style="margin: 0;">
-	<a href="#" style="display: block; width: 1189px; height: 668px" id="player"> </a>
+<style>
+html,body{ 
+	margin:0px; 
+	height:100%; 
+}
+</style>
+<body>
+	<a href="#" style="display: block; width: 100%; height:100%;" id="player"> </a>
 	<!-- this will install flowplayer inside previous A- tag. -->
 	<script>
-		flowplayer("player", "__ROOT__/Template/tv/flowplayer-3.2.8.swf", {
-			clip : {
-				url : 'live',
-				provider : 'rtmp',
-				live : true,
-			},
-			plugins : {
-				rtmp : {
-					url : '__ROOT__/Template/tv/flowplayer.rtmp-3.2.8.swf',
-					//netConnectionUrl: 'rtmp://127.0.0.1:1935/live'
-					netConnectionUrl : 'rtmp://120.24.235.142/live'
+		flowplayer(
+			"player",
+			"__ROOT__/Template/tv/flowplayer-3.2.8.swf", {
+				clip : {
+					url : 'live',
+					provider : 'rtmp',
+					live : true,
+					autoPlay: true, 
+					width: 640,
+					height: 1280
+				},
+				plugins : {
+					rtmp : {
+						url : '__ROOT__/Template/tv/flowplayer.rtmp-3.2.8.swf',
+						netConnectionUrl : 'rtmp://120.24.235.142/live'
+					}
 				}
 			}
-		});
+		);
 	</script>
 
 </body>

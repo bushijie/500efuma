@@ -84,6 +84,14 @@ hr {
 	margin: 15px 0 0 0;
 }
 
+.re-content{
+	margin-top: 10px;  
+	margin-left: 45px;
+	clear: both; /* 清除左右浮动 */  
+	word-break: break-word; /* 文本行的任意字内断开 */  
+	word-wrap: break-word; /* IE */  
+}
+
 </style>
 
 <div id="content">
@@ -144,7 +152,7 @@ hr {
 							</if>
 						</span>
 					</h4>
-					<div style="margin-top: 10px;  margin-left: 45px;">{$comment.content}</div>
+					<div class="re-content"><p>{$comment.content}</div>
 					
 				</div>
 				<if condition="$comment.comment_sec neq null">
@@ -179,7 +187,7 @@ hr {
 									<a href="javascript:void(0);" class="reply" data-name='<if condition="$p eq null">#{$k+(1-1)*3}<else />#{$k+($p-1)*3}</if>-{$k_sec}' data-id='{$comment.id}' data-tid='{$comment_sec.id}'>回复</a>
 								</span>
 							</h4>
-							<div style="margin-top: 10px;  margin-left: 45px;">{$comment_sec.content}</div>
+							<div class="re-content">{$comment_sec.content}</div>
 						</volist>
 					</div>
 				</if>
